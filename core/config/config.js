@@ -20,6 +20,6 @@ exports.dbConnection = {
         uri: "mongodb://localhost:27017/" + "yellow"
     },
     production: {
-        uri: process.env.OPENSHIFT_MONGODB_DB_URL + "nodejs"
+        uri: process.env.OPENSHIFT_MONGODB_DB_URL + "yellow"
     }
 }
