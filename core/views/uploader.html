@@ -1,7 +1,14 @@
 ﻿<% include header.html %>
-    <form action="<%= action %>" method="post" enctype="multipart/form-data" >
-        <label>Upload</label>
-        <input type="file" name="video" />
-        <button type="submit"><%= title %></button>
+
+<form action="<%= action %>" method="post" enctype="multipart/form-data" >
+
+<% if (fields.length) { %>
+    <% fields.forEach(function(field){ %>
+        <label><%=: field.name | capitalize %></label>
+        <input type="<%= field.type %>" name="<%= field.name %>" <% if (field.property) { %> <%= field.property %> <% } %> >
+    <% }) %>
+<% } %>
+
+<button type="submit"><%= title %></button>
 </form>
 <% include footer.html %>

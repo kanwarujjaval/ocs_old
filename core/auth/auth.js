@@ -92,7 +92,6 @@ exports.isCourseCreator = function (req, res, next) {
         }
         else {
             for (i = 0; i < user.courseCreated.length; i++) {
-                console.log(req.params.id + " === " + user.courseCreated[i]);
                 if (req.params.id == user.courseCreated[i]) {
                     return next();
                 }

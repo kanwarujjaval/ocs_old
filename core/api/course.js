@@ -26,20 +26,17 @@ exports.createCoursePost = function (req, res, next) {
         courseModel.populate(newCourse, "_creator", function (err, course) {
             userModel.findOne({ 'email': newCourse._creator.email }, function (err, user) {
                 user.courseCreated.push(newCourse);
-                console.log(newCourse);
                 user.save(function (err) {
-                    console.log("yupiee")
                     if (err) {
                         res.send(err);
                     }
+                    var redPath = "/course/" + newCourse._id + "/edit";
+                    res.redirect(redPath);
                 });
             });
         });
     });
-    res.send(newCourse);
-    /*
-    var redPath = "/course/" + newCourse._id + "/edit";
-    res.redirect(redPath);*/
+    //res.send(newCourse);
 }
 
 /*
@@ -73,7 +70,7 @@ exports.deleteCourse = function (req, res, next) {
 */
 
 exports.getCourse = function (req, res, next) {
-    courseModel.findOne({ '_id': req.params.id }).populate('_creator').exec(function (err, course) {
+    courseModel.findOne({ '_id': req.params.id })/*.populate('_creator')*/.exec(function (err, course) {
         if (err) {
             res.send('DataBase error');
         }
@@ -81,7 +78,12 @@ exports.getCourse = function (req, res, next) {
             res.send("Course not found");
         }
         else {
-            res.send(course);
+            res.render('video',{
+                title:"Watch Video",
+                src: course.contentPath,
+                userId:course._creator,
+                courseId:course._id
+            });
         }
 
     });
@@ -92,17 +94,34 @@ exports.getCourse = function (req, res, next) {
 */
 
 exports.editCourse = function (req, res, next) {
-    courseModel.findOne({ '_id': req.params.id })/*.populate('_creator')*/.exec(function (err, course) {
-        if (err) {
-            res.send('DataBase error');
-        }
-        if (!course) {
-            res.send("Course not found");
-        }
-        else {
-            res.send(course);
-        }
+    var path = "/course/" + req.params.id + "/edit";
+    res.render('form', {
+        title: "Edit Course",
+        action: path,
+        fields: [
+            { name: 'playlist', type: 'text', property: 'required' }
+            ]
+    });
+}
 
+exports.editCoursePost = function (req, res, next) {
+    courseModel.findById(req.params.id, function (err, course) {
+        course.contentPath = req.body.playlist;
+        course.updatedOn = Date.now();
+        course.save(function (err, courseUpdated, number) {
+            if (err) {
+                res.send(500, { msg: 'server Error' });
+            }
+            else if (number > 0) {
+                res.send(courseUpdated);
+            }
+            else {
+                res.send({
+                    msg: "successfully updated the course",
+                    data: courseUpdated
+                })
+            }
+        });
     });
 }
 

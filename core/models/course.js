@@ -6,7 +6,9 @@ courseSchema = new schema({
     _creator: { type: schema.Types.ObjectId, ref: 'user' },
     cost : {type: String, required: true, default: '0'},
     content: { type: schema.Types.ObjectId, ref: 'courseContent' },
-    createdOn: {type: Date, default: Date.now}
+    createdOn: {type: Date, default: Date.now},
+    updatedOn: {type: Date},
+    contentPath: {type: String}
 });
 
 courseSchema.methods.genToken = function () {

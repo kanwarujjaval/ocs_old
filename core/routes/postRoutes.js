@@ -16,4 +16,6 @@ module.exports = function (app) {
 
     app.post('/course/create', auth.isLoggedIn, xcourse.createCoursePost);
 
+    app.post('/course/:id/edit', auth.isLoggedIn, auth.isCourseCreator, xcourse.editCoursePost);
+
 }
