@@ -1,0 +1,7 @@
+<div class="courses" ng-controller="CourseCtrl">
+    <div ng-repeat="course in courses | limitTo:10 | orderBy:'createdOn'">
+        <p>name: <a href="/course/{{course._id}}">{{course.name}}</a></p>
+        <p>Created On: {{course.createdOn | date:'EEEE, MMMM d,y'}}</p>
+        <p>_______________________________</p>
+    </div>
+</div>
