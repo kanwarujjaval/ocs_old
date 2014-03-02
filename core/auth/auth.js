@@ -78,8 +78,8 @@ exports.isLoggedIn = function (req, res, next) {
         return next();
     }
     else {
-        next(); //temporarily disabled the login requirement till the signin is implemented in the angular frontend
-        //res.send(403, { msg: 'You need to be authenticated to access this resource' });
+        //next(); //temporarily disabled the login requirement till the signin is implemented in the angular frontend
+        res.send(403, { msg: 'You need to be authenticated to access this resource' });
     }
 }
 

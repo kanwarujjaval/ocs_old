@@ -23,7 +23,7 @@ module.exports = function (app) {
     Course routes
     */
 
-    app.get('/api/course/all', auth.isLoggedIn, /*auth.isCourseCreator,*/ xCourse.getCourseAll);
+    app.get('/api/course/all', /*auth.isLoggedIn, auth.isCourseCreator,*/ xCourse.getCourseAll);
     app.get('/api/course/create', auth.isLoggedIn, xCourse.createCourse);
     app.get('/api/course/:id', auth.isLoggedIn, xCourse.getCourse);
     app.get('/api/course/:id/edit', auth.isLoggedIn, auth.isCourseCreator, xCourse.editCourse);
