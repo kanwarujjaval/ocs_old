@@ -31,7 +31,7 @@
     "node-uuid": "~1.4.1",
     "bcryptjs": "~0.7.12",
     "formidable": "~1.0.14",
-    "pdfkit": "^0.3.0",
+    "pdfkit": "~0.3.0",
     "fs-extra": "~0.8.1"
   }
 }
