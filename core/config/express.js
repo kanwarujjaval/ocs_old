@@ -1,6 +1,5 @@
 ﻿var express = require('express'),
-    passport = require('passport'),
-    slashes = require('express-slash');
+    passport = require('passport');
 
 require('./config').setPath();
 
@@ -35,13 +34,11 @@ module.exports = function (app) {
         app.use(passport.initialize());
         app.use(passport.session());
         app.use(express.compress());
-        app.enable('strict routing');
-        app.use(slashes());
-        app.use(app.router);
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
         app.use(express.static(publicPath));
+        app.use(app.router);
         app.use(function (req, res) {
             res.send(404, { msg: 'Page not found!' });
         });
@@ -72,13 +69,11 @@ module.exports = function (app) {
         app.use(passport.initialize());
         app.use(passport.session());
         app.use(express.compress());
-        app.enable('strict routing');
-        app.use(slashes());
-        app.use(app.router);
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
         app.use(express.static(publicPath));
+        app.use(app.router);
         app.use(function (req, res) {
             res.status(404);
             res.render('index', { title: "404 Error !! Page not Found" });
