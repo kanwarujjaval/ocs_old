@@ -1,3 +1,3 @@
 #!/bin/env node
 
-require('./core/yellow')();
+require('./core/start')();

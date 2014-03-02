@@ -1,0 +1,18 @@
+{
+  "name": "yellow",
+  "version": "0.0.1",
+  "authors": [
+    "Kanwar Ujjaval Singh <ujjavalkanwar@gmail.com>"
+  ],
+  "description": "Project Yellow",
+  "license": "AGPL",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}
