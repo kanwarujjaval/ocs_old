@@ -78,12 +78,35 @@ exports.getCourse = function (req, res, next) {
             res.send("Course not found");
         }
         else {
-            res.render('video',{
-                title:"Watch Video",
+            res.render('video', {
+                title: "Watch Video",
                 src: course.contentPath,
-                userId:course._creator,
-                courseId:course._id
+                userId: course._creator,
+                courseId: course._id
             });
+        }
+
+    });
+}
+
+/*
+/course/all
+*/
+
+exports.getCourseAll = function (req, res, next) {
+    courseModel.find({},{'_id':1,'name':1,'createdOn':1},function (err, course) {
+        if (err) {
+            res.send('DataBase error');
+        }
+        if (!course) {
+            res.send("Course not found");
+        }
+        else {
+            //var courses = {};
+            //course.forEach(function (single) {
+            //    courses[single._id] = single;
+            //})
+            res.send(course);
         }
 
     });
