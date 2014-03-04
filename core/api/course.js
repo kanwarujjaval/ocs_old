@@ -1,17 +1,62 @@
-﻿var courseModel = require('../models/course').courseModel;
+﻿/*
+ * This file defines the function for the course api
+ * all paths for the functions are relative to the function name
+ * begins with /api/course
+ * 
+ * all the queries require the user to be logged in (auth/auth/ isLoggedIn )
+ * some require the user making the api call to be the course owner/creator (auth/auth/ auth.isCourseCreator)
+ *
+ */
+
+var courseModel = require('../models/course').courseModel;
 var userModel = require('../models/user').userModel;
+var errHandler = require('../service/errorHandler.js');
+
 
 /*
-/course/create
+/api/course/all 
+
+requires login
 */
 
-exports.createCourse = function (req, res, next) {
-    res.render('form', {
-        title: "Create Course",
-        action: "/course/create",
-        fields: [
-            { name: 'title', type: 'text', property: 'required' }
-            ]
+exports.getCourseAll = function (req, res, next) {
+    courseModel.find({}, { '_id': 1, 'name': 1, 'createdOn': 1, 'updatedOn': 1, 'tags': 1, 'category': 1, 'rating': 1, 'description': 1 }, function (err, course) {
+        if (err) {
+            res.send(errHandler.err(err));
+        }
+        if (!course) {
+            res.send(errHandler('Requested Resource Not Found'));
+        }
+        else {
+            res.send(course);
+        }
+    });
+}
+
+
+/*
+/api/course/:id
+
+requires login
+*/
+
+exports.getCourseById = function (req, res, next) {
+    courseModel.findOne({ '_id': req.params.id })/*.populate('_creator')*/.exec(function (err, course) {
+        if (err) {
+            res.send('DataBase error');
+        }
+        if (!course) {
+            res.send("Course not found");
+        }
+        else {
+            res.render('video', {
+                title: "Watch Video",
+                src: course.contentPath,
+                userId: course._creator,
+                courseId: course._id
+            });
+        }
+
     });
 }
 
@@ -46,7 +91,7 @@ exports.createCoursePost = function (req, res, next) {
 exports.deleteCourse = function (req, res, next) {
     console.log("req.params.id " + req.params.id);
     console.log("req.session.passport.user " + req.session.passport.user);
-    courseModel.findOneAndRemove({ $and: [{ '_id': req.params.id }, { '_creator': req.session.passport.user}] }, function (err, course) {
+    courseModel.findOneAndRemove({ $and: [{ '_id': req.params.id }, { '_creator': req.session.passport.user }] }, function (err, course) {
         if (err) {
             res.send(err);
         }
@@ -66,53 +111,6 @@ exports.deleteCourse = function (req, res, next) {
 }
 
 /*
-/course/:id
-*/
-
-exports.getCourse = function (req, res, next) {
-    courseModel.findOne({ '_id': req.params.id })/*.populate('_creator')*/.exec(function (err, course) {
-        if (err) {
-            res.send('DataBase error');
-        }
-        if (!course) {
-            res.send("Course not found");
-        }
-        else {
-            res.render('video', {
-                title: "Watch Video",
-                src: course.contentPath,
-                userId: course._creator,
-                courseId: course._id
-            });
-        }
-
-    });
-}
-
-/*
-/course/all
-*/
-
-exports.getCourseAll = function (req, res, next) {
-    courseModel.find({},{'_id':1,'name':1,'createdOn':1},function (err, course) {
-        if (err) {
-            res.send('DataBase error');
-        }
-        if (!course) {
-            res.send("Course not found");
-        }
-        else {
-            //var courses = {};
-            //course.forEach(function (single) {
-            //    courses[single._id] = single;
-            //})
-            res.send(course);
-        }
-
-    });
-}
-
-/*
 /course/:id/edit
 */
 
@@ -123,7 +121,7 @@ exports.editCourse = function (req, res, next) {
         action: path,
         fields: [
             { name: 'playlist', type: 'text', property: 'required' }
-            ]
+        ]
     });
 }
 
