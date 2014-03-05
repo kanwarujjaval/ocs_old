@@ -14,18 +14,19 @@ var errHandler = require('../service/errorHandler.js');
 
 
 /*
-/api/course/all 
-
-requires login
-*/
+ * GET
+ *  /api/course/all
+ * 
+ * requires login
+ */
 
 exports.getCourseAll = function (req, res, next) {
-    courseModel.find({}, { '_id': 1, 'name': 1, 'createdOn': 1, 'updatedOn': 1, 'tags': 1, 'category': 1, 'rating': 1, 'description': 1 }, function (err, course) {
+    courseModel.find({}, { 'content': 0 }, function (err, course) {
         if (err) {
-            res.send(errHandler.err(err));
+            res.send(500, err);
         }
         if (!course) {
-            res.send(errHandler('Requested Resource Not Found'));
+            res.send(500, errHandler.err('Requested Resource Not Found'));
         }
         else {
             res.send(course);
@@ -35,58 +36,70 @@ exports.getCourseAll = function (req, res, next) {
 
 
 /*
-/api/course/:id
-
-requires login
-*/
+ * GET
+ *  /api/course/:id
+ * 
+ * requires login
+ */
 
 exports.getCourseById = function (req, res, next) {
-    courseModel.findOne({ '_id': req.params.id })/*.populate('_creator')*/.exec(function (err, course) {
-        if (err) {
-            res.send('DataBase error');
-        }
-        if (!course) {
-            res.send("Course not found");
-        }
-        else {
-            res.render('video', {
-                title: "Watch Video",
-                src: course.contentPath,
-                userId: course._creator,
-                courseId: course._id
-            });
-        }
+    courseModel
+        .findOne({ '_id': req.params.id }, { 'content': 0, '__v': 0 })
+        .populate('_creator', { 'username': 1, 'courseCreated': 1, '_id': 0 })
+        .exec(function (err, course) {
+            if (err) {
+                res.send(500, err);
+            }
+            if (!course) {
+                res.send(500, errHandler.err('Requested Resource Not Found'));
+            }
+            else {
+                res.send(course);
+            }
 
-    });
+        });
 }
+
+/*
+ * POST 
+ * 
+ *  Creates course from the Post request
+ * 
+ *  requires authentication isLoggedIn
+ * 
+ *  To be implemented : Sanitization
+ */
 
 exports.createCoursePost = function (req, res, next) {
     var newCourse = new courseModel();
     newCourse._creator = req.session.passport.user;
-    newCourse.name = req.body.title;
+    //newCourse.name = req.body.title;
     newCourse.save(function (err) {
         if (err) {
-            res.send(err);
+            res.send(500, err);
         }
         courseModel.populate(newCourse, "_creator", function (err, course) {
             userModel.findOne({ 'email': newCourse._creator.email }, function (err, user) {
                 user.courseCreated.push(newCourse);
                 user.save(function (err) {
                     if (err) {
-                        res.send(err);
+                        res.send(500, err);
                     }
-                    var redPath = "/course/" + newCourse._id + "/edit";
-                    res.redirect(redPath);
+                    res.send(newCourse);
                 });
             });
         });
     });
-    //res.send(newCourse);
 }
 
 /*
-/course/:id/delete
-*/
+ * DELETE
+ * 
+ * /api/course/:id
+ * 
+ * requires login and course owner
+ * 
+ */
 
 exports.deleteCourse = function (req, res, next) {
     console.log("req.params.id " + req.params.id);
@@ -95,7 +108,6 @@ exports.deleteCourse = function (req, res, next) {
         if (err) {
             res.send(err);
         }
-        console.log("course " + course + " has been deleted");
         userModel.findOne({ '_id': req.session.passport.user }, function (err, user) {
             var index = user.courseCreated.indexOf(req.params.id);
             user.courseCreated.splice(index, 1);
@@ -103,7 +115,7 @@ exports.deleteCourse = function (req, res, next) {
                 if (err) {
                     res.send(err);
                 } else {
-                    res.send("Unlinked course from user profile");
+                    res.send("Course delete and removed from user profile");
                 }
             });
         });
@@ -111,36 +123,30 @@ exports.deleteCourse = function (req, res, next) {
 }
 
 /*
-/course/:id/edit
-*/
-
-exports.editCourse = function (req, res, next) {
-    var path = "/course/" + req.params.id + "/edit";
-    res.render('form', {
-        title: "Edit Course",
-        action: path,
-        fields: [
-            { name: 'playlist', type: 'text', property: 'required' }
-        ]
-    });
-}
+ * POST
+ * 
+ * /api/course/:id
+ * 
+ * requires LOGIN and Course ownership
+ * 
+ * EDIT Course
+ */
 
 exports.editCoursePost = function (req, res, next) {
     courseModel.findById(req.params.id, function (err, course) {
+
+        /*
+         * Add course update paramatesrs from req.body
+         */
+
         course.contentPath = req.body.playlist;
         course.updatedOn = Date.now();
-        course.save(function (err, courseUpdated, number) {
+        course.save(function (err, courseUpdated) {
             if (err) {
                 res.send(500, { msg: 'server Error' });
             }
-            else if (number > 0) {
-                res.send(courseUpdated);
-            }
             else {
-                res.send({
-                    msg: "successfully updated the course",
-                    data: courseUpdated
-                })
+                res.send(courseUpdated)
             }
         });
     });
@@ -152,14 +158,6 @@ exports.editCoursePost = function (req, res, next) {
 
 exports.getCourseTest = function (req, res, next) {
     res.send("You are only eligible for the test after completin the course");
-}
-
-/*
-/course/:id/leaderboard
-*/
-
-exports.getCourseLeaderboard = function (req, res, next) {
-    res.send("Top 10 Scorers for this course");
 }
 
 /*

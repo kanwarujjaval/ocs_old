@@ -7,8 +7,41 @@ var lect = require('../api/lectures');
 module.exports = function (app) {
 
     /*
-    Profile Routes
+    Course routes
     */
+
+    /* POST Request to create a new course */
+
+    app.post('/api/course', auth.isLoggedIn, xCourse.createCoursePost);
+
+    /* Get All courses from database */
+    app.get('/api/course/all', auth.isLoggedIn, xCourse.getCourseAll);
+
+    /* POST request to EDIT course by id */
+    app.post('/api/course/:id', auth.isLoggedIn, auth.isCourseCreator, xCourse.editCoursePost);
+
+    /* DELETE request to delete course by id */
+
+    app.delete('/api/course/:id', auth.isLoggedIn, auth.isCourseCreator, xCourse.deleteCourse);
+
+    /* Get a single course by ID */
+    app.get('/api/course/:id', auth.isLoggedIn, xCourse.getCourseById);
+
+    /* GET course test */
+    app.get('/api/course/:id/test', auth.isLoggedIn, xCourse.getCourseTest);
+
+    /* Get Course Files */
+    app.get('/api/course/:id/files', auth.isLoggedIn, xCourse.viewCourseFiles);
+
+    /* Get Course Discussion */
+    app.get('/api/course/:id/discuss', auth.isLoggedIn, xCourse.discussCourse);
+
+    /* Play ourse */
+    app.get('/api/course/:id/play/:module', auth.isLoggedIn, xCourse.playCourse);
+
+    /*
+   Profile Routes
+   */
 
     app.get('/api/profile', auth.isLoggedIn, profile.getUser);
     app.get('/api/profile/courses/created', auth.isLoggedIn, profile.getUserCourses);
@@ -18,25 +51,6 @@ module.exports = function (app) {
     app.get('/api/profile/lectures', auth.isLoggedIn, profile.getLectures);
     app.get('/api/profile/achievements', auth.isLoggedIn, profile.getAchievements);
 
-    /*
-    Course routes
-    */
-
-    /* Get All courses from database */
-    app.get('/api/course/all', auth.isLoggedIn, xCourse.getCourseAll);
-
-    /* Get a single course by ID */
-    app.get('/api/course/:id', auth.isLoggedIn, xCourse.getCourseById);
-
-    app.get('/api/course/:id/edit', auth.isLoggedIn, auth.isCourseCreator, xCourse.editCourse);
-    app.get('/api/course/:id/test', auth.isLoggedIn, xCourse.getCourseTest);
-    app.get('/api/course/:id/leaderboard', auth.isLoggedIn, xCourse.getCourseLeaderboard);
-    app.get('/api/course/:id/files', auth.isLoggedIn, xCourse.viewCourseFiles);
-    app.get('/api/course/:id/discuss', auth.isLoggedIn, xCourse.discussCourse);
-    app.get('/api/course/:id/play/:module', auth.isLoggedIn, xCourse.playCourse);
-    app.get('/api/course/:id/delete', auth.isLoggedIn, auth.isCourseCreator, xCourse.deleteCourse);
-    app.post('/course/create', auth.isLoggedIn, xCourse.createCoursePost);
-    app.post('/course/:id/edit', auth.isLoggedIn, auth.isCourseCreator, xCourse.editCoursePost);
 
     /*
     User Routes
@@ -71,6 +85,17 @@ module.exports = function (app) {
     app.post('/signup', auth.isInvited, auth.signupAuthenticate);
 
     app.post('/login', auth.loginAuthenticate);
+
+    app.get('/login', function (req, res) {
+        res.render('form', {
+            title: "login",
+            action: "/login",
+            fields: [
+            { name: 'email', type: 'text', property: 'required' },
+            { name: 'password', type: 'password', property: 'required' }
+            ]
+        });
+    });
 
     app.post('/invite', auth.createInvite);
 
