@@ -5,7 +5,6 @@
     "Kanwar Ujjaval Singh <ujjavalkanwar@gmail.com>"
   ],
   "description": "Project Yellow",
-  "license": "AGPL",
   "private": true,
   "ignore": [
     "**/.*",
@@ -14,5 +13,15 @@
     "public/lib",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "purecss": "~0.4.2",
+    "angular-loading-bar": "~0.3.0",
+    "angular": "~1.2.14",
+    "angular-animate": "~1.2.14",
+    "angular-resource": "~1.2.14",
+    "angular-route": "~1.2.14",
+    "videojs": "~4.4.3",
+    "font-awesome": "~4.0.3"
+  }
 }
