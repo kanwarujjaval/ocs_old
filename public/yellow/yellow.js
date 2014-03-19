@@ -1,4 +1,4 @@
-var yellow = angular.module('yellow', ['ngResource', 'ngRoute','chieffancypants.loadingBar', 'ngAnimate']);
+var yellow = angular.module('yellow', ['ngResource', 'ngRoute']);
 
 yellow.config(function ($routeProvider, $locationProvider) {
 
