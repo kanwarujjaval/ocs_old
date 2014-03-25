@@ -21,16 +21,16 @@
   "dependencies": {
     "socket.io": "~0.9.16",
     "mongoose": "~3.8.8",
-    "express": "~3.4.8",
+    "express": "^3.4.8",
     "passport": "~0.2.0",
-    "passport-local": "~0.1.6",
-    "ejs": "~0.8.5",
-    "validator": "~3.4.0",
+    "passport-local": "^0.1.6",
+    "ejs": "^0.8.8",
+    "validator": "^3.4.0",
     "nodemailer": "~0.6.1",
     "node-uuid": "~1.4.1",
     "bcryptjs": "~0.7.12",
     "formidable": "~1.0.14",
-    "pdfkit": "~0.3.0",
+    "pdfkit": "^0.3.0",
     "fs-extra": "~0.8.1"
   }
 }
