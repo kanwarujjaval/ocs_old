@@ -1,3 +1,3 @@
-﻿angular.module('yellow').controller('CourseCtrl', function ($scope, Api) {
-    $scope.courses = Api.req.query({}, isArray = true);
+﻿angular.module('yellow').controller('LectureCtrl', function ($scope, Api) {
+    $scope.title = "abc";
 });

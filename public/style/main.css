@@ -1,3 +1,11 @@
-﻿canvas{
-    background-color:#ccc;
+﻿body {
+    margin:0;
+    padding:0;
+    font-family:Arial;
+}
+#container {
+    position:relative;
+}
+#sketchpad {
+    border: 1px solid #000;
 }
