@@ -1,0 +1,362 @@
+﻿/*************************************************/
+/*                    Resets                     */
+/*************************************************/
+
+* {
+  text-decoration:none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+*:active,
+*:hover {
+  outline: 0;
+}
+
+/*************************************************/
+/*                     Body                      */
+/*************************************************/
+body {
+  color: #37302a;
+  background: #E95644;
+  font: normal 100%/1.4 sans-serif;
+  font-size: 12px;
+}
+
+
+/*************************************************/
+/*                    Header                     */
+/*************************************************/
+
+header {
+  padding-top:0.5em;
+  padding-bottom:0.5em;
+  background: #E95644;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 55px;
+  padding: 0 20px;
+  color: #fff;
+  float: left;
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+
+/*************************************************/
+/*                    Navbar                     */
+/*************************************************/
+
+
+.nav-collapse ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  list-style: none;
+}
+
+.nav-collapse li {
+  width: 100%;
+  display: block;
+}
+
+.current {
+    background:green;
+}
+
+.js .nav-collapse {
+  clip: rect(0 0 0 0);
+  max-height: 0;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.nav-collapse.opened {
+  max-height: 9999px;
+}
+
+.disable-pointer-events {
+  pointer-events: none !important;
+}
+
+@media screen and (min-width: 40em) {
+  .js .nav-collapse {
+    position: relative;
+  }
+  .js .nav-collapse.closed {
+    max-height: none;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+.nav-collapse,
+.nav-collapse * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.nav-collapse,
+.nav-collapse ul {
+  list-style: none;
+  width: 100%;
+  float: left;
+}
+
+@media screen and (min-width: 40em) {
+  .nav-collapse {
+    float: right;
+    width: auto;
+  }
+}
+
+.nav-collapse li {
+  float: left;
+  width: 100%;
+}
+
+@media screen and (min-width: 40em) {
+  .nav-collapse li {
+    width: auto;
+  }
+}
+
+.nav-collapse a {
+  border-top: 1px solid #E95644;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  background: #E95644;
+  padding: 0.7em 1em;
+  color: #fff;
+  width: 100%;
+  float: left;
+  transition: 0.3s ease-out;
+}
+
+.nav-collapse a:hover{
+    /*background:#EAEAEA;*/
+    color:#383638;
+    transition: 0.3s ease-in;
+}
+
+@media screen and (min-width: 40em) {
+  .nav-collapse a {
+    /*border-left: 1px solid white;*/
+    padding: 1.02em 2em;
+    text-align: center;
+    border-top: 0;
+    float: left;
+    margin: 0;
+  }
+}
+
+.nav-collapse ul ul a {
+  background: #fff;
+  padding-left: 2em;
+}
+
+@media screen and (min-width: 40em) {
+  .nav-collapse ul ul a {
+    display: none;
+  }
+}
+
+.nav-toggle {
+  text-decoration: none;
+  text-indent: -300px;
+  position: relative;
+  overflow: hidden;
+  width: 60px;
+  height: 55px;
+  float: right;
+}
+
+.nav-toggle:before {
+  color: #fff;
+  font: normal 28px/55px "FontAwesome"; 
+  text-transform: none;
+  text-align: center;
+  position: absolute;
+  content: "\f0c9";
+  text-indent: 0;
+  speak: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.nav-toggle.active:before {
+  font-size: 24px;
+  content: "\f00d";
+}
+
+
+/*************************************************/
+/*                    splash                     */
+/*************************************************/
+
+.splash-container {
+    background: #E95644;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 88%;
+    top: 15%;
+    left: 0;
+    position: fixed !important;
+}
+
+.splash {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.splash-head {
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.10em;
+    padding-bottom:0.5em;
+    font-weight: 200;
+    border-radius: 5px;
+    line-height: 1em;
+}
+.splash-subhead {
+    color: #383638;
+    letter-spacing: 0.10em;
+    font-size:110%;
+}
+
+
+/*************************************************/
+/*                   content                     */
+/*************************************************/
+
+.content {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    min-height: 12%;
+    z-index: 2;
+    background: #383638;
+    color:#fff;
+    text-align:center;
+
+}
+
+.content-style {
+    padding-top:10%;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2em 0 1em;
+}
+
+.sky{
+    position:relative;
+    margin:0 auto;
+    min-height:140vh;
+    border:none;
+    background:#ACDDEB;
+    color:#000;
+    overflow:hidden;
+}
+
+.centered{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 60%;
+    height: 40%;
+    margin: auto;
+    /*padding-bottom:10%;*/
+}
+
+.dark{
+    background:#383638;
+    color:#fff;
+}
+
+.yellowish{
+    background:#FFCE7A;
+    color:#000;
+}
+
+.cloud{
+    background:#fff;
+    color:#383638;
+}
+
+.red-text{
+    color:#E95644;
+}
+
+/*************************************************/
+/*                 Media Queries                 */
+/*************************************************/
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) {
+
+    /* We increase the body font size */
+    body {
+        font-size: 16px;
+    }
+    /* We want to give the content area some more padding */
+
+    /* We can align the menu header to the left, but float the
+    menu items to the right. */
+
+    /* We increase the height of the splash-container */
+/*    .splash-container {
+        height: 500px;
+    }*/
+
+    /* We decrease the width of the .splash, since we have more width
+    to work with */
+    .splash {
+        width: 50%;
+        height: 50%;
+    }
+
+
+    /* We remove the border-separator assigned to .l-box-lrg */
+}
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large devices, we want to over-ride some
+ * of the mobile and tablet styles.
+ */
+@media (min-width: 78em) {
+    /* We increase the header font size even more */
+
+}
