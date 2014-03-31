@@ -1,10 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="yellow">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title ng-controller="MainCtrl"> {{pageTitle}} </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Yellow</title>
     <% include includes.html %>
 </head>
 <body>
-<header>________________________THIS IS THE HEADER_________________________</header>
+
+    <header>
+        <a href="#home" class="logo fa fa-pencil-square-o fa-3x"></a>
+        <nav class="nav-collapse">
+            <ul>
+                <li><a smooth-scroll target="_top">Home</a></li>
+                <li><a smooth-scroll target="about">About</a></li>
+                <li><a smooth-scroll target="courses">Courses</a></li>
+                <li><a smooth-scroll target="start">Start</a></li>
+            </ul>
+        </nav>
+    </header>

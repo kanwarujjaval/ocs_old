@@ -22,6 +22,7 @@
     "angular-resource": "~1.2.14",
     "angular-route": "~1.2.14",
     "videojs": "~4.4.3",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "angular-smoothscroll": "*"
   }
 }

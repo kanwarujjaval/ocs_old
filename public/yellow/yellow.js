@@ -1,4 +1,4 @@
-var yellow = angular.module('yellow', ['ngResource', 'ngRoute']);
+var yellow = angular.module('yellow', ['ngResource', 'ngRoute', 'angularSmoothscroll', 'chieffancypants.loadingBar']);
 
 yellow.config(function ($routeProvider, $locationProvider) {
 
@@ -7,6 +7,10 @@ yellow.config(function ($routeProvider, $locationProvider) {
     $routeProvider.when('/', { templateUrl: '/partials/home', controller: 'MainCtrl' });
 
     $routeProvider.when('/courses', { templateUrl: '/partials/coursesAll', controller: 'CourseCtrl' });
+
+    $routeProvider.when('/lecture', { templateUrl: '/partials/lecture', controller: 'LectureCtrl' });
+
+    $routeProvider.when('/404', { templateUrl: '/partials/404' });
 
     $routeProvider.otherwise({
         redirectTo: '/404'
