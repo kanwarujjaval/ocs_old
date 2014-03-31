@@ -86,17 +86,6 @@ module.exports = function (app) {
 
     app.post('/login', auth.loginAuthenticate);
 
-    app.get('/login', function (req, res) {
-        res.render('form', {
-            title: "login",
-            action: "/login",
-            fields: [
-            { name: 'email', type: 'text', property: 'required' },
-            { name: 'password', type: 'password', property: 'required' }
-            ]
-        });
-    });
-
     app.post('/invite', auth.createInvite);
 
     app.get('/signup/:token', auth.verifyToken, function (req, res) {
@@ -120,6 +109,17 @@ module.exports = function (app) {
     Static Routes
     */
 
+
+    //app.get('/partials/login', function (req, res) {
+    //    res.render('form', {
+    //        title: "login",
+    //        action: "/login",
+    //        fields: [
+    //        { name: 'email', type: 'text', property: 'required' },
+    //        { name: 'password', type: 'password', property: 'required' }
+    //        ]
+    //    });
+    //});
 
     app.get('/partials/*', function (req, res) {
         res.render('../views/' + req.params);

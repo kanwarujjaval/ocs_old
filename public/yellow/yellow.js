@@ -10,6 +10,8 @@ yellow.config(function ($routeProvider, $locationProvider) {
 
     $routeProvider.when('/lecture', { templateUrl: '/partials/lecture', controller: 'LectureCtrl' });
 
+    $routeProvider.when('/login', { templateUrl: '/partials/login', controller: 'LoginCtrl' });
+
     $routeProvider.when('/404', { templateUrl: '/partials/404' });
 
     $routeProvider.otherwise({
