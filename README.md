@@ -38,6 +38,3 @@ Changelog
 
 1. Users request and invitation to sign up. Invitation destroyed on successfull signup
 2. course is create and linked to the creators profile which is back referenced to the course
-
-
-ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5 :: REDIS PASS
