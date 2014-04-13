@@ -1,5 +1,6 @@
 {
   "name": "angular-smoothscroll",
+  "version": "1.1.0",
   "main": "dist/scripts/2d8e100/scripts.js",
   "dependencies": {
     "jquery": "~1.9.1",
@@ -24,14 +25,13 @@
     "Gruntfile.js"
   ],
   "homepage": "https://github.com/arnaudbreton/angular-smoothscroll",
-  "_release": "2a89b9fa71",
+  "_release": "1.1.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "2a89b9fa7187685aa2d3cab8c3c6c42f49bb54c2"
+    "type": "version",
+    "tag": "v1.1.0",
+    "commit": "b2daa2be6119a670f4da407cc392ecfd1db3b91d"
   },
   "_source": "git://github.com/arnaudbreton/angular-smoothscroll.git",
   "_target": "*",
-  "_originalSource": "angular-smoothscroll",
-  "_direct": true
+  "_originalSource": "angular-smoothscroll"
 }
