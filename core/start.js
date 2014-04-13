@@ -5,7 +5,7 @@
     require('./config/config').setVars();
     require('./config/express')(app);
     require('./routes/setRoutes')(app);
-    require('./config/io')(server, env);    //***DEV NOTE***socket.io performance fixes if 1.0 arrives,else move to sockjs with primus
+    require('./config/io')(server, env);
     require('./config/mongoose').connectDb();
     require('./service/socketio.js')();
 
