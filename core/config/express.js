@@ -48,7 +48,7 @@ module.exports = function(app) {
 
     if ('production' == env) {
         app.use(logger());
-        app.use(requireHTTPS);
+        //app.use(requireHTTPS);
         app.enable('trust proxy');
         app.disable('x-powered-by');
         app.use(cookieParser('SomeRandomSecretPasswordForCookieParsing_for*Project Yellow'));
