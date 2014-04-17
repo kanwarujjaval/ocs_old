@@ -4,7 +4,7 @@ var profile = require('../api/profile');
 var user = require('../api/user');
 var lect = require('../api/lectures');
 
-module.exports = function (app) {
+module.exports = function(app) {
 
     /*
     Course routes
@@ -75,8 +75,7 @@ module.exports = function (app) {
     /*
     Admin routes
     */
-
-    app.get('/api/admin', function (req, res) { res.send("Admin Panel") });
+    app.get('/api/admin', function(req, res) { res.send("Admin Panel") });
 
     /*
     Authentication routes
@@ -88,19 +87,19 @@ module.exports = function (app) {
 
     app.post('/invite', auth.createInvite);
 
-    app.get('/signup/:token', auth.verifyToken, function (req, res) {
+    app.get('/signup/:token', auth.verifyToken, function(req, res) {
         res.render('form', {
             title: "signup",
             action: "/signup",
             fields: [
-            { name: 'email', type: 'text', property: 'required' },
-            { name: 'password', type: 'password', property: 'required' },
-            { name: 'username', type: 'text', property: 'required' }
+                { name: 'email', type: 'text', property: 'required' },
+                { name: 'password', type: 'password', property: 'required' },
+                { name: 'username', type: 'text', property: 'required' }
             ]
         });
     });
 
-    app.get('/logout', auth.isLoggedIn, function (req, res) {
+    app.get('/logout', auth.isLoggedIn, function(req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -121,11 +120,11 @@ module.exports = function (app) {
     //    });
     //});
 
-    app.get('/partials/*', function (req, res) {
+    app.get('/partials/*', function(req, res) {
         res.render(viewPath + "/" + req.params[0]);
     });
 
-    app.get('*', function (req, res) {
+    app.get('*', function(req, res) {
         res.render('index');
     });
 }
