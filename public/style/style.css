@@ -18,7 +18,7 @@
 /*************************************************/
 
 body {
-    background: #383638;
+    background: #3fbad8;
 }
 /*************************************************/
 
@@ -27,25 +27,22 @@ body {
 /*************************************************/
 
 header {
+    border-top: 2px solid #2C8197;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
-    background: #E95644;
+    background: #3fbad8;
     position: fixed;
     z-index: 9999;
     width: 100%;
     left: 0;
     top: 0;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-.fa-3x {
-    font-size: 2em;
-}
+
 .logo {
     text-decoration: none;
-    font-weight: bold;
-    line-height: 40px;
-    padding: 0 20px;
-    color: #fff;
-    float: left;
+    color:#2C8197;
+    float:left;
 }
 .fixed {
     position: fixed;
@@ -102,22 +99,22 @@ header {
 }
 .nav-collapse a {
     text-transform: uppercase;
-    border-top: 1px solid #E95644;
+    border-top: 1px solid #3fbad8;
     text-decoration: none;
-    letter-spacing: 0.12em;
-    background: #E95644;
+    letter-spacing: 0.08em;
+    background: #3fbad8;
     padding: 0.7em 1em;
     color: #fff;
     width: 100%;
     float: left;
-    font-family: sans-serif;
-    font-weight: 700;
+    font-family: 'Handlee', 'cursive';
+    font-weight: 600;
     transition: all 0.5s ease;
 }
 .nav-collapse a:hover {
     transition: all 0.5s ease;
     cursor: pointer;
-    color: #383638;
+    background-color:#3498B1;
 }
 .nav-collapse ul ul a {
     background: #fff;
@@ -134,7 +131,7 @@ header {
 }
 .nav-toggle:before {
     color: #fff;
-    font: normal 20px/38px"FontAwesome";
+    font: normal 20px/38px "FontAwesome";
     text-transform: none;
     text-align: center;
     position: absolute;
@@ -155,46 +152,56 @@ header {
 
 /*************************************************/
 
-.statement-head {
-    font-size: 3em;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 0.10em;
-    padding-bottom: 0.5em;
-    font-weight: 200;
-    border-radius: 5px;
-    line-height: 1em;
-}
-.statement-subhead {
-    color: #383638;
-    letter-spacing: 0.10em;
-    font-size: 1.5em;
-}
 /*************************************************/
 
 /*                   content                     */
 
 /*************************************************/
 
-.content {} .centered {
-    margin: auto;
-    position: relative;
-    margin-top: 15%;
-}
+
 .sky {
     position: relative;
-    margin: 0 auto;
-    min-height: 110%;
     border: none;
     overflow: hidden;
-    text-align: center;
 }
 .home {
-    background: #E95644;
+    margin-top:10%;
+    background: #3fbad8;
     color: #fff;
     width: 100%;
-    min-height: 100%;
+    padding-bottom:10%
 }
+
+.statement{
+    font-family: 'Handlee',sans-serif;
+    padding:5% 5% 0 5%;
+    text-align:left;
+}
+
+.statement h1{
+    color:#fff;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.statement h2{
+    color:#2C8197;
+    font-size:16px;
+    letter-spacing:1px;
+    font-weight:200px;
+}
+
+.banner{
+    text-align:center;
+}
+
+/*************************************************/
+
+/*                   colors                      */
+
+/*************************************************/
+
 .dark {
     background: #383638;
     color: #fff;
@@ -241,8 +248,8 @@ header {
 
 /*************************************************/
 
-.red-text {
-    color: #E95644;
+.blue-text {
+    color: #2C8197;
 }
 .white-text {
     color: #fff;
@@ -254,24 +261,18 @@ header {
 /*************************************************/
 
 @media screen and (min-width: 60em) {
-    header {
+    /*header {
         padding-top: 0.5em;
         padding-bottom: 0.5em;
-    }
+    }*/
     .fa-3x {
         font-size: 3em;
     }
     .logo {
         line-height: 55px;
     }
-    .statement-head {
-        font-size: 4em;
-    }
-    .statement-subhead {
-        font-size: 2em;
-    }
     .nav-toggle {
-        height: 55px;
+        height: 50px;
     }
     .nav-toggle:before {
         font: normal 28px/55px"FontAwesome";
@@ -280,13 +281,17 @@ header {
         display: none;
     }
     .nav-collapse a {
-        font-size: 16px;
+        font-size: 15px;
         padding: 1.02em 2em 0.5em 2em;
         text-align: center;
         border-top: 0;
         float: left;
         margin: 0;
     }
+        .nav-collapse a:hover {
+            background-color:#3fbad8;
+        }
+
     .nav-collapse li {
         width: auto;
     }
@@ -306,14 +311,14 @@ header {
     .link-under {
         display: inline-block;
         position: relative;
-        padding-bottom: 3px;
+        padding-bottom: 2px;
     }
     .link-under:after {
         content: '';
         display: block;
         margin: auto;
         margin-top: 2px;
-        height: 2.5px;
+        height: 1px;
         width: 0px;
         background: transparent;
         transition: width .5s ease, background-color .5s ease;

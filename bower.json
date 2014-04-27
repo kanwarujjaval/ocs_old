@@ -23,7 +23,7 @@
     "angular-route": "~1.2.14",
     "videojs": "~4.4.3",
     "font-awesome": "~4.0.3",
-    "angular-smoothscroll": "*",
-    "normalize.css": "~3.0.1"
+    "normalize.css": "~3.0.1",
+    "angular-scroll": "~0.5.3"
   }
 }

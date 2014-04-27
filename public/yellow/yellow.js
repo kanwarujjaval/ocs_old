@@ -1,4 +1,4 @@
-var yellow = angular.module('yellow', ['ngResource', 'ngRoute', 'angularSmoothscroll', 'chieffancypants.loadingBar']);
+var yellow = angular.module('yellow', ['ngResource', 'ngRoute', 'duScroll', 'chieffancypants.loadingBar']).value('duScrollDuration', 2000);
 
 yellow.config(function ($routeProvider, $locationProvider) {
 
