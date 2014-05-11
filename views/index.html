@@ -1,3 +1,60 @@
-﻿<% include header.html %>
-<div class="ng-view"></div>
-<% include footer.html %>
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="yellow">
+<head>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
+    <link rel="stylesheet" href="/lib/purecss/grids-min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/style/style.css">
+
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-resource/angular-resource.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/angular-scroll/angular-scroll.min.js"></script>
+    <script src="/lib/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/lib/responsive-nav.js"></script>
+
+    <script src="/yellow/yellow.js"></script>
+    <script src="/yellow/controllers/MainCtrl.js"></script>
+    <script src="/yellow/controllers/CourseCtrl.js"></script>
+    <script src="/yellow/controllers/LectureCtrl.js"></script>
+    <script src="/yellow/controllers/LoginCtrl.js"></script>
+    <script src="/yellow/controllers/NavbarCtrl.js"></script>
+    <script src="/yellow/services/CourseService.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <title>Open Cloud School</title>
+
+</head>
+<body>
+    <div id="top"></div>
+    <div ng-controller="NavbarCtrl">
+        <header>
+            <img style="width:auto;height:50px;margin-left:10%;" src="assets/logo-w.svg">
+            <nav class="nav-collapse">
+                <ul id="navig">
+                    <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                    <li><a href="#features" class="link-under" du-smooth-scroll offset="100">Features</a></li>
+                    <li><a href="#about" class="link-under" du-smooth-scroll offset="100">About</a></li>
+                    <li><a href="#start" class="link-under" du-smooth-scroll offset="100">Start</a></li>
+                    <li><a href="#contact" class="link-under" du-smooth-scroll offset="100">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
+    </div>
+    <div class="ng-view"></div>
+    <div class="footer">
+        <p>
+            <a class="white-text" href="https://plus.google.com/102805290252316969998" rel="publisher">Google+</a>
+        </p>
+        <img style="width:auto;height:75px;" src="assets/logo-w.svg">
+        <p>&copy; 2014 Open Cloud School</p>
+    </div>
+</body>
+</html>

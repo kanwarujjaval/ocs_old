@@ -2,8 +2,8 @@
 <html lang="en" ng-app="yellow">
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Yellow</title>
     <% include includes.html %>
+    <title>Yellow</title>
 </head>
 <body>
     <div id="top"></div>
@@ -12,30 +12,30 @@
         <header>
             <img style="width:auto;height:50px;margin-left:10%;" src="assets/logo-w.svg">
                 <nav class="nav-collapse">
-                    <ul>
-                        <li><a href="#top" class="link-under" du-smooth-scroll du-scrollspy>Home</a></li>
-                        <li><a href="#features" class="link-under" du-smooth-scroll du-scrollspy offset="100">Features</a></li>
-                        <li><a href="#" class="link-under" du-smooth-scroll du-scrollspy offset="100">About</a></li>
-                        <li><a href="#" class="link-under" du-smooth-scroll du-scrollspy>Courses</a></li>
-                        <li><a href="#" class="link-under" du-smooth-scroll du-scrollspy>Start</a></li>
+                    <ul id="navig">
+                        <li><a href="#top" class="link-under" du-smooth-scroll>Home</a></li>
+                        <li><a href="#features" class="link-under" du-smooth-scroll offset="100">Features</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll offset="100">About</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll>Courses</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll>Start</a></li>
                     </ul>
                 </nav>
         </header>
         <script>
-            var nav = responsiveNav(".nav-collapse", { // Selector
-                animate: true, // Boolean: Use CSS3 transitions, true or false
-                transition: 284, // Integer: Speed of the transition, in milliseconds
-                label: "Menu", // String: Label for the navigation toggle
-                insert: "before", // String: Insert the toggle before or after the navigation
-                customToggle: "", // Selector: Specify the ID of a custom toggle
-                closeOnNavClick: false, // Boolean: Close the navigation when one of the links are clicked
-                openPos: "relative", // String: Position of the opened nav, relative or static
-                navClass: "nav-collapse", // String: Default CSS class. If changed, you need to edit the CSS too!
-                navActiveClass: "js-nav-active", // String: Class that is added to  element when nav is active
-                jsClass: "js", // String: 'JS enabled' class which is added to  element
-                init: function () { }, // Function: Init callback
-                open: function () { }, // Function: Open callback
-                close: function () { } // Function: Close callback
+            var nav = responsiveNav(".nav-collapse", {
+                animate: true,
+                transition: 500,
+                label: "Menu",
+                insert: "before",
+                customToggle: "",
+                closeOnNavClick: true,
+                openPos: "relative",
+                navClass: "nav-collapse",
+                navActiveClass: "js-nav-active",
+                jsClass: "js",
+                init: function () { },
+                open: function () { },
+                close: function () { }
             });
         </script>
     </div>
