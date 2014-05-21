@@ -71,6 +71,14 @@ module.exports = function(grunt) {
       files: [ 'src/**/*', 'test/unit/*.js', 'Gruntfile.js' ],
       tasks: 'dev'
     },
+    connect: {
+      dev: {
+        options: {
+          port: 9999,
+          keepalive: true
+        }
+      }
+    },
     copy: {
       minor: {
         files: [
@@ -171,9 +179,28 @@ module.exports = function(grunt) {
         }
       }
     },
-    bump: {
-      files: ['package.json'],
-      updateConfigs: ['pkg']
+    version: {
+      options: {
+        pkg: 'package.json'
+      },
+      major: {
+        options: {
+          release: 'major'
+        },
+        src: ['package.json', 'bower.json', 'component.json']
+      },
+      minor: {
+        options: {
+          release: 'minor'
+        },
+        src: ['package.json', 'bower.json', 'component.json']
+      },
+      patch: {
+        options: {
+          release: 'patch'
+        },
+        src: ['package.json', 'bower.json', 'component.json']
+      }
     },
     tagrelease: {
       file: 'package.json',
@@ -183,6 +210,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -196,7 +224,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('videojs-doc-generator');
   grunt.loadNpmTasks('grunt-zip');
   grunt.loadNpmTasks('grunt-banner');
-  grunt.loadNpmTasks('grunt-bump');
+  grunt.loadNpmTasks('grunt-version');
   grunt.loadNpmTasks('grunt-tagrelease');
   grunt.loadNpmTasks('chg');
 
@@ -314,6 +342,8 @@ module.exports = function(grunt) {
     grunt.file.copy('node_modules/videojs-swf/dist/video-js.swf', 'dist/video-js/video-js.swf');
     grunt.file.copy('build/demo-files/demo.html', 'dist/video-js/demo.html');
     grunt.file.copy('build/demo-files/demo.captions.vtt', 'dist/video-js/demo.captions.vtt');
+    grunt.file.copy('src/css/video-js.less', 'dist/video-js/video-js.less');
+
 
     // Copy over font files
     grunt.file.recurse('build/files/font', function(absdir, rootdir, subdir, filename) {
@@ -361,5 +391,86 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('dist', 'Creating distribution', ['dist-copy', 'zip:dist']);
+
+  grunt.registerTask('next-issue', 'Get the next issue that needs a response', function(){
+    var done = this.async();
+    var GitHubApi = require('github');
+    var open = require('open');
+
+    var github = new GitHubApi({
+        // required
+        version: '3.0.0',
+        // optional
+        debug: true,
+        protocol: 'https',
+        // host: 'github.my-GHE-enabled-company.com',
+        // pathPrefix: '/api/v3', // for some GHEs
+        timeout: 5000
+    });
+
+    github.issues.repoIssues({
+        // optional:
+        // headers: {
+        //     'cookie': 'blahblah'
+        // },
+        user: 'videojs',
+        repo: 'video.js',
+        sort: 'updated',
+        direction: 'asc',
+        state: 'open',
+        per_page: 100
+    }, function(err, res) {
+      var issueToOpen;
+      var usersWithWrite = ['heff', 'mmcc'];
+      var categoryLabels = ['enhancement', 'bug', 'question', 'feature'];
+
+      console.log('Number of issues: '+res.length);
+
+      // TODO: Find the best way to exclude an issue where a question has been asked of the
+      // issue owner/submitter that hasn't been answerd yet.
+      // A stupid simple first step would be to check for the needs: more info label
+      // and exactly one comment (the question)
+
+      // find issues that need categorizing, no category labels
+      res.some(function(issue){
+        if (issue.labels.length === 0) {
+          return issueToOpen = issue; // break
+        }
+        // look for category labels
+        var categorized = issue.labels.some(function(label){
+          return categoryLabels.indexOf(label.name) >= 0;
+        });
+        if (!categorized) {
+          return issueToOpen = issue; // break
+        }
+      });
+      if (issueToOpen) {
+        open(issueToOpen.html_url);
+        return done();
+      }
+
+      // find issues that need confirming or answering
+      res.some(function(issue){
+        // look for confirmed label
+        var confirmed = issue.labels.some(function(label){
+          return label.name === 'confirmed';
+        });
+        // Was exluding questions, but that might leave a lot of people hanging
+        // var question = issue.labels.some(function(label){
+        //   return label.name === 'question';
+        // });
+        if (!confirmed) { //  && !question
+          return issueToOpen = issue; // break
+        }
+      });
+      if (issueToOpen) {
+        open(issueToOpen.html_url);
+        return done();
+      }
+
+      grunt.log.writeln('No next issue found');
+      done();
+    });
+  });
 
 };
