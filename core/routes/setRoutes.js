@@ -4,8 +4,7 @@ var profile = require('../api/profile');
 var user = require('../api/user');
 var lect = require('../api/lectures');
 
-module.exports = function(app) {
-
+module.exports = function (app) {
     /*
     Course routes
     */

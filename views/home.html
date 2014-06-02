@@ -23,15 +23,15 @@
                     </div>
                 </div>
             </div>
-            <div class="start">
+            <div class="start" ng-controller="InviteCtrl">
                 <form class="start-form">
                     <div class="pure-g-r">
-                        <div class="pure-u-11-24">
+                        <div class="pure-u-10-24">
                             <div class="email-outer">
                                 <input type="text" id="email" name="email" placeholder="MY EMAIL ADDRESS" required>
                             </div>
                         </div>
-                        <div class="pure-u-2-24">
+                        <div class="pure-u-3-24">
                             <div><i class="fa fa-thumbs-o-up"></i><small class="white-text">  I LIKE TO</small></div>
                             <div class="padded">
                                 <input class="role-select" type="radio" id="teacher" name="role" value="Teacher" required><label for="teacher">Teach</label>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="pure-u-11-24">
-                            <button class="btn btn-3 btn-3e fa-arrow-right" type="submit"><span class="white-text">Invite Me</span></button>
+                            <button class="btn btn-3 btn-3e fa-arrow-right" ng-click="clickToOpen()" type="submit"><span class="white-text">Invite Me</span></button>
                         </div>
                     </div>
                 </form>
@@ -49,3 +49,21 @@
         </div>
     </div>
 </div>
+
+<script type="text/ng-template" id="firstDialog">
+    <div class="ngdialog-message">
+        <h2>Native Angular.js solution</h2>
+        <div>With ngDialog you don't need jQuery or Bootstrap to create dialogs for <code>ng-app:</code></div>
+        <ul class="mt">
+            <li>Use it in controllers, factories or directives</li>
+            <li>Create your own directives</li>
+            <li>Style all UI and templates</li>
+            <li>Configure themes</li>
+            <li>Add animations and effects</li>
+        </ul>
+        <div class="mt">Module is shipped with both <code>ngDialog</code> service and default directive.</div>
+    </div>
+    <div class="ngdialog-buttons mt">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="next()">►</button>
+    </div>
+</script>

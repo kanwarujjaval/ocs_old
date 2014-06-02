@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "purecss": "latest",
-    "angular-loading-bar": "latest",
+    "angular-loading-bar": "~0.4.2",
     "angular": "latest",
     "angular-animate": "latest",
     "angular-resource": "latest",
@@ -24,6 +24,7 @@
     "videojs": "latest",
     "font-awesome": "latest",
     "normalize.css": "latest",
-    "angular-scroll": "latest"
+    "angular-scroll": "latest",
+    "ngDialog": "~0.1.7"
   }
 }

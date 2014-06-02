@@ -27,12 +27,12 @@ body {
 /*************************************************/
 
 header {
-	border-top: 2px solid #2C8197;
+	border-top: 3px solid #2C8197;
 	padding-top: 0.25em;
 	padding-bottom: 0.25em;
 	background: #0fa2c4;
 	position: fixed;
-	z-index: 9999;
+	z-index: 2000;
 	width: 100%;
 	left: 0;
 	top: 0;

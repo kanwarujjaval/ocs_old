@@ -1,6 +1,8 @@
-var yellow = angular.module('yellow', ['ngResource', 'ngRoute', 'duScroll', 'chieffancypants.loadingBar']).value('duScrollDuration', 2000);
+var yellow = angular.module('yellow', ['angular-loading-bar', 'ngResource', 'ngRoute', 'ngDialog', 'duScroll']).value('duScrollDuration', 2000);
 
-yellow.config(function ($routeProvider, $locationProvider) {
+yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider) {
+
+    cfpLoadingBarProvider.latencyThreshold = 0;
 
     $locationProvider.html5Mode(true);
 
