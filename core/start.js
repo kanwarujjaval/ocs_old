@@ -5,7 +5,7 @@
     require('./config/config').setVars();
     require('./config/express')(app);
     require('./routes/setRoutes')(app);
-    require('./config/io')(server, env);
+    //require('./config/io')(server, env);
     require('./config/mongoose').connectDb();
     require('./service/socketio.js')();
 
