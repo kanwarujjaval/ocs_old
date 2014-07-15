@@ -39,7 +39,7 @@ module.exports = function(app) {
         }) );
         app.use(passport.initialize());
         app.use(passport.session());
-        app.use(compression());
+        //app.use(compression());
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
@@ -66,7 +66,7 @@ module.exports = function(app) {
         }));
         app.use(passport.initialize());
         app.use(passport.session());
-        app.use(compression());
+        //app.use(compression());
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
