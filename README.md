@@ -1,40 +1,25 @@
 Project Yellow
 ==============
 
-`Kanwar Ujjaval Singh`
---------------------
+Team `{{Team.name}}` `//add team name here`
 
-Provides a virtual Workspace and environment to complete all sorts of business, education and many other related tasks at ease from anywhere!
+* School and course management along with student and classes management and examinations.
+* Online open to all course sharing application
 
-Feature List
-------------
-`Only those listed here which are complete or under development`
-
-1. E-Tutoring module
-	* Student and Instructors Management `under development`
-	* Static Content - Videos, Presentations, PDF
-	* Social collaboration
-	* Whiteboard
-	* Whiteboard Recording
-	* Math/Science Tool
-	* Live Text View
-	* Chat
-	* Student Profile Management
-	* Interactive Session and access requests
-	* Course Creation
-	* Course Management
-	* Certification and Transcripts
-	* Assessments & Quiz
-	* Points System and Rankings
+_________________________________________________________________________________________________
 
 
-`Next to be developed`
+Running
+-------
 
-1. VoIP
-2. Screen Record
+To run the application install NodeJs `http://nodejs.org`
 
-Changelog
----------
+Run the command `npm install` in the folder of the code.
 
-1. Users request and invitation to sign up. Invitation destroyed on successfull signup
-2. course is create and linked to the creators profile which is back referenced to the course
+After installation run command `node server.js`
+
+Frontend html is in `/views/`
+
+Frontend javascript is in `/public/yellow` (angular)
+
+Frontend style is in `/public/style/`
