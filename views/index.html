@@ -2,7 +2,7 @@
 <html lang="en" ng-app="yellow">
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
     <link rel="stylesheet" href="/lib/purecss/grids-min.css">
     <link rel="stylesheet" href="/lib/ngDialog/ngDialog.css">
@@ -31,16 +31,18 @@
     <div id="top"></div>
     <div ng-controller="NavbarCtrl">
         <header>
-            <img style="width:auto;height:50px;margin-left:10%;" src="assets/logo-w.svg">
-            <nav class="nav-collapse">
-                <ul id="navig">
-                    <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
-                    <li><a href="#" class="link-under" du-smooth-scroll offset="100">Features</a></li>
-                    <li><a href="#about" class="link-under" du-smooth-scroll offset="60">About</a></li>
-                    <li><a href="#" class="link-under" du-smooth-scroll offset="100">Start</a></li>
-                    <li><a href="#" class="link-under" du-smooth-scroll offset="100">Contact</a></li>
-                </ul>
-            </nav>
+            <div class="wrap">
+                <img src="assets/logo-w.svg">
+                <nav class="nav-collapse">
+                    <ul id="navig">
+                        <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll offset="100">Features</a></li>
+                        <li><a href="#about" class="link-under" du-smooth-scroll offset="60">About</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll offset="100">Start</a></li>
+                        <li><a href="#" class="link-under" du-smooth-scroll offset="100">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
     </div>
