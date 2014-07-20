@@ -21,6 +21,12 @@ body {
 	background: #272822;
 	font-family: 'Asap', sans-serif;
 }
+
+a,
+a:hover {
+	color: #2ECC71;
+}
+
 /*************************************************/
 
 /*                    Header                     */
@@ -28,10 +34,8 @@ body {
 /*************************************************/
 
 header {
-	padding-top: 0.25em;
-	padding-bottom: 0.25em;
 	background: #272822;
-	padding: 5px;
+	padding: 5px 0 0 0;
 	position: fixed;
 	z-index: 2000;
 	width: 100%;
@@ -39,13 +43,14 @@ header {
 }
 
 header img {
-	width: 136px;
+	float: left;
 	height: auto;
+	width: 136px;
 }
 
 header .wrap {
 	border-bottom: 1px dotted #fff;
-	max-width: 1140px;
+	min-height: 69px;
 }
 
 .wrap {
@@ -114,7 +119,7 @@ header .wrap {
 }
 .nav-collapse a {
 	text-transform: uppercase;
-	border-top: 1px solid #0fa2c4;
+	border-top: 1px solid #2ECC71;
 	text-decoration: none;
 	letter-spacing: 3px;
 	padding: 0.7em 1em;
@@ -184,7 +189,7 @@ header .wrap {
 .statement{
 	/*font-family: 'Nunito',sans-serif;*/
 	letter-spacing: 3px;
-	padding: 0 5% 0 5%;
+	padding: 7% 0 1% 0;
 	text-align: center;
 }
 
@@ -194,6 +199,7 @@ header .wrap {
 	font-size: 60px;
 	font-weight: 400;
 	line-height: 50px;
+	margin: 30px 0;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
@@ -207,7 +213,7 @@ header .wrap {
 }
 
 .statement li{
-	/*font-family: 'Nunito', sans-serif;*/
+	/*font-family: 'Asap', sans-serif;*/
 	text-transform: uppercase;
 	text-align: left;
 	padding-bottom: 20px;
@@ -219,15 +225,52 @@ header .wrap {
 
 .home-points{
 	/*Bullets on the homepage #home*/
+	color: #333;
+	font-family: 'Asap', sans-serif;
 	padding: 20px 20px 0px 20px;
+	list-style-type:none;
+}
+
+.home-points h3 {
+	color: #2ECC71;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+.home-points p {
+	padding-left: 100px;
+}
+
+.home-points .fa {
+	color: #c0c0c0;
+	float: left;
+	font-size: 72px;
+	line-height: 1.75;
+	padding: 0;
+	width: 100px;
+}
+
+.home-points li:nth-child(2n+1) {
+	float: left;
+	padding: 0 20px 50px 0;
+	width: 45%;
+}
+
+.home-points li:nth-child(2n+2) {
+	float: right;
+	padding: 0 0 50px 20px;
+	width: 45%;
 }
 
 .about{
-	position: relative;
-	background: #f6f6f6;
+	float: left;
+	background: #fff;
+	padding: 7% 0;
 	width: 100%;
-	padding-bottom: 30px;
-	padding-top: 10px;
+}
+
+.home-points .wrap {
+	max-width: 1250px;
 }
 
 /*************************************************/
@@ -239,26 +282,28 @@ header .wrap {
 .start{
 	/*background: #393939;
 	box-shadow: inset 0 0 1px rgba(0,0,0,0.8);*/
-	margin: 0 auto;
-	max-width: 800px;
-	padding: 6% 0 2% 0;
+	padding: 1% 0 10% 0;
 	color: #FFF;
 	text-align: center;
+	margin: 0 auto;
 }
 .start label{
 	font-size: 18px; 
-	/*font-family: 'Nunito', sans-serif;*/
+	/*font-family: 'Asap', sans-serif;*/
 	letter-spacing: 3px;
 }
 
 .email-outer{
 	background: #fff;
-	border: 0; 
+	border-radius: 3px;
+	float: none;
 	font-size: 16px; 
-	/*font-family: 'Nunito', sans-serif;*/
+	/*font-family: 'Asap', sans-serif;*/
 	letter-spacing: 3px;
-	color: #226474; 
-	width: 325px;
+	color: #226474;
+	margin: 10px auto;
+	padding: 25px 0;
+	width: 320px;
 	-moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2); 
 	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); 
 	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
@@ -268,7 +313,7 @@ header .wrap {
 	font-family: 'FontAwesome';
 	font-size: 20px;
 	content: "\f0e0";
-	color: #0fa2c4;
+	color: #2ECC71;
 }
 
 .email-outer:hover:before{
@@ -278,7 +323,6 @@ header .wrap {
 .email-outer input{
 	width: 70%;
 	border: 0px;
-	padding: 24px 5px 24px 20px;
 	outline: none;
 }
 
@@ -299,12 +343,12 @@ header .wrap {
 }
 
 .role-select  + label:before {
-  color: #fff;
-  content: "\f111";
-  cursor: pointer;
-  font: 20px FontAwesome;
-  padding-right: 10px;
-  vertical-align: middle;
+	color: #fff;
+	content: "\f111";
+	cursor: pointer;
+	font: 20px FontAwesome;
+	padding-right: 10px;
+	vertical-align: middle;
 }
 
 .role-select:checked + label {
@@ -344,13 +388,13 @@ header .wrap {
 /*************************************************/
 
 .blue-text {
-	color: #0fa2c4;
+	color: #2ECC71;
 }
 .white-text {
 	/*color: #fff;*/
 	font-family: 'Asap', sans-serif;
-	font-weight: 100;
-	letter-spacing: 3px;
+	font-weight: 400;
+	letter-spacing: 2px;
 }
 
 /*************************************************/
@@ -381,6 +425,7 @@ header .wrap {
 
 .btn:after {
 	content: '';
+	float: right;
 	position: absolute;
 	z-index: -1;
 	-webkit-transition: all 0.3s;
@@ -390,10 +435,11 @@ header .wrap {
 
 .btn-3 {
 	background: rgba(0,0,0,0);
-	border-radius: 5px;
+	border-radius: 3px;
 	border: 1px solid #fff;
 	color: #fff;
-	margin: 0;
+	margin: 10px auto;
+	padding: 25px 0;
 }
 
 .btn-3:hover {
@@ -412,7 +458,8 @@ header .wrap {
 }
 
 .btn-3e {
-	padding: 25px 120px 25px 60px;
+	float: none;
+	padding: 25px 140px 25px 75px;
 	overflow: hidden;
 }
 
@@ -422,28 +469,6 @@ header .wrap {
 	z-index: 2;
 }
 
-/*.btn-3e:after {
-	width: 30%;
-	height: 200%;
-	background: rgba(255,255,255,0.1);
-	z-index: 1;
-	right: 0;
-	top: 0;
-	margin: -5px 0 0 -5px;
-	-webkit-transform-origin: 0 0;
-	-webkit-transform: rotate(-20deg);
-	-moz-transform-origin: 0 0;
-	-moz-transform: rotate(-20deg);
-	-ms-transform-origin: 0 0;
-	-ms-transform: rotate(-20deg);
-	transform-origin: 0 0;
-	transform: rotate(-20deg);
-}
-
-.btn-3e:hover:after {
-	width: 40%;
-}
-*/
 /*************************************************/
 
 /*                 media queries                 */
@@ -468,7 +493,7 @@ header .wrap {
 	}
 	.nav-collapse a {
 		font-size: 15px;
-		padding: 1.02em 2em 0.5em 2em;
+		padding: 25px;
 		text-align: center;
 		border-top: 0;
 		float: left;
@@ -513,6 +538,17 @@ header .wrap {
 	.nav-collapse a:hover {
 		color: #fff;
 	}
+	.start {
+		max-width: 675px;
+	}
+	.email-outer {
+		float: left;
+	}
+
+	.btn-3e {
+		float: right;
+	}
+
 }
 
 /* Custom */
