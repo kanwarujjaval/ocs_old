@@ -43,8 +43,8 @@ exports.isInvited = function (req, res, next) {
             res.send("error encountered" + err);
         }
         if (invitation) {
-            if(invitation.invited){
-            return next();
+            if (invitation.invited) {
+                return next();
             }
             res.send("Invitation expired or not activated");
         }
