@@ -123,7 +123,7 @@ module.exports = function (app) {
         res.render(viewPath + "/" + req.params[0]);
     });
 
-    app.get('*', function(req, res) {
+    app.get('*', function (req, res) {
         res.render('index');
     });
 }
