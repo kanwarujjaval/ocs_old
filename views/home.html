@@ -14,9 +14,9 @@
                     <div class="wrap">
                         <form class="start-form">
                             <div class="email-outer">
-                                <input type="text" id="email" name="email" placeholder="MY EMAIL ADDRESS" required>
+                                <input type="text" id="email" name="email" ng-model="user.email"="MY EMAIL ADDRESS" required>
                             </div>
-                            <button class="btn btn-3 btn-3e fa-arrow-right" ng-click="clickToOpen()" type="submit"><span class="white-text">Invite Me</span></button>
+                            <button class="btn btn-3 btn-3e fa-arrow-right" ng-click="clickToOpen(user)" type="submit"><span class="white-text">Invite Me</span></button>
                         </form>
                     </div>
                 </div>
