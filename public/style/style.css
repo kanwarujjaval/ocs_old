@@ -21,13 +21,13 @@
 
 a,
 a:hover {
-	color: #2ECC71;
+	color: #87D37C;
 }
 
 body {
 	background-color: #fff;
 	color: #272822;
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 h1,
@@ -37,7 +37,7 @@ h4,
 h5,
 h6 {
 	color: #272822;
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 /*************************************************/
@@ -47,7 +47,7 @@ h6 {
 /*************************************************/
 
 header {
-	background: #272822;
+	background: #87D37C;
 	padding: 5px 0 0 0;
 	position: fixed;
 	z-index: 2000;
@@ -62,12 +62,11 @@ header img {
 }
 
 header .wrap {
-	border-bottom: 1px solid #52524e;
 	min-height: 69px;
 }
 
 .wrap {
-	max-width: 1280px;
+	max-width: 1024px;
 	margin: 0 auto;
 }
 
@@ -138,7 +137,7 @@ header .wrap {
 	color: #fff;
 	width: 100%;
 	float: left;
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	transition: all 0.5s ease;
 }
@@ -189,43 +188,42 @@ header .wrap {
 
 .introduction {
 	position: relative;
-	background: #272822;
+	background: #87D37C;
 	color: #fff;
 	width: 100%;
 	padding-bottom: 30px;
 	margin: 0 auto;
 	/*margin-bottom: 5px;*/
-	padding: 7% 0;
+	padding: 11% 0;
 }
 
 .statement{
 	/*font-family: 'Nunito',sans-serif;*/
 	letter-spacing: 3px;
-	padding: 7% 0 1% 0;
 	text-align: center;
 }
 
 .statement h1{
 	color: #fff;
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 60px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 50px;
-	margin: 30px 0;
+	margin: 5px 0;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
 
 .statement h2{
 	color: #fff;
-	padding: 0 10% 0 10%;
 	font-size: 20px;
-	letter-spacing: 3px;
-	font-weight: 400;
+	letter-spacing: 1px;
+	margin: 0 0 35px 0;
+	font-weight: 100;
 }
 
 .statement li{
-	/*font-family: 'Asap', sans-serif;*/
+	/*font-family: 'Roboto', sans-serif;*/
 	text-transform: uppercase;
 	text-align: left;
 	padding-bottom: 20px;
@@ -302,13 +300,13 @@ header .wrap {
 .detail-points{
 	/*Bullets on the homepage #home*/
 	color: #555;
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	padding: 20px 20px 0px 20px;
 	list-style-type:none;
 }
 
 .detail-points h3 {
-	color: #2ECC71;
+	color: #87D37C;
 	font-size: 30px;
 	font-weight: 400;
 	letter-spacing: -1px;
@@ -432,7 +430,7 @@ a:hover.tooltips span {
 }
 .start label{
 	font-size: 18px; 
-	/*font-family: 'Asap', sans-serif;*/
+	/*font-family: 'Roboto', sans-serif;*/
 	letter-spacing: 3px;
 }
 
@@ -441,7 +439,7 @@ a:hover.tooltips span {
 	border-radius: 3px;
 	float: none;
 	font-size: 16px; 
-	/*font-family: 'Asap', sans-serif;*/
+	/*font-family: 'Roboto', sans-serif;*/
 	letter-spacing: 3px;
 	color: #188848;
 	margin: 10px auto;
@@ -455,7 +453,7 @@ a:hover.tooltips span {
 	font-family: 'FontAwesome';
 	font-size: 20px;
 	content: "\f0e0";
-	color: #2ECC71;
+	color: #87D37C;
 }
 
 .email-outer:hover:before{
@@ -592,11 +590,11 @@ a:hover.tooltips span {
 /*************************************************/
 
 .blue-text {
-	color: #2ECC71;
+	color: #87D37C;
 }
 .white-text {
 	/*color: #fff;*/
-	font-family: 'Asap', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	letter-spacing: 2px;
 }
@@ -691,7 +689,7 @@ a:hover.tooltips span {
 }
 
 .btn-CTA {
-	background-color: #2ECC71;
+	background-color: #87D37C;
 	border: 2px solid #fff;
 	color: #fff;
 	float: right;
