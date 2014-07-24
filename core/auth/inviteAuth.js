@@ -12,12 +12,12 @@ exports.createInvite = function (req, res, next) {
             var newInvite = new inviteModel();
             newInvite.email = req.body.email;
             newInvite.token = newInvite.genToken();
-            newInvite.invited = true;
+            newInvite.invited = false;
             newInvite.save(function (err) {
                 if (err) {
-                    throw err;
+                    res.aend(err);
                 }
-                res.send(newInvite);
+                res.send("You have been invited");
             });
         }
     })
