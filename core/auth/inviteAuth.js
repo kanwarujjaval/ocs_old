@@ -15,7 +15,7 @@ exports.createInvite = function (req, res, next) {
             newInvite.invited = false;
             newInvite.save(function (err) {
                 if (err) {
-                    res.aend(err);
+                    res.send(err);
                 }
                 res.send("You have been invited");
             });
