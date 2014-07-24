@@ -496,6 +496,10 @@ a:hover.tooltips span {
 	width: 100%;
 }
 
+.footer-widgets .wrap {
+	max-width: 960px;
+}
+
 .footer-widgets h3 {
 	color: #ddd;
 	font-weight: 400;
@@ -515,14 +519,14 @@ a:hover.tooltips span {
 .footer-widget-2,
 .footer-widget-3 {
 	float: left;
-	max-width: 30%;
-	padding-left: 120px;
+	max-width: 330px;
+	padding: 0 25px;
 }
 
 .footer-widget-1 img {
 	float: left;
-	height: 60px;
-	padding-right: 10px;
+	height: 50px;
+	padding-right: 5px;
 	width: auto;
 }
 
@@ -720,6 +724,15 @@ a:hover.tooltips span {
 
 }
 
+@media only screen and (max-width: 960px) {
+
+.footer-widget-1,
+.footer-widget-2,
+.footer-widget-3 {
+	float: none;
+	margin: 0 auto;
+	max-width: 375px;
+}
 
 @media only screen and (max-width: 800px) {
 
