@@ -121,7 +121,6 @@ header .wrap {
 }
 .nav-collapse a {
 	text-transform: uppercase;
-	border-top: 1px solid #2ECC71;
 	text-decoration: none;
 	letter-spacing: 3px;
 	padding: 0.7em 1em;
@@ -493,7 +492,8 @@ a:hover.tooltips span {
 	color: #aaa;
 	float: left;
 	list-style-type: none;
-	padding: 40px 40px;
+	padding: 40px 0;
+	width: 100%;
 }
 
 .footer-widgets h3 {
@@ -516,7 +516,7 @@ a:hover.tooltips span {
 .footer-widget-3 {
 	float: left;
 	max-width: 30%;
-	padding-right: 120px;
+	padding-left: 120px;
 }
 
 .footer-widget-1 img {
@@ -721,7 +721,7 @@ a:hover.tooltips span {
 }
 
 
-@media only screen and (min-width:601px) and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
 
 	header .wrap {
 		border-bottom: none;
@@ -748,20 +748,8 @@ a:hover.tooltips span {
 		padding: 20px;
 
 	}
-}
 
-@media screen and (max-width: 600px) {
-	.detail-points li {
-		float: none;
-		margin: 10px auto;
-		max-width: 300px;
-		padding: 10px;
-		width: 100%;
-	}
-
-	.feature-1,
-	.feature-2,
-	.feature-3 {
-		float: none;
+	.nav-collapse a {
+		border-bottom: 1px solid #52524e;
 	}
 }
