@@ -5,11 +5,6 @@ var user = require('../api/user');
 var lect = require('../api/lectures');
 
 module.exports = function (app) {
-
-    app.get('/health', function (req, res) {
-        res.send("Running on " + ipaddress + "\nenvironement = " + env+ "\ndatabase at " + require('../config/config.js').dbConnection[env].uri)
-    });
-
     /*
     Course routes
     */
