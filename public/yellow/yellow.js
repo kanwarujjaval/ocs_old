@@ -1,4 +1,4 @@
-var yellow = angular.module('yellow', ['angular-loading-bar', 'ngResource', 'ngRoute', 'ngDialog', 'duScroll']).value('duScrollDuration', 2000);
+yellow = angular.module('yellow', ['angular-loading-bar', 'ngResource', 'ngRoute', 'ngDialog', 'duScroll']).value('duScrollDuration', 2000);
 
 yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider) {
 
