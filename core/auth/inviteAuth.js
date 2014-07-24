@@ -5,6 +5,7 @@ exports.createInvite = function (req, res, next) {
         if (err) {
             res.send(err);
         }
+        else
         if (invitation) {
             res.send("You already have a pending invite");
         }
@@ -17,7 +18,9 @@ exports.createInvite = function (req, res, next) {
                 if (err) {
                     res.send(err);
                 }
-                res.send("You have been invited");
+                else {
+                    res.send("You have been invited");
+                }
             });
         }
     })
