@@ -57,6 +57,7 @@ module.exports = function (app) {
         app.use(morgan('method=":method"  ":url" status=:status  time=":response-time ms"', immediate = true));
         app.disable('x-powered-by');
         app.enable('trust proxy');
+        app.use(compression());
         app.use(cookieParser('SomeRandomSecretPasswordForCookieParsing_for*Project Yellow'));
         app.use(bodyparser.json());
         app.use(bodyparser.urlencoded({
@@ -76,7 +77,6 @@ module.exports = function (app) {
         }) );
         app.use(passport.initialize());
         app.use(passport.session());
-        //app.use(compression());       //Not working locally for some reason
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
@@ -97,6 +97,7 @@ module.exports = function (app) {
         //app.use(requireHTTPS);        //disabled https till the certificate not present
         app.enable('trust proxy');
         app.disable('x-powered-by');
+        app.use(compression());
         app.use(cookieParser('SomeRandomSecretPasswordForCookieParsing_for*Project Yellow'));
         app.use(bodyparser.json());
         app.use(bodyparser.urlencoded({
@@ -117,7 +118,6 @@ module.exports = function (app) {
         }));
         app.use(passport.initialize());
         app.use(passport.session());
-        app.use(compression());
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
