@@ -59,7 +59,7 @@ header {
 header img {
 	float: left;
 	height: auto;
-	width: 200px;
+	width: 175px;
 }
 
 header .wrap {
@@ -438,9 +438,6 @@ a:hover.tooltips span {
 	color: #188848;
 	margin: 10px auto;
 	width: 320px;
-	-moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2); 
-	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); 
-	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .email-outer:before{
@@ -700,6 +697,10 @@ a:hover.tooltips span {
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
+}
+
+.ng-pristine .ng-invalid-required {
+    box-shadow: none;
 }
 
 /*************************************************/
