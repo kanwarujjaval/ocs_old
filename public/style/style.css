@@ -294,7 +294,7 @@ header .wrap {
 .details{
 	float: left;
 	background: #eef2f5;
-	padding: 7% 0;
+	padding: 10% 0;
 	width: 100%;
 }
 
@@ -307,7 +307,7 @@ header .wrap {
 }
 
 .detail-points h3 {
-	background-color: #333;
+	background-color: #272822;
 	border-radius: 3px 3px 0 0;
 	color: #fff;
 	font-size: 28px;
@@ -641,7 +641,7 @@ a:hover.tooltips span {
 
 .btn-3:hover {
 	background: #fff;
-	color: #272822;
+	color: #2980b9;
 }
 
 .btn-3:before {
