@@ -16,7 +16,7 @@
                             <div class="email-outer">
                                 <input type="text" id="email" name="email" ng-model="user.email" placeholder="Your Email Address" required>
                             </div>
-                            <button class="btn btn-3 btn-3e fa-arrow-right" ng-click="clickToInvite(user)" type="submit"><span class="white-text">{{invite}}</span></button>
+                            <button class="btn btn-3 btn-3e fa-arrow-right" ng-click="clickToInvite(user)" type="submit" ng-dialog="firstDialogId" ng-dialog-controller="InsideCtrl" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><span class="white-text">{{invite}}</span></button>
                         </form>
                     </div>
                 </div>
@@ -89,8 +89,12 @@
           </section>
       </div>
   </div>
-  <script type="text/ng-template" id="firstDialog">
-  <div class="ngdialog-message">
-  <h2>Test</h2>
-  </div>
-  </script>
+<script type="text/ng-template" id="firstDialogId">
+    
+    <div class="ngdialog-buttons">
+        <div class="ngdialog-message">
+            <h3>{{res}}</h3>
+        </div>
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond()">Open next</button>
+    </div>
+</script>
