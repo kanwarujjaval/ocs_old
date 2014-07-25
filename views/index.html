@@ -2,7 +2,7 @@
 <html lang="en" ng-app="yellow">
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
     <link rel="stylesheet" href="/lib/ngDialog/ngDialog.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
@@ -13,6 +13,8 @@
     <script src="/lib/angular-route/angular-route.js"></script>
     <script src="/lib/angular-scroll/angular-scroll.min.js"></script>
     <script src="/lib/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/lib/headroom/headroom.min.js"></script>
+    <script src="/lib/headroom/headroom.js"></script>
     <script src="/lib/responsive-nav.js"></script>
     <script src="/lib/ngDialog/js/ngDialog.min.js"></script>
     <script src="/yellow/yellow.js"></script>
@@ -30,7 +32,7 @@
 <body>
     <div id="top"></div>
     <div ng-controller="NavbarCtrl">
-        <header>
+        <header headroom>
             <div class="wrap">
                 <img src="assets/logo-w.svg">
                 <nav class="nav-collapse">
