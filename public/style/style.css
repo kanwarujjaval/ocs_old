@@ -451,7 +451,8 @@ a:hover.tooltips span {
 }
 
 .email-outer:hover:before{
-	color: #188848;
+	color: #2980b9;
+	opacity: 0.7;
 }
 
 .email-outer input{
