@@ -13,6 +13,24 @@
 	outline: 0;
 }
 
+input:not([type]),
+input[type="color"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="text"] {
+	border: 1px solid #e9e9e9;
+	border-radius: 3px;
+	float: left;
+	font-size: 14px;
+	outline: none;
+	margin: 10px;
+	padding: 10px 0;
+	width: 300px;
+}
+
 /*************************************************/
 
 /*                     Body                      */
@@ -25,7 +43,7 @@ a:hover {
 }
 
 body {
-	background-color: #fff;
+	background: url('/assets/bg-pattern.png');
 	color: #272822;
 	font-family: 'Roboto', sans-serif;
 }
@@ -238,6 +256,46 @@ header .wrap {
 	list-style: none;
 }
 
+/* Register */
+
+.register {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.register input,
+.register input[type="email"],
+.register input[type="password"],
+.register input[type="text"] {
+	border: 1px solid #e9e9e9;
+	border-radius: 3px;
+	float: left;
+	font-size: 14px;
+	outline: none;
+	margin: 10px;
+	max-width: 50%;
+	padding: 10px 5px;
+	width: 300px;
+}
+
+.register .wrap {
+	float: left;
+	padding: 7% 0;
+}
+
+.register label {
+	float: left;
+	font-size: 14px;
+	line-height: 1;
+	margin: 10px;
+	padding: 15px 0;
+	width: 110px;
+}
+
+.register-field {
+	float: left;
+	width: 100%;
+}
 /* Features */
 
 .features {
@@ -412,6 +470,29 @@ a:hover.tooltips span {
 	z-index: 999;
 }
 
+.register a.tooltips span:after {
+	top: 50%;
+	right: 100%;
+	left: auto;
+	margin-top: -8px;
+	margin-left: 0;
+	width: 0; height: 0;
+	border-left: none;
+	border-right: 8px solid #000000;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+}
+
+.register a:focus.tooltips span {
+	visibility: visible;
+	opacity: 0.8;
+	left: 100%;
+	top: 50%;
+	margin-top: 15px;
+	margin-left: 250px;
+	z-index: 999;
+}
+
 /*************************************************/
 
 /*                   colors                      */
@@ -459,7 +540,9 @@ a:hover.tooltips span {
 .email-outer input{
 	border: 0px;
 	color: #272822;
+	float: none;
 	outline: none;
+	margin: 0;
 	padding: 25px 0;
 	width: 70%;
 }
@@ -728,6 +811,14 @@ a:hover.tooltips span {
 
 .btn-gplus {
 
+}
+
+.btn-register {
+	border: none;
+	padding: 15px 40px;
+	width: 171px;
+	margin-right: 75px;
+	float: right !important;
 }
 
 /*************************************************/
