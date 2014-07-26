@@ -274,42 +274,6 @@ header .wrap {
 	font-weight: 400;
 }
 
-.features .fa {
-	border-radius: 50%;
-	font-size: 120px;
-	height: 150px;
-	width: 150px;
-	line-height: 150px;
-	padding: 20px;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	transition: all 0.5s;
-}
-
-.feature-1 .fa {
-	color: #F64747;
-}
-
-.feature-1 .fa:hover {
-	box-shadow: 0 0 0 10px #F64747;
-}
-
-.feature-2 .fa {
-	color: #13a3ad;
-}
-
-.feature-2 .fa:hover {
-	box-shadow: 0 0 0 10px #13a3ad;
-}
-
-.feature-3 .fa {
-	color: #555;
-}
-
-.feature-3 .fa:hover {
-	box-shadow: 0 0 0 10px #555;
-}
-
 .feature-1,
 .feature-2,
 .feature-3 {
