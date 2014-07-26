@@ -11,8 +11,8 @@
                             $scope.icon = 'smile-o';
                         }
                         else {
-                            $scope.invite = 'Error!';
-                            $scope.icon = 'frown-o';
+                            //$scope.invite = 'Error!';
+                            //$scope.icon = 'frown-o';
                         }
                     },
                     function (response_error) {
