@@ -12,7 +12,7 @@
                     <div class="wrap">
                         <form class="start-form">
                             <div class="email-outer">
-                                <input type="text" id="email" name="email" ng-model="user.email" placeholder="Your Email Address" required>
+                                <input type="email" id="email" name="email" ng-model="user.email" placeholder="Your Email Address" required>
                             </div>
                             <button class="btn btn-3 btn-3e fa-{{icon}}" ng-click="clickToInvite(user)" type="submit" ng-dialog="firstDialogId" ng-dialog-controller="InsideCtrl" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><span class="white-text">{{invite}}</i></span></button>
                         </form>
@@ -43,7 +43,7 @@
             <div class="CTA">
                 <div class="wrap">
                     <h3>Ready to get started?</h3>
-                    <a href="#introduction" class="CTA-a"><button class="btn-flat btn-CTA">Get started</button></a>
+                    <a href="#introduction" du-smooth-scroll offset="0" class="CTA-a"><button class="btn-flat btn-CTA">Get started</button></a>
                 </div>
             </div>
         </section>
@@ -92,8 +92,9 @@
     <div class="ngdialog-buttons">
         <div class="ngdialog-message">
             <h3>{{res}}</h3>
+            <p>We have signed you up for public beta,<br/> keep on eye on your email for more information.</p>
         </div>
-        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond()">Open next</button>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond()">Ok!</button>
     </div>
     <div class="ngdialog-close"></div>
 </script>
