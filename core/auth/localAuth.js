@@ -19,6 +19,11 @@ module.exports = function () {
         passReqToCallback: true
     },
         function (req, email, password, done) {
+            /*
+             * 
+             * Create username and email check
+             * 
+             */
             User.findOne({ 'email': email }, function (err, user) {
                 if (err) {
                     return done(err);
@@ -49,6 +54,11 @@ module.exports = function () {
         passwordField: 'password',
         passReqToCallback: true
     }, function (req, email, password, done) {
+        /*
+         * 
+         * Create an email check
+         * 
+         */
         User.findOne({ 'email': email }, function (err, user) {
             if (err)
                 return done(err);
