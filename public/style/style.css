@@ -287,27 +287,27 @@ header .wrap {
 }
 
 .feature-1 .fa {
-	color: #e74c3c;
+	color: #F64747;
 }
 
 .feature-1 .fa:hover {
-	box-shadow: 0 0 0 10px #e74c3c;
+	box-shadow: 0 0 0 10px #F64747;
 }
 
 .feature-2 .fa {
-	color: #2ecc71;
+	color: #13a3ad;
 }
 
 .feature-2 .fa:hover {
-	box-shadow: 0 0 0 10px #2ecc71;
+	box-shadow: 0 0 0 10px #13a3ad;
 }
 
 .feature-3 .fa {
-	color: #3498db;
+	color: #555;
 }
 
 .feature-3 .fa:hover {
-	box-shadow: 0 0 0 10px #3498db;
+	box-shadow: 0 0 0 10px #555;
 }
 
 .feature-1,
