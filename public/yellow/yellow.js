@@ -12,6 +12,8 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
 
     $routeProvider.when('/lecture', { templateUrl: '/partials/lecture', controller: 'LectureCtrl' });
 
+    $routeProvider.when('/register', { templateUrl: '/partials/register', controller: 'RegisterCtrl' });
+
     $routeProvider.when('/login', { templateUrl: '/partials/login', controller: 'LoginCtrl' });
 
     $routeProvider.when('/404', { templateUrl: '/partials/404' });
