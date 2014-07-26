@@ -1,11 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="yellow">
 <head>
+    <!--META TAGS-->
     <meta name="viewport" content="width=device-width,initial-scale=1">
+<<<<<<< HEAD
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
     <link rel="stylesheet" href="/lib/ngDialog/ngDialog.css">
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+=======
+
+    <!--Style-->
+    <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
+    <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog.css">
+    <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-default.css">
+    <!--<link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-plain.css">-->
+    <link rel="stylesheet" href="/style/headroom.css">
+>>>>>>> master
     <link rel="stylesheet" href="/style/loading-bar.css">
     <link rel="stylesheet" href="/style/style.css">
     <script src="/lib/angular/angular.js"></script>
@@ -28,11 +39,22 @@
     <script src="/yellow/controllers/NavbarCtrl.js"></script>
     <script src="/yellow/services/CourseService.js"></script>
     <script src="/yellow/services/inviteService.js"></script>
+<<<<<<< HEAD
     <!--<script src="/socket.io/socket.io.js"></script>-->
+=======
+
+    <!--Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+
+    <!--<script src="/socket.io/socket.io.js"></script>-->
+
+>>>>>>> master
     <title>Open Cloud School</title>
 </head>
 <body>
     <div id="top"></div>
+<<<<<<< HEAD
     <div ng-controller="NavbarCtrl">
         <headroom tolerance="5" offset="205" classes='{"initial":"animated","pinned":"slideDown","unpinned":"slideUp","top":"headroom--top","notTop":"headroom--not-top"}'>
         <header id="header">
@@ -49,6 +71,26 @@
                 </nav>
             </div>
         </header>
+=======
+    <headroom tolerance='0' offset='300'>
+        <div ng-controller="NavbarCtrl">
+            <header>
+                <div class="wrap">
+                    <img src="assets/logo-w.svg">
+                    <nav class="nav-collapse">
+                        <ul id="navig">
+                            <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                            <li><a href="#features" class="link-under" du-smooth-scroll offset="0">Features</a></li>
+                            <li><a href="#" class="link-under" du-smooth-scroll offset="0">About</a></li>
+                            <li><a href="#" class="link-under" du-smooth-scroll offset="0">Start</a></li>
+                            <li><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
+        </div>
+>>>>>>> master
     </headroom>
         <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
     </div>
