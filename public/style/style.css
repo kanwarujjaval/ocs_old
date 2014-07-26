@@ -243,7 +243,7 @@ header .wrap {
 .features {
 	background-color: #FFF;
 	float: left;
-	padding: 7% 0;
+	padding: 8% 0 10% 0;
 	text-align: center;
 	max-width: 100%;
 	margin: 0 auto;
@@ -272,6 +272,42 @@ header .wrap {
 	color: #272822;
 	font-size: 18px;
 	font-weight: 400;
+}
+
+.features .fa {
+	border-radius: 50%;
+	font-size: 120px;
+	height: 150px;
+	width: 150px;
+	line-height: 150px;
+	padding: 20px;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.feature-1 .fa {
+	color: #e74c3c;
+}
+
+.feature-1 .fa:hover {
+	box-shadow: 0 0 0 10px #e74c3c;
+}
+
+.feature-2 .fa {
+	color: #2ecc71;
+}
+
+.feature-2 .fa:hover {
+	box-shadow: 0 0 0 10px #2ecc71;
+}
+
+.feature-3 .fa {
+	color: #3498db;
+}
+
+.feature-3 .fa:hover {
+	box-shadow: 0 0 0 10px #3498db;
 }
 
 .feature-1,
