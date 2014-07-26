@@ -43,7 +43,7 @@
             <div class="CTA">
                 <div class="wrap">
                     <h3>Ready to get started?</h3>
-                    <a href="#introduction" du-smooth-scroll offset="0" class="CTA-a"><button class="btn-flat btn-CTA">Get started</button></a>
+                    <a href="#introduction" du-smooth-scroll offset="100" class="CTA-a"><button class="btn-flat btn-CTA">Get started</button></a>
                 </div>
             </div>
         </section>
@@ -66,9 +66,10 @@
     <div class="ngdialog-buttons">
         <div class="ngdialog-message">
             <h3>{{res}}</h3>
-            <p>We have signed you up for public beta,<br/> keep on eye on your email for more information.</p>
+            <p ng-show="confirmed">We have signed you up for public beta,<br /> keep on eye on your email for more information.</p>
+            <p ng-hide="confirmed">Please enter a valid email address</p>
         </div>
-        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond()">Ok!</button>
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond(confirmed)">Ok!</button>
     </div>
     <div class="ngdialog-close"></div>
 </script>

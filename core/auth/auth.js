@@ -30,14 +30,28 @@ exports.signupAuthenticate = function (req, res, next) {
             res.send(err);
         }
         if (!user) {
-            res.send("Login Failed Try again");
+            res.send({
+                "message": "Unable to create User",
+                "name": "signupFail",
+                "errors": {
+                    "signupFail": {
+                        "name": "signupFail",
+                        "message": "Unable to create the specified user",
+                        "path": req.originalUrl
+                    }
+                }
+            });
         }
         else {
             req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
-                res.send(user);
+                res.send({
+                    "message": "Signup Successful",
+                    "name": "signupSuccess",
+                    "errors": null
+                });
             });
         }
     })
@@ -55,14 +69,29 @@ exports.loginAuthenticate = function (req, res, next) {
             res.send(err);
         }
         if (!user) {
-            res.send("Login Failed Try again");
+            res.send({
+                "message": "Login Failed, Invalid Username and Password Combination",
+                "name": "loginFailed",
+                "errors": {
+                    "loginFailed": {
+                        "name": "loginfailed",
+                        "message": "Your username or password is invalid",
+                        "path": req.originalUrl
+                    }
+                }
+            });
         }
         else {
             req.logIn(user, function (err) {
                 if (err) {
                     return next(err);
                 }
-                res.redirect('/profile');
+                //res.redirect('/profile');
+                res.send({
+                    "message": "Login Successful",
+                    "name": "loginSuccess",
+                    "errors": null
+                });
             });
         }
     })
@@ -79,7 +108,17 @@ exports.isLoggedIn = function (req, res, next) {
     }
     else {
         //next(); //temporarily disabled the login requirement till the signin is implemented in the angular frontend
-        res.send(403, { msg: 'You need to be authenticated to access this resource' });
+        res.send({
+            "message": "Unauthenticated, Login to view this",
+            "name": "unauthenticated",
+            "errors": {
+                "unauthenticated": {
+                    "name": "unauthenticated",
+                    "message": "Login to view this resource",
+                    "path": req.originalUrl
+                }
+            }
+        });
     }
 }
 
@@ -89,7 +128,17 @@ exports.isCourseCreator = function (req, res, next) {
             res.send(500, err);
         }
         else if (!user) {
-            res.send(500, { msg: "error encountered" });
+            res.send({
+                "message": "Invalid Request",
+                "name": "invalidRequest",
+                "errors": {
+                    "invalidRequest": {
+                        "name": "invalidRequest",
+                        "message": "Request invalid",
+                        "path": req.originalUrl
+                    }
+                }
+            });
         }
         else {
             for (i = 0; i < user.courseCreated.length; i++) {
@@ -97,7 +146,17 @@ exports.isCourseCreator = function (req, res, next) {
                     return next();
                 }
             }
-            res.send(403, { msg: 'You do no Own this course' });
+            res.send({
+                "message": "You do not own this resource",
+                "name": "notOwner",
+                "errors": {
+                    "notOwner": {
+                        "name": "notOwner",
+                        "message": "You do not own this resource",
+                        "path": req.originalUrl
+                    }
+                }
+            });
         }
     })
 }
