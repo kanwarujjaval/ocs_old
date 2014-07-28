@@ -6,7 +6,7 @@
 
         dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', false)
 
-        apiService.invite(user, '/invite')         //API communication service takes (data, path)
+        apiService.post(user, '/invite')         //API communication service takes (data, path)
                 .then(
                     function (response) {
                         //$rootScope.res = response.message;    //Removing all $rootScope to prevent future bugs and errors
@@ -24,7 +24,7 @@
                     },
 
                     function (response_error) {
-                        $scope.res_err = response_error;
+                        dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond(' + false + ')">Ok!</button></div>', true, 'InviteCtrl');
                     }
                 )
     };
