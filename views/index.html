@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta property="og:title" content="I just signed up for Open Cloud School beta" />
     <meta property="og:description" content="You can also sign up for Open CloudSchool beta by cicking here." />
-    <meta property="og:image" content="/assets/fb-og.png" />
+    <meta property="og:image" content="http://opencloudschool.org/assets/fb-og.png" />
 
     <!--Style-->
     <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
@@ -41,7 +41,9 @@
 
     <!--Services-->
     <script src="/yellow/services/CourseService.js"></script>
-    <script src="/yellow/services/inviteService.js"></script>
+    <script src="/yellow/services/apiService.js"></script>
+    <script src="/yellow/services/htmlService.js"></script>
+    <script src="/yellow/services/dialogService.js"></script>
 
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
@@ -53,8 +55,9 @@
 </head>
 <body>
     <div id="top"></div>
-    <headroom tolerance='0' offset='600'>
+    <headroom tolerance='10' offset='500'>
         <div ng-controller="NavbarCtrl">
+            <!--NAVBAR CONTROLLER-->
             <header>
                 <div class="wrap">
                     <img src="assets/logo-w.svg">
@@ -63,13 +66,14 @@
                             <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
                             <li><a href="#features" class="link-under" du-smooth-scroll offset="0">Features</a></li>
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">About</a></li>
-                            <li><a href="#" class="link-under" du-smooth-scroll offset="0">Start</a></li>
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
+                            <li><a href="#" class="link-under" ng-click="loginPopup()">Login</a></li>
                         </ul>
                     </nav>
                 </div>
             </header>
             <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
+            <!--NAVBAR CONTROLLER-->
         </div>
     </headroom>
     <div class="content">

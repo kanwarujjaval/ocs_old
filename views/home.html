@@ -9,14 +9,16 @@
                     <h2>Platform for Learners across the world getting together to gain knowledge.</h2>
                 </div>
                 <div class="start" ng-controller="InviteCtrl">
+                    <!--INVITE CONTROLLER-->
                     <div class="wrap">
-                        <form class="start-form">
+                        <form ng-submit="clickToInvite(user)" class="start-form">
                             <div class="email-outer">
                                 <input type="email" id="email" name="email" ng-model="user.email" placeholder="Your Email Address" required>
                             </div>
-                            <button class="btn btn-3 btn-3e fa-{{icon}}" ng-click="clickToInvite(user)" type="submit" ng-dialog="firstDialogId" ng-dialog-controller="InsideCtrl" ng-dialog-class="ngdialog-theme-default" ng-dialog-show-close="false"><span class="white-text">{{invite}}</i></span></button>
+                            <button class="btn btn-3 btn-3e fa-{{icon}}" type="submit"><span class="white-text">{{invite}}</i></span></button>
                         </form>
                     </div>
+                    <!--INVITE CONTROLLER-->
                 </div>
             </div>
         </section>
@@ -61,15 +63,3 @@
         </section>
     </div>
 </div>
-<script type="text/ng-template" id="firstDialogId">
-
-    <div class="ngdialog-buttons">
-        <div class="ngdialog-message">
-            <h3>{{res}}</h3>
-            <p ng-show="confirmed">We have signed you up for public beta,<br /> keep on eye on your email for more information.</p>
-            <p ng-hide="confirmed">Please enter a valid email address</p>
-        </div>
-        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond(confirmed)">Ok!</button>
-    </div>
-    <div class="ngdialog-close"></div>
-</script>

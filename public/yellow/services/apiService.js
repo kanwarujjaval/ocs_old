@@ -1,8 +1,8 @@
-yellow.factory('inviteService', function ($resource, $q, $http) {
+yellow.factory('apiService', function ($resource, $q, $http) {
     return {
-        invite: function (user) {
+        invite: function (data,path) {
             deferred = $q.defer();
-            $http.post('/invite', user)
+            $http.post(path, data)
             .success(function (data, status, header) {
                 deferred.resolve(data);
             })
