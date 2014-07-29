@@ -24,7 +24,7 @@ exports.createInvite = function (req, res, next) {
                     var newInvite = new inviteModel();
                     newInvite.email = req.body.email;
                     newInvite.token = newInvite.genToken();
-                    newInvite.invited = false;
+                    newInvite.invited = true;
                     newInvite.save(function (err) {
                         if (err) {
                             res.send(err);
