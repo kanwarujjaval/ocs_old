@@ -1,22 +1,39 @@
 ﻿<div class="register">
     <div class="wrap">
-        <div id="register" class="register emil-outer" >
-            <form class= action="/register" method="post">
-               <div class="register-field"><label>Email</label><input type="email" name="email" required></div>
-               <br/>
-               <div class="register-field"><label>Password</label><input type="password" name="password" required></div>
-               <br/>
-               <div class="register-field"><label>Password(confirm)</label><input type="password" name="password" required></div>
-               <br/>
-               <div class="register-field"><label>Username</label><input type="text" name="username" required></div>
-               <br/>
-               <div class="register-field"><label>First Name</label><input type="text" name="Fname" required></div>
-               <br/>
-               <div class="register-field"><label>Last Name</label><input type="text" name="Lname" required></div>
-               <br/>
-               <button class="btn-flat btn-CTA btn-register" type="submit">Register</button>
-           </form>
-       </div>
-   </div>
+        <div id="register" class="register emil-outer">
+            <form method="post" ng-submit="register(user)">
+                <div class="register-field">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="user.email" required>
+                </div>
+                <br />
+                <div class="register-field">
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="user.password" required>
+                </div>
+                <br />
+                <div class="register-field">
+                    <label>Password(confirm)</label>
+                    <input type="password" name="password" ng-model="user.password" required>
+                </div>
+                <br />
+                <div class="register-field">
+                    <label>Username</label>
+                    <input type="text" name="username" ng-model="user.username" required>
+                </div>
+                <br />
+                <div class="register-field">
+                    <label>First Name</label>
+                    <input type="text" name="firstName" ng-model="user.firstName" required>
+                </div>
+                <br />
+                <div class="register-field">
+                    <label>Last Name</label>
+                    <input type="text" name="lastName" ng-model="user.lastName" required>
+                </div>
+                <br />
+                <button class="btn-flat btn-CTA btn-register" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
 </div>
-
