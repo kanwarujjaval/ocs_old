@@ -4,7 +4,7 @@
 
     $scope.clickToInvite = function (user) {
 
-        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', false)
+        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true,'InviteCtrl')
 
         apiService.post(user, '/invite')         //API communication service takes (data, path)
                 .then(

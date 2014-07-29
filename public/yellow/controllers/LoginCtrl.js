@@ -1,5 +1,6 @@
 ﻿angular.module('yellow').controller('LoginCtrl', function ($scope, apiService, dialogService,$location) {
     $scope.login = function (user) {
+        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true, 'LoginCtrl')
         apiService.post(user, '/login')         //API communication service takes (data, path)
                 .then(
                     function (response) {

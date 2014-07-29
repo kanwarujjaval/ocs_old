@@ -1,7 +1,7 @@
 ﻿angular.module('yellow').controller('RegisterCtrl', function ($scope, apiService, $routeParams, dialogService, $location) {
     $scope.register = function (user) {
         var path = '/signup/' + $routeParams.token;
-        console.log(path);
+        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true, 'RegisterCtrl')
         apiService.post(user, path)         //API communication service takes (data, path)
                 .then(
                     function (response) {
