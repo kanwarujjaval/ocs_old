@@ -108,17 +108,6 @@ module.exports = function (app) {
     */
 
 
-    //app.get('/partials/login', function (req, res) {
-    //    res.render('form', {
-    //        title: "login",
-    //        action: "/login",
-    //        fields: [
-    //        { name: 'email', type: 'text', property: 'required' },
-    //        { name: 'password', type: 'password', property: 'required' }
-    //        ]
-    //    });
-    //});
-
     app.get('/partials/*', function(req, res) {
         res.render(viewPath + "/" + req.params[0]);
     });

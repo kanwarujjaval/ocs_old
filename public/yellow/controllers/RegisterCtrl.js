@@ -1,6 +1,14 @@
-﻿angular.module('yellow').controller('RegisterCtrl', function ($scope) {
+﻿angular.module('yellow').controller('RegisterCtrl', function ($scope,apiService) {
     $scope.login = function (user) {
-        alert("you are trying to login with user details : " + user.email + " & " + user.password + "\n\n But to your horror, the login section doesn't work yet! ");
-        console.log(user);
+        apiService.post(user, '/login')         //API communication service takes (data, path)
+                .then(
+                    function (response) {
+                        console.log(response);
+                    },
+
+                    function (response_error) {
+                        console.log(response);
+                    }
+                )
     }
 });

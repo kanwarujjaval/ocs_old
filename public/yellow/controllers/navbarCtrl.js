@@ -3,7 +3,7 @@
         ngDialog.open({
             template: 'partials/login.html',
             closeByEscape: true,
-            controller: 'RegisterCtrl'
+            controller: 'LoginCtrl'
         });
     }
 });
