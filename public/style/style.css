@@ -296,6 +296,28 @@ header .wrap {
 	float: left;
 	width: 100%;
 }
+
+/* Login popup */
+
+.login-popup input[type="email"],
+.login-popup input[type="password"] {
+	padding: 12px;
+	margin: 6px;
+	width: 95%;
+}
+
+.login-popup button {
+	float: none !important;
+	margin: 6px !important;
+	padding: 12px !important;
+	width: 95%;
+}
+
+.login-popup p {
+	font-size: 14px;
+	margin: 10px 0 0 0;
+}
+
 /* Features */
 
 .features {
