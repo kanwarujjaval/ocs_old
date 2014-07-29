@@ -44,7 +44,7 @@ a:hover {
 
 body {
 	background: url('/assets/bg-pattern.png');
-	color: #272822;
+	color: #333;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -58,7 +58,7 @@ h3,
 h4,
 h5,
 h6 {
-	color: #272822;
+	color: #333;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 }
@@ -349,7 +349,7 @@ header .wrap {
 }
 
 .features h3 {
-	color: #272822;
+	color: #333;
 	font-size: 18px;
 	font-weight: 400;
 }
@@ -391,7 +391,7 @@ header .wrap {
 }
 
 .detail-points h3 {
-	background-color: #272822;
+	background-color: #333;
 	border-radius: 3px 3px 0 0;
 	color: #fff;
 	font-size: 28px;
@@ -435,7 +435,7 @@ header .wrap {
 /* CTA */
 
 .CTA {
-	background-color: #272822;
+	background-color: #333;
 	float: left;
 	padding: 20px 0;
 	width: 100%;
@@ -515,6 +515,40 @@ a:hover.tooltips span {
 	z-index: 999;
 }
 
+/* Profile page */
+
+.profile
+.main {
+	max-width: 600px;
+	padding: 10px;
+}
+
+.primary-sidebar {
+	background-color: #fff;
+	margin: 20px 0;
+	max-width: 320px;
+	padding: 10px;
+	text-align: center;
+}
+
+.profile .profile-picture {
+	width: 100%;
+}
+
+.profile .profile-picture img {
+	height: auto;
+	width: 150px;
+}
+
+.profile .name {
+	color: #333;
+	font-size: 20px;
+	font-weight: 400;
+}
+.profile .primary-sidebar a {
+	margin: 5px 0;
+}
+
 /*************************************************/
 
 /*                   colors                      */
@@ -561,7 +595,7 @@ a:hover.tooltips span {
 
 .email-outer input{
 	border: 0px;
-	color: #272822;
+	color: #333;
 	float: none;
 	outline: none;
 	margin: 0;
@@ -617,7 +651,7 @@ a:hover.tooltips span {
 /*************************************************/
 
 .footer-widgets {
-	background-color: #272822;
+	background-color: #333;
 	color: #aaa;
 	float: left;
 	list-style-type: none;
@@ -667,7 +701,7 @@ a:hover.tooltips span {
 /*************************************************/
 
 .footer {
-	background: #272822;
+	background: #333;
 	color: #fff;
 	float: left;
 	text-align: center;
