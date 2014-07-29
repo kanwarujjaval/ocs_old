@@ -1,14 +1,29 @@
-﻿angular.module('yellow').controller('LoginCtrl', function ($scope, apiService) {
+﻿angular.module('yellow').controller('LoginCtrl', function ($scope, apiService, dialogService,$location) {
     $scope.login = function (user) {
+        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true, 'LoginCtrl')
         apiService.post(user, '/login')         //API communication service takes (data, path)
                 .then(
                     function (response) {
-                        console.log(response);
+                        if (!response.errors) {
+                            dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>' + response.message + '</h3><h3>Continue to your dashboard</h3></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="gotodashboard()">Continue!</button></div>', true, 'LoginCtrl');
+                        }
+                        else {
+                            dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Error Logging in</h3><p>Please Try again !</p><p>' + response.message + '</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="close()">Ok!</button></div>', true, 'LoginCtrl');
+                        }
                     },
 
                     function (response_error) {
-                        console.log(response);
+                        dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="close()">Ok!</button></div>', true, 'LoginCtrl');
                     }
                 )
+    }
+
+    $scope.close = function () {
+            dialogService.closeAll();
+    }
+
+    $scope.gotodashboard = function () {
+        $location.path('/dashboard');
+        dialogService.closeAll();
     }
 });
