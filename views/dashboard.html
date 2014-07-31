@@ -1,28 +1,35 @@
 ﻿<div class="dashboard" ng-controller="dashboardCtrl">
-    <div class="wrap">
-        <div class="content">
-            <div class="dashboard-widget-1">
-               <img class="dashboard-picture" src="/assets/profile-picture.png"><br>
-               <div class="dashboard"><a class="dashboard-link" href="#">Dashboard</a></div><br>
-               <div class="messages"><a class="dashboard-link" href="#">Messages</a><br></div>
-               <div class="settings"><a class="dashboard-link" href="#">Settings</a><br></div>
-           </div>
-           <div class="dashboard-widget-2">
-            <h3>Recommended Courses<h3>
-              <ul>
-                <li>a</li>
-                <li>b</li>
-                <li>c</li>
-              </ul>
-           </div>
-           <div class="dashboard-widget-3">
-           </div>
-           <div class="dashboard-widget-4">
-           </div>
-           <div class="dashboard-widget-5">
-           </div>
-           <div class="dashboard-widget-6">
-           </div>
-       </div>
-   </div>
+  <div class="wrap">
+    <div class="content">
+      <div class="dashboard-widget-sidebar">
+       <img class="profile-picture" src="/assets/profile-picture.png"><br>
+       <div class="profile"><a class="dashboard-link" href="#">Profile</a></div><br>
+       <div class="messages"><a class="dashboard-link" href="#">Messages</a><br></div>
+       <div class="settings"><a class="dashboard-link" href="#">Settings</a><br></div>
+     </div>
+     <div class="main">
+      <div class="recent-activity"> 
+        <h3>Recent Activity</h3>
+        <ul>
+          <li>Sachin Verma recently completed lorem course.</li>
+          <li>Ujjaval Kanwar is currently doing lorem course.</li>
+        </ul>
+      </div>
+      <div class="my-courses">
+        <div class="wrap">
+          <h3>My Courses</h3>
+          <div class="dashboard-widget course-1">
+            <a href="#"><h4>Javascript</h4></a>
+          </div>
+          <div class="dashboard-widget course-2">
+            <a href="#"><h4>Node JS</h4></a>
+          </div>
+          <div class="dashboard-widget course-3">
+            <a href="#"><h4>Angular JS</h4></a>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
 </div>
