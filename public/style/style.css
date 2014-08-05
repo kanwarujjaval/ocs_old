@@ -206,7 +206,7 @@ header .wrap {
 /*************************************************/
 
 .content{
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 .introduction {
@@ -553,55 +553,84 @@ a:hover.tooltips span {
 }
 */
 
+.dashboard .recent-activity {
+	background-color: #fff;
+	padding: 25px;
+}
+
 .dashboard-widget-sidebar {
 	background-color: #1b1e24;
 	float: left;
-	margin: 10px 15px 10px 0;
+	margin: 0;
 	padding: 10px;
 	text-align: center;
 	width: 20%;
 	min-width: 220px;
 	max-width: 220px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-height: 100%;
+	z-index: 1;
 }
 
 .dashboard .main {
-	background-color: #fff;
-	border: 1px solid #e9e9e9;
-	border-radius: 3px;
 	color: #333;
 	float: left;
 	line-height: 1.625;
-	margin: 10px 0 10px 15px;
-	max-width: 763px;
-	min-width: 600px;
-	padding: 15px;
-	width: 67%;
+	margin: 0 0 20px 275px;
+	min-height: 100%;
+	width: 1000px;
+}
+
+/* 	background-color: #1b1e24;*/
+
+.align-center {
+	text-align: center;
+}
+
+.dashboard .courses {
+	padding: 25px;
 }
 
 .dashboard-widget {
-	background-color: #1b1e24;
 	color: #fff;
 	float: left;
-	height: 220px;
-	margin: 10px 14px;
+	height: auto;
 	overflow: hidden;
 	text-align: center;
-	width: 220px;
+	width: 33.33%;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
 
+.dashboard .widget-inner {
+	background-color: #fff;
+	color: #333;
+	margin: 10px;
+}
+
 .dashboard-widget h4 {
-	color: #fff;
+	color: #333;
 	font-size: 25px;
 	font-weight: 700;
 	text-align: center;
 	margin: 0;
-	padding: 90px 0;
-		-webkit-transition: all 0.3s;
+	padding: 30px 10px 10px 10px;
+	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
+}
+
+.dashboard-widget p {
+	padding: 0 10px;
+}
+
+.dashboard .my-courses,
+.dashboard .suggested-courses {
+	float: left;
+	padding: 10px 0;
 }
 
 .dashboard-widget h4:hover {
@@ -614,14 +643,9 @@ a:hover.tooltips span {
 }
 
 .my-courses {
-	float: left;
-	width: 100%;
+
 }
 
-.my-courses .wrap {
-	margin: 0 auto;
-	max-width: 748px;
-}
 .dashboard .name {
 	color: #333;
 	float: none;
@@ -1147,10 +1171,6 @@ a:hover.tooltips span {
 		float: left;
 		text-align: center;
 		width: 100%;
-	}
-
-	.dashboard .main {
-		margin-left: 0;
 	}
 
 }

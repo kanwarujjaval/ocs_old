@@ -1,35 +1,64 @@
 ﻿<div class="dashboard" ng-controller="dashboardCtrl">
-  <div class="wrap">
-    <div class="content">
-      <div class="dashboard-widget-sidebar">
-       <img class="profile-picture" src="/assets/profile-picture.png"><br>
-       <div class="profile"><a class="dashboard-link" href="#">Profile</a></div><br>
-       <div class="messages"><a class="dashboard-link" href="#">Messages</a><br></div>
-       <div class="settings"><a class="dashboard-link" href="#">Settings</a><br></div>
-     </div>
-     <div class="main">
-      <div class="recent-activity"> 
-        <h3>Recent Activity</h3>
-        <ul>
-          <li>Sachin Verma recently completed lorem course.</li>
-          <li>Ujjaval Kanwar is currently doing lorem course.</li>
-        </ul>
-      </div>
+  <div class="content">
+    <div class="dashboard-widget-sidebar">
+     <img class="profile-picture" src="/assets/profile-picture.png"><br>
+     <div class="profile"><a class="dashboard-link" href="#">Profile</a></div><br>
+     <div class="messages"><a class="dashboard-link" href="#">Messages</a><br></div>
+     <div class="settings"><a class="dashboard-link" href="#">Settings</a><br></div>
+   </div>
+   <div class="main">
+    <div class="recent-activity"> 
+      <h3>Recent Activity</h3>
+      <ul>
+        <li>Sachin Verma recently completed lorem course.</li>
+        <li>Ujjaval Kanwar is currently doing lorem course.</li>
+      </ul>
+    </div>
+    <div class="courses"><h2 class="align-center">Courses</h2>
       <div class="my-courses">
-        <div class="wrap">
-          <h3>My Courses</h3>
-          <div class="dashboard-widget course-1">
-            <a href="#"><h4>Javascript</h4></a>
+        <h3 class="align-center">My Courses</h3>
+        <div class="dashboard-widget course-1">
+          <div class="widget-inner">
+            <a href="#"><h4>Javascript</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
           </div>
-          <div class="dashboard-widget course-2">
-            <a href="#"><h4>Node JS</h4></a>
+        </div>
+        <div class="dashboard-widget course-2">
+          <div class="widget-inner">
+            <a href="#"><h4>Node JS</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
           </div>
-          <div class="dashboard-widget course-3">
-            <a href="#"><h4>Angular JS</h4></a>
+        </div>
+        <div class="dashboard-widget course-3">
+          <div class="widget-inner">
+            <a href="#"><h4>HTML5</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
           </div>
         </div>
       </div> 
-    </div>
+      <div class="suggested-courses">
+        <h3 class="align-center">Suggested Courses</h3>
+        <div class="dashboard-widget course-1">
+          <div class="widget-inner">
+            <a href="#"><h4>PHP</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
+          </div>
+        </div>
+        <div class="dashboard-widget course-2">
+          <div class="widget-inner">
+            <a href="#"><h4>Angular JS</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
+          </div>
+        </div>
+        <div class="dashboard-widget course-3">
+          <div class="widget-inner">
+            <a href="#"><h4>CSS3</h4></a><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac nisi luctus, tempus mauris in, tincidunt justo.</p>
+          </div>
+        </div>
+      </div>
+    </div> 
   </div>
 </div>
 </div>
+<style type="text/css">
+header,
+.footer-widgets,
+.footer {
+  visibility: hidden;
+}
+</style>
