@@ -605,36 +605,48 @@ a:hover.tooltips span {
 	transition: all 0.3s;
 }
 
+
 .dashboard .widget-inner {
 	background-color: #fff;
 	color: #333;
 	margin: 10px;
-}
-
-.dashboard-widget h4 {
-	color: #333;
-	font-size: 25px;
-	font-weight: 700;
-	text-align: center;
-	margin: 0;
-	padding: 30px 10px 10px 10px;
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
 }
 
+.dashboard .widget-inner:hover {
+	background-color: #2980B9;
+	color: #fff;
+}
+
+
+.dashboard-widget h4 {
+	color: #2d2d2d;
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+	margin: 0;
+	padding: 30px 10px 10px 10px;
+}
+
 .dashboard-widget p {
-	padding: 0 10px;
+	color: #666;
+}
+
+.widget-inner:hover h4,
+.widget-inner:hover p {
+	color: #fff;
+}
+
+.dashboard-widget p {
+	padding: 0 10px 10px 10px;
 }
 
 .dashboard .my-courses,
 .dashboard .suggested-courses {
 	float: left;
-	padding: 10px 0;
-}
-
-.dashboard-widget h4:hover {
-	color: #2980b9;
+	padding: 0 0 10px 0;
 }
 
 .dashboard .dashboard-picture img {
