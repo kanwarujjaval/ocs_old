@@ -31,6 +31,7 @@ exports.createInvite = function (req, res, next) {
                             res.send(err);
                         }
                         else {
+                            mailer.sendWelcomeMail(req.body.email);
                             res.send({
                                 "message": "Invite Created!",
                                 "name": "inviteSuccess",
