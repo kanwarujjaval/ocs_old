@@ -92,7 +92,7 @@ exports.sendWelcomeMail = function (email) {
     };
 
     mandrill_client.messages.send({ "message": message, "async": false }, function (result) {
-        fs.ensureFile('./data/invites.json', function (err) {
+        fs.ensureFile('./data/invites_email_data.json', function (err) {
             if (err) {
                 console.log("unable to write to file");
             }
@@ -103,7 +103,7 @@ exports.sendWelcomeMail = function (email) {
             })
         });
     }, function (e) {
-        fs.ensureFile('./data/invites.json', function (err) {
+        fs.ensureFile('./data/invites_email_data.json', function (err) {
             if (err) {
                 console.log("unable to write to file");
             }
