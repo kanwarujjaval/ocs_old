@@ -1,5 +1,6 @@
 ﻿var inviteModel = require('../models/invite.js').inviteModel;
 var validator = require("validator");
+var mailer = require("../service/mailer.js");
 
 exports.createInvite = function (req, res, next) {
     /*
@@ -24,7 +25,7 @@ exports.createInvite = function (req, res, next) {
                     var newInvite = new inviteModel();
                     newInvite.email = req.body.email;
                     newInvite.token = newInvite.genToken();
-                    newInvite.invited = true;
+                    newInvite.invited = false;
                     newInvite.save(function (err) {
                         if (err) {
                             res.send(err);
@@ -75,7 +76,7 @@ exports.verifyToken = function (req, res, next) {
                     "invalidInvite": {
                         "name": "invalidInvite",
                         "message": "Invitation code used does no exist",
-                        "path" : req.originalUrl
+                        "path": req.originalUrl
                     }
                 }
             });
@@ -124,4 +125,16 @@ exports.isInvited = function (req, res, next) {
             }
         });
     }
+};
+
+
+exports.inviteNow = function (req, res, next) {
+    inviteModel.findOneAndUpdate({ 'email': req.params.email }, { 'invited': true }, function (err, invitedUser) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            mailer.sendInviteMail(res,req.params.email,"<p>This is another test mail</p><p>PLease do not flag this because it is for api testing purposes</p>","API test Email");
+        }
+    });
 };

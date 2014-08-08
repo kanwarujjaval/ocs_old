@@ -80,23 +80,13 @@ module.exports = function (app) {
     Authentication routes
     */
 
+    app.get('/invitenow/:email', auth.inviteNow);
+
     app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate);
 
     app.post('/login', auth.loginAuthenticate);
 
     app.post('/invite', auth.createInvite);
-
-    //app.get('/signup/:token', auth.verifyToken, function(req, res) {
-    //    res.render('form', {
-    //        title: "signup",
-    //        action: "/signup",
-    //        fields: [
-    //            { name: 'email', type: 'text', property: 'required' },
-    //            { name: 'password', type: 'password', property: 'required' },
-    //            { name: 'username', type: 'text', property: 'required' }
-    //        ]
-    //    });
-    //});
 
     app.get('/logout', auth.isLoggedIn, function(req, res) {
         req.logout();

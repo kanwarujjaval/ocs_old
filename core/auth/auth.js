@@ -19,6 +19,10 @@ exports.verifyToken = function (req, res, next) {
     inviteAuth.verifyToken(req, res, next);
 }
 
+exports.inviteNow = function (req, res, next) {
+    inviteAuth.inviteNow(req, res, next);
+}
+
 /*
 Local Web Signup
 */

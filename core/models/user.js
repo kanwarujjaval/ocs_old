@@ -3,11 +3,11 @@
     bcrypt = require('bcryptjs');
 schema = mongoose.Schema;
 
-    /*    User Schema     */
+/*    User Schema     */
 
 userSchema = new schema({
     email: { type: String, required: true, unique: true },
-    username : {type:String, required : true},
+    username: { type: String, required: true },
     firstName: String,
     lastName: String,
     salt: String,
@@ -16,7 +16,8 @@ userSchema = new schema({
     acheived: [String],
     about: String,
     courseViewed: [{ type: schema.Types.ObjectId, ref: 'course' }],
-    courseCreated: [{ type: schema.Types.ObjectId, ref: 'course' }]
+    courseCreated: [{ type: schema.Types.ObjectId, ref: 'course' }],
+    joinedOn : {type:String,default:Date.now}
 });
 
 userSchema.methods.createSalt = function () {
@@ -32,11 +33,11 @@ userSchema.methods.authenticate = function (password) {
 }
 
 userSchema.methods.destroyInviteToken = function (email) {
-    inviteModel.findOneAndRemove({ 'email': email }, function (err, obj) {
+    inviteModel.findOneAndUpdate({ 'email': email }, { 'invitationSent': true, 'invitationSentOn': Date.now() }, function (err, obj) {
         if (err) {
-            console.log("Error Removing the associated token "+err);
+            console.log("Error Removing the associated token " + err);
         }
-console.log("successfully removed "+obj);
+        console.log("successfully removed " + obj);
     })
 }
 
