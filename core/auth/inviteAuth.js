@@ -129,13 +129,13 @@ exports.isInvited = function (req, res, next) {
 };
 
 
-exports.inviteNow = function (req, res, next) {
-    inviteModel.findOneAndUpdate({ 'email': req.params.email }, { 'invited': true }, function (err, invitedUser) {
+exports.sendToken = function (req, res, next) {
+    inviteModel.findOneAndUpdate({ 'email': req.body.email }, { 'invited': true }, function (err, invitedUser) {
         if (err) {
             res.send(err);
         }
         else {
-            mailer.sendInviteMail(res,req.params.email,"<p>This is another test mail</p><p>PLease do not flag this because it is for api testing purposes</p>","API test Email");
+            mailer.sendInviteMail(res, req.body.email, "<p>This is another test mail</p><p>PLease do not flag this because it is for api testing purposes</p>", "API test Email");
         }
     });
 };

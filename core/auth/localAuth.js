@@ -8,7 +8,7 @@ module.exports = function () {
     });
 
     passport.deserializeUser(function (id, done) {
-        User.findById(id, function (err, user) {
+        User.findById(id).select({ password: 0, salt: 0 }).exec(function (err, user) {
             done(err, user);
         });
     });
@@ -24,7 +24,7 @@ module.exports = function () {
              * Create username and email check
              * 
              */
-            User.findOne({ 'email': email }, function (err, user) {
+            User.findOne({ 'email': email }).exec(function (err, user) {
                 if (err) {
                     return done(err);
                 }
@@ -59,7 +59,8 @@ module.exports = function () {
          * Create an email check
          * 
          */
-        User.findOne({ 'email': email }, function (err, user) {
+        var user = {}
+        User.findOne({ 'email': email }).exec(function (err, user) {
             if (err)
                 return done(err);
             if (!user)

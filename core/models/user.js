@@ -10,14 +10,14 @@ userSchema = new schema({
     username: { type: String, required: true },
     firstName: String,
     lastName: String,
-    salt: String,
+    salt: { type: String },
     password: { type: String, required: true },
     roles: [String],
     acheived: [String],
     about: String,
     courseViewed: [{ type: schema.Types.ObjectId, ref: 'course' }],
     courseCreated: [{ type: schema.Types.ObjectId, ref: 'course' }],
-    joinedOn : {type:String,default:Date.now}
+    joinedOn: { type: String, default: Date.now }
 });
 
 userSchema.methods.createSalt = function () {

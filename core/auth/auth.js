@@ -19,7 +19,7 @@ exports.verifyToken = function (req, res, next) {
     inviteAuth.verifyToken(req, res, next);
 }
 
-exports.inviteNow = function (req, res, next) {
+exports.sendToken = function (req, res, next) {
     inviteAuth.inviteNow(req, res, next);
 }
 
@@ -127,7 +127,7 @@ exports.isLoggedIn = function (req, res, next) {
 }
 
 exports.isCourseCreator = function (req, res, next) {
-    userModel.findOne({ "_id": req.session.passport.user }, function (err, user) {
+    userModel.findOne({ "_id": req.user._id }, function (err, user) {
         if (err) {
             res.send(500, err);
         }
@@ -164,3 +164,54 @@ exports.isCourseCreator = function (req, res, next) {
         }
     })
 }
+
+
+/*              WARNING
+ *
+ *         Messed Up content
+ *   Original Author Advisory required
+ *
+ * 
+ * The function below is completely messed up, unless you created this mess, it is in the best interest of everyone involved to stay the hell away from this 
+ * 
+ *
+ * 
+ */
+exports.isAdmin = function (req, res, next) {
+    if (validator.isEmail(req.body.email)) {
+        userModel.findOne({ '_id': req.user._id }, function (err, invitation) {
+            if (err) {
+                res.send(err);
+            }
+            if (invitation) {
+                if (invitation.invited) {
+                    return next();
+                }
+                res.send({
+                    "message": "Invitation Expired or not activated",
+                    "name": "inactiveInvite",
+                    "errors": {
+                        "inactive": {
+                            "name": "inactiveInvite",
+                            "message": "invitation has not been activated",
+                            "path": req.originalUrl
+                        }
+                    }
+                });
+            }
+            else {
+                res.send({
+                    "message": "Invite code does not match the email used",
+                    "name": "emailMatchFailed",
+                    "errors": {
+                        "emailMatch": {
+                            "name": "emailMatchFail",
+                            "message": "The email used does not match the associated email for the invite code used.",
+                            "path": req.originalUrl
+                        }
+                    }
+                });
+            }
+        });
+    }
+};

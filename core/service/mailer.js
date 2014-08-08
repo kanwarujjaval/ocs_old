@@ -1,5 +1,5 @@
 ﻿var mandrill = require('mandrill-api/mandrill');
-var mandrill_client = new mandrill.Mandrill('k8hfZdWGpL0qTOPmIlJvig');
+var mandrill_client = new mandrill.Mandrill('d1WatrL9NPg6HHM-EWE5mg');
 var fs = require('fs-extra');
 
 exports.sendInviteMail = function (res, email, messageHtml, messageSubject) {
