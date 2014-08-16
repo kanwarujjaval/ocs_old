@@ -18,6 +18,8 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
 
     $routeProvider.when('/register/:token', { templateUrl: '/partials/register', controller: 'RegisterCtrl' });
 
+    $routeProvider.when('/admin', { templateUrl: '/partials/admin', controller: 'AdminCtrl' });
+
     $routeProvider.when('/404', { templateUrl: '/partials/404' });
 
     $routeProvider.otherwise({

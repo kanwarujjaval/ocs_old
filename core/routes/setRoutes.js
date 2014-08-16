@@ -2,6 +2,7 @@
 var xCourse = require('../api/course');
 var profile = require('../api/profile');
 var user = require('../api/user');
+var invites = require('../api/invites');
 var lect = require('../api/lectures');
 
 module.exports = function (app) {
@@ -74,11 +75,15 @@ module.exports = function (app) {
     /*
     Admin routes
     */
-    app.get('/api/admin', function(req, res) { res.send("Admin Panel") });
+    app.get('/api/admin', function (req, res) { res.send("Admin Panel") });
+
+    app.get('/api/invites', invites.getInvites);
 
     /*
     Authentication routes
     */
+
+    app.post('/sendtoken', auth.sendToken);
 
     app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate);
 
@@ -86,21 +91,16 @@ module.exports = function (app) {
 
     app.post('/invite', auth.createInvite);
 
-    //app.get('/signup/:token', auth.verifyToken, function(req, res) {
-    //    res.render('form', {
-    //        title: "signup",
-    //        action: "/signup",
-    //        fields: [
-    //            { name: 'email', type: 'text', property: 'required' },
-    //            { name: 'password', type: 'password', property: 'required' },
-    //            { name: 'username', type: 'text', property: 'required' }
-    //        ]
-    //    });
-    //});
-
     app.get('/logout', auth.isLoggedIn, function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+
+    app.get('/test', function (req, res) {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        console.log(req);
+        res.end("asd");
     });
 
     /*

@@ -4,9 +4,12 @@
 
 inviteSchema = new schema({
     email: { type: String, required: true, unique: true },
-    token : { type: String, required:true, unique: true},
-    role : {type: String},
-    invited : {type:Boolean , default: false}
+    token: { type: String, required: true, unique: true },
+    role: { type: String },
+    invited: { type: Boolean, default: false },
+    createdOn: { type: Date, default: Date.now },
+    invitationSent: { type: Boolean, default: false },
+    invitationSentOn: { type: Date }
 });
 
 inviteSchema.methods.genToken = function () {

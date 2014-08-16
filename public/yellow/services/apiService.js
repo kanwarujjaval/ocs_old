@@ -11,7 +11,7 @@ yellow.factory('apiService', function ($resource, $q, $http) {
             })
             return deferred.promise;
         },
-        get: function (data, path) {
+        get: function (path) {
             deferred = $q.defer();
             $http.get(path)
             .success(function (data, status, header) {
