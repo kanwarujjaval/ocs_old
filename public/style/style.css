@@ -297,6 +297,21 @@ header .wrap {
 	width: 100%;
 }
 
+.profile-field,
+.profile-value {
+	float: left;
+	width: 100%;
+}
+
+.profile label {
+	float: left;
+	font-size: 14px;
+	line-height: 1;
+	margin: 10px;
+	padding: 15px 0;
+	width: 110px;
+}
+
 /* Login popup */
 
 .login-popup input[type="email"],
@@ -1039,7 +1054,18 @@ a:hover.tooltips span {
 
 }
 
+.profile {
+	margin-top:100px;
+}
 .btn-register {
+	border: none;
+	padding: 15px 40px;
+	width: 171px;
+	margin-right: 75px;
+	float: right !important;
+}
+
+.btn-proifle {
 	border: none;
 	padding: 15px 40px;
 	width: 171px;
@@ -1215,13 +1241,13 @@ a:hover.tooltips span {
 }	
 
 .headroom {
-	transition: transform 200ms linear;
+	transition: transform 2s linear;
 }
 .headroom--pinned {
-	-webkit-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 }
 .headroom--unpinned {
-	-webkit-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 }
 
 .ngdialog-content {
