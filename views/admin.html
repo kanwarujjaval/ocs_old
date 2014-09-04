@@ -1,8 +1,7 @@
-﻿<div class=" register">
+﻿<div class="register">
 	<div class="wrap">
 		<h1>Welcome to admin panel</h1>
 		<div ng-repeat="person in inviteReq | limitTo:10 | orderBy:'createdOn':false">
-
 			<p><strong>{{person.email}}</strong> | <small>Request invite on: </small> {{person.createdOn | date:'medium'}} | <a class="btn-flat" href="/admin#{{person.token}}"><small>Send sign up link</small></a> </p>
 			<hr />
 		</div>
