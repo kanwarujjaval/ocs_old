@@ -26,9 +26,13 @@ input[type="text"] {
 	float: left;
 	font-size: 14px;
 	outline: none;
-	margin: 10px;
 	padding: 10px 0;
 	width: 300px;
+}
+
+textarea {
+	margin: 20px 0;
+	outline: none;
 }
 
 /*************************************************/
@@ -205,10 +209,6 @@ header .wrap {
 
 /*************************************************/
 
-.content{
-	margin-top: 20px;
-}
-
 .introduction {
 	position: relative;
 	background: #2980b9;
@@ -272,7 +272,6 @@ header .wrap {
 	float: left;
 	font-size: 14px;
 	outline: none;
-	margin: 10px;
 	max-width: 50%;
 	padding: 10px 5px;
 	width: 300px;
@@ -295,6 +294,36 @@ header .wrap {
 .register-field {
 	float: left;
 	width: 100%;
+}
+
+/* Profile */
+
+.profile-field,
+.profile-value {
+	float: left;
+	width: 100%;
+}
+
+.profile label {
+	float: left;
+	font-size: 14px;
+	line-height: 1;
+	margin: 10px;
+	padding: 15px 0;
+	width: 110px;
+}
+
+.profile .profile-value p {
+	float: left;
+	font-size: 14px;
+	margin-top: 10px;
+	max-width: 200px;
+	padding: 15px 0;
+}
+
+.profile h4 {
+	float: left;
+	margin: 25px 0;
 }
 
 /* Login popup */
@@ -530,6 +559,30 @@ a:hover.tooltips span {
 .dashboard h3 {
 	color: #333;
 }
+
+.dashboard-head {
+	background-color: #1B1E24;
+	left: 240px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
+.dashboard-head .wrap {
+	margin-left: 20px;
+}
+
+.dashboard-head a {
+	color: #8B91A0;
+	float: left;
+	font-size: 14px;
+	padding: 15px;
+}
+
+.dashboard-head a:hover {
+	background-color: #22262e;
+}
+
 /* 
 
 .dashboard-widget {
@@ -577,7 +630,7 @@ a:hover.tooltips span {
 	color: #333;
 	float: left;
 	line-height: 1.625;
-	margin: 0 35px 20px 275px;
+	margin: 100px 35px 20px 275px;
 	max-width: 1920px;
 }
 
@@ -652,8 +705,13 @@ a:hover.tooltips span {
 	width: 150px;
 }
 
-.my-courses {
+.dashboard .notification-area {
+	float: right;
+	margin-right: 85px;
+}
 
+.dashboard .notification-area a {
+	float: right;
 }
 
 .dashboard .name {
@@ -684,7 +742,8 @@ a:hover.tooltips span {
 
 .dashboard .profile,
 .dashboard .messages,
-.dashboard .settings {
+.dashboard .settings,
+.dashboard .friends {
 	width: 100%;
 	float: left;
 	margin: 1px auto;
@@ -699,11 +758,22 @@ a:hover.tooltips span {
 
 .dashboard .profile .dashboard-link:before,
 .dashboard .messages .dashboard-link:before,
-.dashboard .settings .dashboard-link:before{
+.dashboard .settings .dashboard-link:before,
+.dashboard .friends .dashboard-link:before,
+.dashboard .notification-area .notifications:before,
+.dashboard .notification-area .messages:before {
 	font-family: 'FontAwesome';
 	font-size: 20px;
 	color: #8B91A0;
 	padding-right: 10px;
+}
+
+.dashboard .notification-area .notifications:before {
+	content: "\f0e4";
+}
+
+.dashboard .notification-area .mesages:before {
+	content: "\f0e4";
 }
 
 .dashboard .profile .dashboard-link:before {
@@ -711,6 +781,10 @@ a:hover.tooltips span {
 }
 
 .dashboard .messages .dashboard-link:before {
+	content: "\f003";
+}
+
+.dashboard .friends .dashboard-link:before {
 	content: "\f003";
 }
 
@@ -1039,12 +1113,24 @@ a:hover.tooltips span {
 
 }
 
+.profile {
+	margin-top:100px;
+}
 .btn-register {
 	border: none;
 	padding: 15px 40px;
 	width: 171px;
 	margin-right: 75px;
 	float: right !important;
+}
+
+.btn-profile {
+	border: none;
+	float: left;
+	margin:	10px;
+	padding: 10px 50px;
+	width: 171px;
+	margin-right: 75px;
 }
 
 /*************************************************/
@@ -1215,13 +1301,13 @@ a:hover.tooltips span {
 }	
 
 .headroom {
-	transition: transform 200ms linear;
+	transition: transform 2s linear;
 }
 .headroom--pinned {
-	-webkit-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 }
 .headroom--unpinned {
-	-webkit-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 2s ease-in-out;
 }
 
 .ngdialog-content {

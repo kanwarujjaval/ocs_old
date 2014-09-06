@@ -10,6 +10,8 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
 
     $routeProvider.when('/profile', { templateUrl: '/partials/profile', controller: 'ProfileCtrl' });
 
+  $routeProvider.when('/profileedit', { templateUrl: '/partials/profileedit', controller: 'ProfileEditCtrl' });
+
     $routeProvider.when('/dashboard', { templateUrl: '/partials/dashboard', controller: 'DashboardCtrl' });
 
     $routeProvider.when('/courses', { templateUrl: '/partials/coursesAll', controller: 'CourseCtrl' });
