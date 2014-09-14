@@ -203,6 +203,7 @@ header .wrap {
 	content: "\f00d";
 }
 
+
 /*************************************************/
 
 /*                   content                     */
@@ -220,13 +221,13 @@ header .wrap {
 	padding: 11% 0;
 }
 
-.statement{
+.statement {
 	/*font-family: 'Nunito',sans-serif;*/
 	letter-spacing: 3px;
 	text-align: center;
 }
 
-.statement h1{
+.statement h1 {
 	color: #fff;
 	font-family: 'Roboto', sans-serif;
 	font-size: 60px;
@@ -237,7 +238,7 @@ header .wrap {
 	letter-spacing: 3px;
 }
 
-.statement h2{
+.statement h2 {
 	color: #fff;
 	font-size: 20px;
 	letter-spacing: 1px;
@@ -245,7 +246,7 @@ header .wrap {
 	font-weight: 100;
 }
 
-.statement li{
+.statement li {
 	/*font-family: 'Roboto', sans-serif;*/
 	text-transform: uppercase;
 	text-align: left;
@@ -255,6 +256,7 @@ header .wrap {
 	letter-spacing: 2px;
 	list-style: none;
 }
+
 
 /* Register */
 
@@ -295,6 +297,68 @@ header .wrap {
 	float: left;
 	width: 100%;
 }
+
+
+/* Single Course */
+
+.singlecourse {
+	margin-top: 100px;
+}
+
+.singlecourse .herobar {
+	background-color: #fff;
+	float: left;
+	padding: 25px 20px;
+}
+
+.singlecourse .singlecourseinfo {
+	max-width: 530px;
+	width: 50%;
+}
+
+.singlecourse .singlecourseinfo,
+.singlecourse .courseimage {
+	float: left;
+	width: 530px;
+}
+
+.singlecourse .courseimage img {
+	max-width: 250px;
+}
+
+.singlecourse .content {
+	background-color: #fff;
+	float: left;
+	padding: 20px;
+	width: 760px;
+}
+
+.singlecourse .sidebar {
+	background-color: #fff;
+	float: left;
+	padding: 20px;
+	width: 260px;
+}
+
+.singlecourse .contentbox,
+.singlecourse .sidebar-widget {
+	background-color: #ddd;
+	float: left;
+	min-width: 110px;
+	padding: 50px;
+	text-align: center;
+}
+
+.singlecourse .contentbox {
+	margin: 20px;
+}
+
+.singlecourse .sidebar-widget {
+	margin: 20px;
+	padding: 50px 20px;
+	width: 200px;
+}
+
 
 /* Profile */
 
