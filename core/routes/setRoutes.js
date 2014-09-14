@@ -75,29 +75,29 @@ module.exports = function (app) {
     /*
     Admin routes
     */
-    app.get('/api/admin', function (req, res) { res.send("Admin Panel") });
+    app.get('/api/admin', function (req, res) { res.send("Admin Panel") }); /* NOT BEING USED>>> I GUESS*/
 
-    app.get('/api/invites', invites.getInvites);
+    app.get('/api/invites', invites.getInvites); /* get invites from db JSON*/
 
     /*
     Authentication routes
     */
 
-    app.post('/sendtoken', auth.sendToken);
+    app.post('/sendtoken', auth.sendToken); /*   SEND TOKEN EMAIL FROM ADMIN PANEL   */
 
-    app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate);
+    app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate); /*   Signup Form for token   */
 
-    app.post('/login', auth.loginAuthenticate);
+    app.post('/login', auth.loginAuthenticate); /*   POST LOGIN DATA   */
 
-    app.post('/invite', auth.createInvite);
+    app.post('/invite', auth.createInvite);     /*  Post INVITE EMAIL   */
 
-    app.get('/logout', auth.isLoggedIn, function(req, res) {
+    app.get('/logout', auth.isLoggedIn, function(req, res) {        /* GET LOGOUT HAS TO CHANGED TO POST*/
         req.logout();
         res.redirect('/');
     });
 
 
-    app.get('/test', function (req, res) {
+    app.get('/test', function (req, res) {      /*  TEMP PATH TO BE REMOVED SOON    */
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         console.log(req);
         res.end("asd");

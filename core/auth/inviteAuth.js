@@ -128,6 +128,13 @@ exports.isInvited = function (req, res, next) {
     }
 };
 
+/*
+ * 
+ * Update invite to true 
+ * set invited on
+ * send mail with token
+ * 
+ */
 
 exports.sendToken = function (req, res, next) {
     inviteModel.findOneAndUpdate({ 'email': req.body.email }, { 'invited': true }, function (err, invitedUser) {
