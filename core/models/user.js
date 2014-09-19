@@ -17,7 +17,7 @@ userSchema = new schema({
     about: String,
     courseViewed: [{ type: schema.Types.ObjectId, ref: 'course' }],
     courseCreated: [{ type: schema.Types.ObjectId, ref: 'course' }],
-    joinedOn: { type: String, default: Date.now }
+    joinedOn: { type: Date, default: Date.now }
 });
 
 userSchema.methods.createSalt = function () {
@@ -33,7 +33,7 @@ userSchema.methods.authenticate = function (password) {
 }
 
 userSchema.methods.destroyInviteToken = function (email) {
-    inviteModel.findOneAndUpdate({ 'email': email }, { 'invitationSent': true, 'invitationSentOn': Date.now() }, function (err, obj) {
+    inviteModel.findOneAndUpdate({ 'email': email }, { 'signedUpOn': Date.now() }, function (err, obj) {
         if (err) {
             console.log("Error Removing the associated token " + err);
         }

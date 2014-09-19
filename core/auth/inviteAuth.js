@@ -137,12 +137,12 @@ exports.isInvited = function (req, res, next) {
  */
 
 exports.sendToken = function (req, res, next) {
-    inviteModel.findOneAndUpdate({ 'email': req.body.email }, { 'invited': true }, function (err, invitedUser) {
+    inviteModel.findOneAndUpdate({ 'email': req.body.email }, { 'invited': true,'invitationSent':true,'invitationSentOn': Date.now() }, function (err, invitedUser) {
         if (err) {
             res.send(err);
         }
         else {
-            mailer.sendInviteMail(res, req.body.email, "<p>This is another test mail</p><p>PLease do not flag this because it is for api testing purposes</p>", "API test Email");
+            mailer.sendInviteMail(res, req.body.email, '<p>Welcome, Sign up at <a href="http://opencloudschool.org/register/' + invitedUser.token + '/">click here</a></p>', 'Get Started with OpencloudSchool');
         }
     });
 };

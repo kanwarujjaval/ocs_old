@@ -20,7 +20,7 @@ exports.verifyToken = function (req, res, next) {
 }
 
 exports.sendToken = function (req, res, next) {
-    inviteAuth.inviteNow(req, res, next);
+    inviteAuth.sendToken(req, res, next);
 }
 
 /*
