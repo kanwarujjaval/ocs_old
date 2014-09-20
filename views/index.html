@@ -58,13 +58,17 @@
                 <div class="wrap">
                     <img src="/assets/logo-w.svg">
                     <nav class="nav-collapse">
-                        <ul id="navig">
+                        <ul ng-if="onLanding" id="navig">
                             <li><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
                             <li><a href="#features" class="link-under" du-smooth-scroll offset="0">Features</a></li>
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">About</a></li>
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
                             <li><a href="#" class="link-under" ng-click="loginPopup()">Login</a></li>
-                            <li ng-show="onLanding"><a href="/admin" class="link-under">admin</a></li>
+                            <li><a href="/admin" class="link-under">Admin</a></li>
+                        </ul>
+                        <ul ng-if="!onLanding" id="navig">
+                            <li><a href="/" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                            <li><a href="/admin" class="link-under">Admin</a></li>
                         </ul>
                     </nav>
                 </div>
