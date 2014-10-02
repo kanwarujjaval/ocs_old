@@ -7,39 +7,48 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
     $locationProvider.html5Mode(true);
 
     $routeProvider.when('/', {
-        templateUrl: '/partials/home', controller: 'MainCtrl'
+        templateUrl: '/partials/home',
+        controller: 'MainCtrl'
     });
 
     $routeProvider.when('/profile', {
-        templateUrl: '/partials/profile', controller: 'ProfileCtrl'
+        templateUrl: '/partials/profile',
+        controller: 'ProfileCtrl'
     });
 
-    $routeProvider.when('/profileedit', {
-        templateUrl: '/partials/profileedit', controller: 'ProfileEditCtrl'
+    $routeProvider.when('/editprofile', {
+        templateUrl: '/partials/profileedit',
+        controller: 'ProfileEditCtrl'
     });
 
     $routeProvider.when('/dashboard', {
-        templateUrl: '/partials/dashboard', controller: 'DashboardCtrl'
+        templateUrl: '/partials/dashboard',
+        controller: 'DashboardCtrl'
     });
 
     $routeProvider.when('/courses', {
-        templateUrl: '/partials/coursesAll', controller: 'CourseCtrl'
+        templateUrl: '/partials/coursesAll',
+        controller: 'CourseCtrl'
     });
 
     $routeProvider.when('/singlecourse', {
-        templateUrl: '/partials/singleCourse', controller: 'SingleCourseCtrl'
+        templateUrl: '/partials/singleCourse',
+        controller: 'SingleCourseCtrl'
     });
 
     $routeProvider.when('/lecture', {
-        templateUrl: '/partials/lecture', controller: 'LectureCtrl'
+        templateUrl: '/partials/lecture',
+        controller: 'LectureCtrl'
     });
 
     $routeProvider.when('/register/:token', {
-        templateUrl: '/partials/register', controller: 'RegisterCtrl'
+        templateUrl: '/partials/register',
+        controller: 'RegisterCtrl'
     });
 
     $routeProvider.when('/admin', {
-        templateUrl: '/partials/admin', controller: 'AdminCtrl'
+        templateUrl: '/partials/admin',
+        controller: 'AdminCtrl'
     });
 
     $routeProvider.when('/404', {

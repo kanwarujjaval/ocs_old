@@ -1,29 +1,29 @@
-﻿<div class="profile" ng-controller="profileCtrl">
+﻿<div class="profile" ng-controller="ProfileCtrl">
 	<div class="wrap">
 		<div class="profile-value">
 			<label>First Name:</label>
-			<p>Test</p>
+			<p>{{user.firstName}}</p>
 		</div>
 		<br/>
 		<div class="profile-value">
 			<label>Last Name:</label>
-			<p>Test</p>
+			<p>{{user.lastName}}</p>
 		</div>
 		<br/>
 		<div class="profile-value">
 			<label>Email:</label>
-			<p>Test</p>	
+			<p>{{user.email}}</p>	
 		</div>
 		<br/>
 		<div class="profile-value">
 			<label>Username:</label>
-			<p>Test</p>
+			<p>{{user.username}}</p>
 		</div>
 		<br/>
 		<div class="profile-value">
-			<label>Status:</label>
-			<p>Teacher/Student</p>
+			<label>About</label>
+			<p>{{user.about}}</p>
 		</div>
-		<button class="btn-flat btn-CTA btn-profile" type="submit">Edit Profile</button>
+		<a href="/editprofile" class="btn-flat btn-CTA btn-profile">Edit Profile</a>
 	</div>
 </div>

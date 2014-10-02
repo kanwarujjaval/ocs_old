@@ -7,7 +7,7 @@
                 <small>Request invite on: </small> {{person.createdOn | date:'medium'}} |
                 <a ng-if="person.invitationSent"><i style="color:forestgreen;" class="fa fa-check-square-o fa-3x"></i></a>
                 <span ng-if="person.invitationSent">
-                    Invite Sent on <strong>{{person.invitationSentOn | date:'medium'}}</strong> | Signed Up on <strong>{{person.signeUpOn | date:'medium'}}</strong>
+                    Invite Sent on <strong>{{person.invitationSentOn | date:'medium'}}</strong> | Signed Up on <strong>{{person.signedUpOn | date:'medium'}}</strong>
                 </span>
                 <a ng-if="!person.invitationSent"><i style="color:darkred;" class="fa fa-minus-square-o fa-3x"></i></a>
                 <a ng-if="!person.invitationSent" class="btn-flat" ng-click="sendSignUpLink(person)"><small>Send sign up link</small></a>
