@@ -41,6 +41,7 @@
     "passport-local": "latest",
     "pdfkit": "^0.6.2",
     "socket.io": "latest",
+    "underscore": "^1.7.0",
     "validator": "latest"
   }
 }

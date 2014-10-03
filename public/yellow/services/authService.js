@@ -1,13 +1,13 @@
-﻿angular.module('yellow').factory('authService', function (apiService, idService, userService, apiService) {
+﻿angular.module('yellow').factory('authService', function (apiService, idService, /*userService,*/ apiService) {
     return {
         authenticateUser: function (user) {
             apiService.post(user, '/login')
                 .then(
                 function (response) {
-                    if (!response.errors) {
-                        var user = new userService();
-                        angular.extend(user, response.data.user);       //>>>>>??????
-                        idService.currentUser = user;
+                    if (response.loginSuccess) {
+                        //var user = new userService();
+                        //angular.extend(user, response.user);       //>>>>>??????
+                        idService.currentUser = response.user;
                         var loggedin = true;
                     }
                     else {

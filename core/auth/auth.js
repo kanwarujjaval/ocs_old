@@ -90,11 +90,12 @@ exports.loginAuthenticate = function (req, res, next) {
                 if (err) {
                     return next(err);
                 }
-                //res.redirect('/profile');
                 res.send({
                     "message": "Login Successful",
                     "name": "loginSuccess",
-                    "errors": null
+                    "loginSuccess": true,
+                    "errors": null,
+                    "user": user
                 });
             });
         }

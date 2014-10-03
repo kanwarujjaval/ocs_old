@@ -1,9 +1,9 @@
-﻿angular.module('yellow').factory('idService', function ($window, userService) {
+﻿angular.module('yellow').factory('idService', function ($window/*, userService*/) {
     var currentUser;
-    if (!!$window.bootstrappedUserObject) {
-        currentUser = new userService();
-        angular.extend(currentUser, $window.bootstrappedUserObject);
-    }
+    //if (!!$window.bootstrappedUserObject) {
+    //    currentUser = new userService();
+    //    angular.extend(currentUser, $window.bootstrappedUserObject);
+    //}
     return {
         currentUser: currentUser,
         isAuthenticated: function () {
