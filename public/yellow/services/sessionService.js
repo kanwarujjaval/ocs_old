@@ -7,7 +7,6 @@
     return {
         currentUser: currentUser,
         isAuthenticated: function () {
-            console.log(!!this.currentUser);
             return !!this.currentUser;
         },
         isAuthorized: function (role) {
