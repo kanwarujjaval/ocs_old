@@ -1,3 +1,3 @@
-﻿angular.module('yellow').controller('DashboardCtrl', function ($scope) {
+﻿yellow.controller('DashboardCtrl', function ($scope) {
 
 });

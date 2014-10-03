@@ -7,26 +7,39 @@
     <meta property="og:title" content="I just signed up for Open Cloud School beta" />
     <meta property="og:description" content="You can also sign up for Open CloudSchool beta by cicking here." />
     <meta property="og:image" content="http://opencloudschool.org/assets/fb-og.png" />
+
+
     <!--Style-->
     <link rel="stylesheet" href="/lib/normalize.css/normalize.css">
     <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog.css">
     <link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-default.css">
+
+
+
     <!--<link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-plain.css">-->
     <link rel="stylesheet" href="/style/headroom.css">
     <link rel="stylesheet" href="/style/loading-bar.css">
     <link rel="stylesheet" href="/style/style.css">
+
+
+
     <!--Angular and libs-->
     <script src="/lib/angular/angular.js"></script>
-    <script src="/lib/angular-resource/angular-resource.js"></script>
-    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/angular-route/angular-route.min.js"></script>
+
+
+
     <!--Angular Plugins-->
     <script src="/lib/angular-scroll/angular-scroll.min.js"></script>
-    <script src="/lib/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/lib/angular-loading-bar/build/loading-bar.min.js"></script>
     <script src="/lib/headroom/headroom.min.js"></script>
     <script src="/lib/headroom/angular.headroom.min.js"></script>
     <script src="/lib/responsive-nav.js"></script>
     <script src="/lib/ngDialog/js/ngDialog.min.js"></script>
     <script src="/yellow/yellow.js"></script>
+
+
+
     <!--Controllers-->
     <script src="/yellow/controllers/MainCtrl.js"></script>
     <script src="/yellow/controllers/InviteCtrl.js"></script>
@@ -38,23 +51,32 @@
     <script src="/yellow/controllers/ProfileCtrl.js"></script>
     <script src="/yellow/controllers/DashboardCtrl.js"></script>
     <script src="/yellow/controllers/AdminCtrl.js"></script>
+
+
     <!--Services-->
-    <script src="/yellow/services/CourseService.js"></script>
     <script src="/yellow/services/apiService.js"></script>
     <script src="/yellow/services/htmlService.js"></script>
     <script src="/yellow/services/dialogService.js"></script>
+    <script src="/yellow/services/authService.js"></script>
+    <script src="/yellow/services/sessionService.js"></script>
+
+
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+
+
+
     <!--<script src="/socket.io/socket.io.js"></script>-->
-
-
-    <!-- TEMP -->
-    <script src="/yellow/services/authService.js"></script>
-    <script src="/yellow/services/idService.js"></script>
-    <script src="/yellow/services/userService.js"></script>
-
     <title>Open Cloud School</title>
+
+    <!-- Current User Object  -->
+    <% if (user) { %>
+    <script>
+        window.ssu = <%- JSON.stringify(user) %>;
+    </script>
+    <% } %>
+
 </head>
 <body>
     <div id="top"></div>
@@ -72,6 +94,7 @@
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
                             <li><a href="#" class="link-under" ng-click="loginPopup()">Login</a></li>
                             <li><a href="/admin" class="link-under">Admin</a></li>
+                            <li ng-if="session.isAuthenticated()"><a href="#" class="link-under">LogOut</a></li>
                         </ul>
                         <ul ng-if="!onLanding" id="navig">
                             <li><a href="/" class="link-under" du-smooth-scroll offset="100">Home</a></li>

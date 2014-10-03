@@ -1,4 +1,9 @@
-﻿angular.module('yellow').controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope) {
+﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session) {
+    $scope.session = session;
+    if (session.currentUser) {
+        console.log("logged in");
+    }
+
     $scope.loginPopup = function () {
         ngDialog.open({
             template: '/partials/login.html',

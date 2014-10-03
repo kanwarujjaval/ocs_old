@@ -1,36 +1,7 @@
-﻿angular.module('yellow').factory('authService', function (apiService, idService, /*userService,*/ apiService) {
+﻿yellow.factory('authService', function ($q, $http,session) {
     return {
-        authenticateUser: function (user) {
-            apiService.post(user, '/login')
-                .then(
-                function (response) {
-                    if (response.loginSuccess) {
-                        //var user = new userService();
-                        //angular.extend(user, response.user);       //>>>>>??????
-                        idService.currentUser = response.user;
-                        var loggedin = true;
-                    }
-                    else {
-                        var loggedin = false;
-                    }
-                });
-            return loggedin;
-        },
-        logoutUser: function () {
-            var dfd = $q.defer();
-            $http.post('/logout', { logout: true }).then(function () {
-                idService.currentUser = undefined;
-                dfd.resolve();
-            });
-            return dfd.promise;
-        },
-        authorisedCurrentUserForRoute: function (role) {
-            if (idService.isAuthorised(role)) {
-                return true;
-            }
-            else {
-                return $q.reject('not authorised');
-            }
+        createUser: function (user) {
+            session.currentUser = user;
         }
     }
 });

@@ -1,4 +1,4 @@
-﻿angular.module('yellow').controller('AdminCtrl', function ($scope, apiService, dialogService) {
+﻿yellow.controller('AdminCtrl', function ($scope, apiService, dialogService) {
 
     apiService.get('/api/invites')
                .then(

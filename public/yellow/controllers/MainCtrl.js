@@ -1,3 +1,3 @@
-angular.module('yellow').controller('MainCtrl', function ($scope) {
+yellow.controller('MainCtrl', function ($scope) {
     
 });
