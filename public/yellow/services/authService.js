@@ -1,8 +1,11 @@
-﻿yellow.factory('authService', function ($rootScope,$q, $http, session, $location,dialogService) {
+﻿yellow.factory('authService', function ($q, session, dialogService) {
 
     return {
         createUser: function (user) {
             session.currentUser = user;
+        },
+        destroyUser: function () {
+            session.currentUser = undefined;
         },
         authorizeRole: function (role) {
             if (session.isAuthorized(role)) {

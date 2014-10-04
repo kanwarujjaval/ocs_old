@@ -93,7 +93,7 @@
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">About</a></li>
                             <li><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
                             <li ng-if="!session.isAuthenticated()"><a href="#" class="link-under" ng-click="loginPopup()">Login</a></li>
-                            <li ng-if="session.isAuthenticated()"><a href="#" class="link-under">LogOut</a></li>
+                            <li ng-if="session.isAuthenticated()"><a href="#" class="link-under" ng-click="logout()">LogOut</a></li>
                             <li><a href="/admin" class="link-under">Admin</a></li>
                         </ul>
                         <ul ng-if="!onLanding" id="navig">
