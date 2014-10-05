@@ -6,6 +6,7 @@ var invites = require('../api/invites');
 var lect = require('../api/lectures');
 
 module.exports = function (app) {
+
     /*
     Course routes
     */
