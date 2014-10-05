@@ -31,32 +31,38 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
 
     $routeProvider.when('/profile', {
         templateUrl: '/partials/profile',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/editprofile', {
         templateUrl: '/partials/profileedit',
-        controller: 'ProfileEditCtrl'
+        controller: 'ProfileEditCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/dashboard', {
         templateUrl: '/partials/dashboard',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/courses', {
         templateUrl: '/partials/coursesAll',
-        controller: 'CourseCtrl'
+        controller: 'CourseCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/singlecourse', {
         templateUrl: '/partials/singleCourse',
-        controller: 'SingleCourseCtrl'
+        controller: 'SingleCourseCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/lecture', {
         templateUrl: '/partials/lecture',
-        controller: 'LectureCtrl'
+        controller: 'LectureCtrl',
+        resolve: routeCheck.user
     });
 
     $routeProvider.when('/register/:token', {
@@ -67,7 +73,7 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
     $routeProvider.when('/admin', {
         templateUrl: '/partials/admin',
         controller: 'AdminCtrl',
-        resolve: routeCheck.user
+        resolve: routeCheck.admin
     });
 
     $routeProvider.when('/404', {

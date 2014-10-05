@@ -108,7 +108,7 @@ module.exports = function (app) {
     */
 
 
-    app.get('/partials/*', function(req, res) {
+    app.get('/partials/*', function (req, res) {
         res.render(viewPath + "/" + req.params[0]);
     });
 

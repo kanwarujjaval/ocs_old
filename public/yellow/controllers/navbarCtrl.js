@@ -1,5 +1,10 @@
 ﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session,authService,dialogService) {
     $scope.session = session;
+    if ($location.path() == "/") {
+        $scope.onLanding = true;
+    } else {
+        $scope.onLanding = false;
+    }
 
     $scope.loginPopup = function () {
         ngDialog.open({
