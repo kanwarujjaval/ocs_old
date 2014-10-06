@@ -76,7 +76,6 @@ module.exports = function (app) {
     /*
     Admin routes
     */
-    app.get('/api/admin', function (req, res) { res.send("Admin Panel") }); /* NOT BEING USED>>> I GUESS*/
 
     app.get('/api/invites', auth.isLoggedIn, auth.isAdmin ,invites.getInvites); /* get invites from db JSON*/
 

@@ -6,6 +6,32 @@ _(none)_
 
 --------------------
 
+## 4.9.0 (2014-09-30)
+* @deedos added a Brazilian Portuguese translation ([view](https://github.com/videojs/video.js/pull/1520))
+* @baloneysandwiches added a hasClass method ([view](https://github.com/videojs/video.js/pull/1464))
+* @mynameisstephen fixed an issue where slider event listeners were not being cleaned up ([view](https://github.com/videojs/video.js/pull/1475))
+* @alexrqs cleaned up the Spanish translation ([view](https://github.com/videojs/video.js/pull/1494))
+* @t2y added a Japanese translation ([view](https://github.com/videojs/video.js/pull/1497))
+* @chikathreesix fixed an issue where data-setup options could be missed ([view](https://github.com/videojs/video.js/pull/1514))
+* @seniorflexdeveloper added new translations and translation updates ([view](https://github.com/videojs/video.js/pull/1530))
+* @chikathreesix exported the videojs.Flash.embed method ([view](https://github.com/videojs/video.js/pull/1533))
+* @doublex fixed an issue with IE7 backwards compatibility ([view](https://github.com/videojs/video.js/pull/1542))
+* @mmcc made it possible to override the font-size of captions and subtitles ([view](https://github.com/videojs/video.js/pull/1547))
+* @philipgiuliani added an Italian translation ([view](https://github.com/videojs/video.js/pull/1550))
+* @twentyrogersc fixed the return value when setting the poster source ([view](https://github.com/videojs/video.js/pull/1552))
+* @heff updated to swf v4.5.0 to fix event issues ([view](https://github.com/videojs/video.js/pull/1554))
+* @rpless made the VolumeMenuButton volume more accesible via tab navigation ([view](https://github.com/videojs/video.js/pull/1519))
+* @mmcc added support for audio tags (html5 audio only) ([view](https://github.com/videojs/video.js/pull/1540))
+
+## 4.8.5 (2014-09-25)
+* Updated to the latest version of the swf to fix HLS playback ([view](https://github.com/videojs/video.js/pull/1538))
+
+## 4.8.4 (2014-09-23)
+* @gkatsev fixed isFullscreen reporting on iOS devices ([view](https://github.com/videojs/video.js/pull/1511))
+
+## 4.8.3 (2014-09-22)
+* @heff updated to the latest version of the SWF to 4.4.4 ([view](https://github.com/videojs/video.js/pull/1526))
+
 ## 4.8.2 (2014-09-16)
 * @gkatsev fixed an IE11 bug where pause was not fired when the video ends ([view](https://github.com/videojs/video.js/pull/1512))
 

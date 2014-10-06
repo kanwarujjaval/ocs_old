@@ -67,6 +67,9 @@ vjs.Player = vjs.Component.extend({
     // see enableTouchActivity in Component
     options.reportTouchActivity = false;
 
+    // Set isAudio based on whether or not an audio tag was used
+    this.isAudio(this.tag.nodeName.toLowerCase() === 'audio');
+
     // Run base component initializing with new options.
     // Builds the element through createEl()
     // Inits and embeds any child components in opts
@@ -78,6 +81,10 @@ vjs.Player = vjs.Component.extend({
       this.addClass('vjs-controls-enabled');
     } else {
       this.addClass('vjs-controls-disabled');
+    }
+
+    if (this.isAudio()) {
+      this.addClass('vjs-audio');
     }
 
     // TODO: Make this smarter. Toggle user state between touching/mousing
@@ -170,12 +177,24 @@ vjs.Player.prototype.dispose = function(){
 };
 
 vjs.Player.prototype.getTagSettings = function(tag){
-  var options = {
-    'sources': [],
-    'tracks': []
-  };
+  var tagOptions,
+      dataSetup,
+      options = {
+        'sources': [],
+        'tracks': []
+      };
 
-  vjs.obj.merge(options, vjs.getElementAttributes(tag));
+  tagOptions = vjs.getElementAttributes(tag);
+  dataSetup = tagOptions['data-setup'];
+
+  // Check if data-setup attr exists.
+  if (dataSetup !== null){
+    // Parse options JSON
+    // If empty string, make it a parsable json object.
+    vjs.obj.merge(tagOptions, vjs.JSON.parse(dataSetup || '{}'));
+  }
+
+  vjs.obj.merge(options, tagOptions);
 
   // Get tag children settings
   if (tag.hasChildNodes()) {
@@ -235,7 +254,13 @@ vjs.Player.prototype.createEl = function(){
   // ID will now reference player box, not the video tag
   attrs = vjs.getElementAttributes(tag);
   vjs.obj.each(attrs, function(attr) {
-    el.setAttribute(attr, attrs[attr]);
+    // workaround so we don't totally break IE7
+    // http://stackoverflow.com/questions/3653444/css-styles-not-applied-on-dynamic-elements-in-internet-explorer-7
+    if (attr == 'class') {
+      el.className = attrs[attr];
+    } else {
+      el.setAttribute(attr, attrs[attr]);
+    }
   });
 
   // Update tag id/class for use as HTML5 playback tech
@@ -486,7 +511,7 @@ vjs.Player.prototype.onPause = function(){
 /**
  * Fired when the current playback position has changed
  *
- * During playback this is fired every 15-250 milliseconds, depnding on the
+ * During playback this is fired every 15-250 milliseconds, depending on the
  * playback technology in use.
  * @event timeupdate
  */
@@ -1267,6 +1292,8 @@ vjs.Player.prototype.poster = function(src){
 
   // alert components that the poster has been set
   this.trigger('posterchange');
+
+  return this;
 };
 
 /**
@@ -1547,6 +1574,16 @@ vjs.Player.prototype.playbackRate = function(rate) {
     return 1.0;
   }
 
+};
+
+vjs.Player.prototype.isAudio_ = false;
+vjs.Player.prototype.isAudio = function(bool) {
+  if (bool !== undefined) {
+    this.isAudio_ = !!bool;
+    return this;
+  }
+
+  return this.isAudio_;
 };
 
 // Methods to add support for
