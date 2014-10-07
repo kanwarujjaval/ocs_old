@@ -47,11 +47,11 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
         resolve: routeCheck.user
     });
 
-    //$routeProvider.when('/course/create', {
-    //    templateUrl: '/partials/coursesAll',
-    //    controller: 'CreateCourseCtrl',
-    //    resolve: routeCheck.user
-    //});
+    $routeProvider.when('/course/create', {
+        templateUrl: '/partials/createCourse',
+        controller: 'CreateCourseCtrl',
+        resolve: routeCheck.user
+    });
 
     $routeProvider.when('/course/:id', {
         templateUrl: '/partials/singleCourse',
