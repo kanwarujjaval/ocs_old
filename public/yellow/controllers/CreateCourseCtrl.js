@@ -1,0 +1,2 @@
+﻿yellow.controller('CreateCourseCtrl', function () {
+});

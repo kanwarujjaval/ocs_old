@@ -1,4 +1,4 @@
-yellow = angular.module('yellow', ['angular-loading-bar','ngRoute', 'ngDialog', 'duScroll', 'headroom']).value('duScrollDuration', 2000);
+yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'headroom']).value('duScrollDuration', 2000);
 
 yellow.run(function ($rootScope, $location,dialogService) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
@@ -47,21 +47,15 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
         resolve: routeCheck.user
     });
 
-    $routeProvider.when('/courses', {
-        templateUrl: '/partials/coursesAll',
-        controller: 'CourseCtrl',
-        resolve: routeCheck.user
-    });
+    //$routeProvider.when('/course/create', {
+    //    templateUrl: '/partials/coursesAll',
+    //    controller: 'CreateCourseCtrl',
+    //    resolve: routeCheck.user
+    //});
 
-    $routeProvider.when('/singlecourse', {
+    $routeProvider.when('/course/:id', {
         templateUrl: '/partials/singleCourse',
         controller: 'SingleCourseCtrl',
-        resolve: routeCheck.user
-    });
-
-    $routeProvider.when('/lecture', {
-        templateUrl: '/partials/lecture',
-        controller: 'LectureCtrl',
         resolve: routeCheck.user
     });
 
