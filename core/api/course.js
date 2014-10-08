@@ -8,9 +8,9 @@
  *
  */
 
+
 var courseModel = require('../models/course').courseModel;
 var userModel = require('../models/user').userModel;
-var errHandler = require('../service/errorHandler.js');
 
 
 /*
@@ -23,10 +23,10 @@ var errHandler = require('../service/errorHandler.js');
 exports.getCourseAll = function (req, res, next) {
     courseModel.find({}, { 'content': 0 }, function (err, course) {
         if (err) {
-            res.send(500, err);
+            res.send(err);
         }
         if (!course) {
-            res.send(500, errHandler.err('Requested Resource Not Found'));
+            res.send('Requested Resource Not Found');
         }
         else {
             res.send(course);
@@ -48,10 +48,10 @@ exports.getCourseById = function (req, res, next) {
         .populate('_creator', { 'username': 1, 'courseCreated': 1, '_id': 0 })
         .exec(function (err, course) {
             if (err) {
-                res.send(500, err);
+                res.send(err);
             }
             if (!course) {
-                res.send(500, errHandler.err('Requested Resource Not Found'));
+                res.send('Requested Resource Not Found');
             }
             else {
                 res.send(course);
@@ -66,24 +66,26 @@ exports.getCourseById = function (req, res, next) {
  *  Creates course from the Post request
  * 
  *  requires authentication isLoggedIn
- * 
- *  To be implemented : Sanitization
+ *
  */
 
 exports.createCoursePost = function (req, res, next) {
     var newCourse = new courseModel();
-    newCourse._creator = req.session.passport.user;
-    //newCourse.name = req.body.title;
+    newCourse._creator = req.session.passport.user;         //Course creator user. _id
+    newCourse.name = req.body.name;                        //Course name
+    newCourse.category = req.body.category;                //Course category   
+    newCourse.description = req.body.description;           //Course Description
+    newCourse.tags = req.body.tags;                          // tags for the course [[ARRAY in json object]]
     newCourse.save(function (err) {
         if (err) {
-            res.send(500, err);
+            res.send(err);
         }
         courseModel.populate(newCourse, "_creator", function (err, course) {
             userModel.findOne({ 'email': newCourse._creator.email }, function (err, user) {
-                user.courseCreated.push(newCourse);
+                user.courseCreated.push(newCourse);         // push the course created to user's record
                 user.save(function (err) {
                     if (err) {
-                        res.send(500, err);
+                        res.send(err);
                     }
                     res.send(newCourse);
                 });
@@ -91,6 +93,19 @@ exports.createCoursePost = function (req, res, next) {
         });
     });
 }
+
+exports.addCourseModule = function (req, res, next) {
+    courseModel.findOne({ '_id': req.body.id }, function (err, course) {
+        course.module.push(req.body.module);         // push module to course module array
+        course.save(function (err,courseNew) {
+            if (err) {
+                res.send(err);
+            }
+            res.send(courseNew);
+        });
+    });
+}
+
 
 /*
  * DELETE
@@ -143,7 +158,7 @@ exports.editCoursePost = function (req, res, next) {
         course.updatedOn = Date.now();
         course.save(function (err, courseUpdated) {
             if (err) {
-                res.send(500, { msg: 'server Error' });
+                res.send(err);
             }
             else {
                 res.send(courseUpdated)

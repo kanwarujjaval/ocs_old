@@ -1,2 +1,5 @@
-﻿yellow.controller('CreateCourseCtrl', function () {
+﻿yellow.controller('CreateCourseCtrl', function ($scope) {
+    $scope.create = function (course) {
+        
+    }
 });

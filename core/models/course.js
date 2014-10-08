@@ -11,10 +11,18 @@ courseSchema = new schema({
     _creator: { type: schema.Types.ObjectId, ref: 'user' },
     createdOn: { type: Date, default: Date.now },
     updatedOn: { type: Date },
-    content: [{ type: String }],        //array of included videos/presentations/ any content
     tags: [{ type: String }],           //array of tags, to be limited to max 6 using custom logic
     category: { type: String },
-    rating: { type: String }
+    rating: { type: String },
+    module: [                          //array of included videos/presentations/ any content
+        {
+            title: { type: String },
+            createdOn: { type: Date, default:Date.now },
+            updateOn: { type: Date },
+            video: { type: String },
+            rating: {type:String}
+        }
+    ],                       
 });
 
 /*
