@@ -14,7 +14,32 @@
 </head>
 <body>
     <div id="top"></div>
-    <div ng-include src="'/partials/navbar.html'"></div>
+    <headroom tolerance='5' offset='400'>
+        <div ng-controller="NavbarCtrl">
+            <!--NAVBAR CONTROLLER-->
+            <header>
+                <div class="wrap">
+                    <img src="/assets/logo-w.svg">
+                    <nav class="nav-collapse">
+                        <ul id="navig">
+                            <li ng-if="onLanding"><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                            <li ng-if="onLanding"><a href="#features" class="link-under" du-smooth-scroll offset="0">Features</a></li>
+                            <li ng-if="onLanding"><a href="#" class="link-under" du-smooth-scroll offset="0">About</a></li>
+                            <li ng-if="onLanding"><a href="#" class="link-under" du-smooth-scroll offset="0">Contact</a></li>
+                            <li ng-if="!session.isAuthenticated()"><a href="#" class="link-under" ng-click="loginPopup()">Login</a></li>
+                            <li ng-if="session.isAuthenticated()"><a href="#" class="link-under" ng-click="logout()">LogOut</a></li>
+                            <li ng-if="!onLanding"><a href="/" class="link-under" du-smooth-scroll offset="100">Home</a></li>
+                            <li ng-if="!onLanding"><a href="/admin" class="link-under">Admin</a></li>
+                            <li ng-if="!onLanding"><a href="/dashboard" class="link-under">DashBoard</a></li>
+                            <!--Extreme Performance degradation.. remove so many ifs-->
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <script>var nav = responsiveNav(".nav-collapse", { animate: true, transition: 500, label: "Menu", insert: "before", customToggle: "", closeOnNavClick: true, openPos: "relative", navClass: "nav-collapse", navActiveClass: "js-nav-active", jsClass: "js", init: function () { }, open: function () { }, close: function () { } });</script>
+            <!--NAVBAR CONTROLLER-->
+        </div>
+    </headroom>
     <div class="content">
         <div class="ng-view"></div>
         <div ng-include src="'/partials/footer.html'"></div>
