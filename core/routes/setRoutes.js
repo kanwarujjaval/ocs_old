@@ -15,6 +15,9 @@ module.exports = function (app) {
 
     app.post('/api/course', auth.isLoggedIn, xCourse.createCoursePost);
 
+
+    app.post('/api/course/module', auth.isLoggedIn, xCourse.addCourseModule);
+
     /* Get All courses from database */
     app.get('/api/course/all', auth.isLoggedIn, xCourse.getCourseAll);
 

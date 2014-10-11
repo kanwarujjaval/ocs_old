@@ -26,7 +26,17 @@ exports.getCourseAll = function (req, res, next) {
             res.send(err);
         }
         if (!course) {
-            res.send('Requested Resource Not Found');
+            res.send({
+                "message": "Requested Resource Not Found",
+                "name": "notFound",
+                "errors": {
+                    "noResource": {
+                        "name": "noResource",
+                        "message": "Requested Resource could not be found",
+                        "path": req.originalUrl
+                    }
+                }
+            });
         }
         else {
             res.send(course);
@@ -85,9 +95,9 @@ exports.createCoursePost = function (req, res, next) {
                 user.courseCreated.push(newCourse);         // push the course created to user's record
                 user.save(function (err) {
                     if (err) {
-                        res.send(err);
+                        res.send(err);                      //format response
                     }
-                    res.send(newCourse);
+                    res.send(newCourse);                    //format response
                 });
             });
         });
@@ -97,11 +107,11 @@ exports.createCoursePost = function (req, res, next) {
 exports.addCourseModule = function (req, res, next) {
     courseModel.findOne({ '_id': req.body.id }, function (err, course) {
         course.module.push(req.body.module);         // push module to course module array
-        course.save(function (err,courseNew) {
+        course.save(function (err, courseNew) {
             if (err) {
-                res.send(err);
+                res.send(err);                      //format response
             }
-            res.send(courseNew);
+            res.send(courseNew);                    //format response
         });
     });
 }

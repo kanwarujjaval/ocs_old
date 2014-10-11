@@ -17,12 +17,13 @@ courseSchema = new schema({
     module: [                          //array of included videos/presentations/ any content
         {
             title: { type: String },
-            createdOn: { type: Date, default:Date.now },
+            createdOn: { type: Date, default: Date.now },
             updateOn: { type: Date },
             video: { type: String },
-            rating: {type:String}
+            rating: { type: String },
+            description: { type: String }
         }
-    ],                       
+    ],
 });
 
 /*

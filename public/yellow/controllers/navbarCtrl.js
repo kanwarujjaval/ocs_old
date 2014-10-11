@@ -1,4 +1,4 @@
-﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session,authService,dialogService) {
+﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session, authService, dialogService) {
     $scope.session = session;
     if ($location.path() == "/") {
         $scope.onLanding = true;

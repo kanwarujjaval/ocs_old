@@ -1,0 +1,21 @@
+﻿<div class="profile" ng-controller="CreateCourseCtrl">
+    <div class="wrap">
+        <div id="profile" class="profile emil-outer">
+            <form ng-submit="pushModule(module)" class="start-form">
+                <div class="profile-field">
+                    <label>Module Title</label>
+                    <input type="text" name="name" ng-model="module.title" placeholder="Title" required>
+                </div>
+                <div class="profile-field">
+                    <label>Module Video</label>
+                    <input type="text" name="name" ng-model="module.video" placeholder="Video" required>
+                </div>
+                <div class="profile-field">
+                    <label>Description</label>
+                    <input type="text" name="name" ng-model="module.description" placeholder="Description" required>
+                </div>
+                <button type="submit" class="btn-flat btn-cta btn-profile">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

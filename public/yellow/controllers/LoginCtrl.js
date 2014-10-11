@@ -9,18 +9,14 @@
                             authService.createUser(response.user);
                         }
                         else {
-                            dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Error Logging in</h3><p>Please Try again !</p><p>' + response.message + '</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="close()">Ok!</button></div>', true, 'LoginCtrl');
+                            dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Error Logging in</h3><p>Please Try again !</p><p>' + response.message + '</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog()">Ok!</button></div>', true, 'LoginCtrl');
                         }
                     },
 
                     function (response_error) {
-                        dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="close()">Ok!</button></div>', true, 'LoginCtrl');
+                        dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog()">Ok!</button></div>', true, 'LoginCtrl');
                     }
                 )
-    }
-
-    $scope.close = function () {
-            dialogService.closeAll();
     }
 
     $scope.gotodashboard = function () {

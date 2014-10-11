@@ -1,24 +1,28 @@
 yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'headroom']).value('duScrollDuration', 2000);
 
-yellow.run(function ($rootScope, $location,dialogService) {
+yellow.run(function ($rootScope, $location, dialogService) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
         if (rejection === 'noAuth') {
             dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message">Not authorized</div></div>', true, '');
-            $location.path((previous)?previous.originalPath:'/');
-        }        
-    })
+            $location.path((previous) ? previous.originalPath : '/');
+        }
+    });
 })
 
 var routeCheck = {
-    admin: {auth: function(authService) {
-        return authService.authorizeRole('admin')
-    }},
-    user: {auth: function(authService) {
-        return authService.authorize()
-    }}
+    admin: {
+        auth: function (authService) {
+            return authService.authorizeRole('admin')
+        }
+    },
+    user: {
+        auth: function (authService) {
+            return authService.authorize()
+        }
+    }
 }
 
-yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider) {
+yellow.config(function ($routeProvider, $locationProvider, cfpLoadingBarProvider) {
 
     cfpLoadingBarProvider.latencyThreshold = 0;
 
@@ -49,6 +53,12 @@ yellow.config(function ($routeProvider, $locationProvider,cfpLoadingBarProvider)
 
     $routeProvider.when('/course/create', {
         templateUrl: '/partials/createCourse',
+        controller: 'CreateCourseCtrl',
+        resolve: routeCheck.user
+    });
+
+    $routeProvider.when('/course/edit/:id', {
+        templateUrl: '/partials/createModule',
         controller: 'CreateCourseCtrl',
         resolve: routeCheck.user
     });
