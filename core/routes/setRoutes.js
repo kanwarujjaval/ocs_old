@@ -4,6 +4,7 @@ var profile = require('../api/profile');
 var user = require('../api/user');
 var invites = require('../api/invites');
 var lect = require('../api/lectures');
+var vimeo = require('../service/vimeo');
 
 module.exports = function (app) {
 
@@ -15,8 +16,13 @@ module.exports = function (app) {
 
     app.post('/api/course', auth.isLoggedIn, xCourse.createCoursePost);
 
-
+    /* Push A Module to Course*/
+    
     app.post('/api/course/module', auth.isLoggedIn, xCourse.addCourseModule);
+
+    /*Get Upload token to upload video to Vimeo*/
+
+    app.get('/api/course/module/genuptoken', auth.isLoggedIn, vimeo.getUploadToken);
 
     /* Get All courses from database */
     app.get('/api/course/all', auth.isLoggedIn, xCourse.getCourseAll);

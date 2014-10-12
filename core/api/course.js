@@ -104,6 +104,15 @@ exports.createCoursePost = function (req, res, next) {
     });
 }
 
+/*
+ * POST 
+ * 
+ *  Adds module to a created course
+ * 
+ *  requires authentication isLoggedIn
+ *
+ */
+
 exports.addCourseModule = function (req, res, next) {
     courseModel.findOne({ '_id': req.body.id }, function (err, course) {
         course.module.push(req.body.module);         // push module to course module array
@@ -115,7 +124,6 @@ exports.addCourseModule = function (req, res, next) {
         });
     });
 }
-
 
 /*
  * DELETE
@@ -182,7 +190,7 @@ exports.editCoursePost = function (req, res, next) {
 */
 
 exports.getCourseTest = function (req, res, next) {
-    res.send("You are only eligible for the test after completin the course");
+    res.send("You are only eligible for the test after completing the course");
 }
 
 /*

@@ -1,4 +1,4 @@
-﻿yellow.controller('CreateCourseCtrl', function ($scope, apiService, $location, dialogService, $routeParams) {
+﻿yellow.controller('CreateCourseCtrl', function ($scope, apiService, $location, dialogService, $routeParams, $upload) {
     $scope.create = function (course) {
         course.tags = course.tags.split(",");
         for (var i = 0; i < course.tags.length ; i++) {
@@ -43,5 +43,72 @@
                     }
                 )
     }
+
+    $scope.onFileSelect = function ($files) {
+        //$files: an array of files selected, each file has name, size, and type.
+        for (var i = 0; i < $files.length; i++) {
+            var file = $files[i];
+            var fileReader = new FileReader();
+            fileReader.readAsArrayBuffer(file);
+            fileReader.onload = function (e) {
+                $upload.http({
+                    url: 'upload',
+                    headers: { 'Content-Type': file.type },
+                    data: e.target.result
+                }).then(function (response) {
+                    console.log(data);
+                    console.log("sucess");
+                }, null, function (evt) {
+                    $scope.progress[index] = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log(parseInt(100.0 * evt.loaded / evt.total));
+                });
+            }
+            //$scope.upload = $upload.upload({
+            //    url: 'server/upload/url', 
+            //    method:'PUT',
+            //    //headers: {'header-key': 'header-value'},
+            //    data: { myObj: $scope.myModelObj },
+            //    file: file,
+            //}).progress(function (evt) {
+            //    console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+            //}).success(function (data, status, headers, config) {
+            //    // file is uploaded successfully
+            //    console.log(data);
+            //});
+            ////.error(...)
+            ////.then(success, error, progress); 
+            //// access or attach event listeners to the underlying XMLHttpRequest.
+            ////.xhr(function(xhr){xhr.upload.addEventListener(...)})
+        }
+    };
+
+    $scope.onFileSelect = function ($files) {
+        for (var i = 0; i < $files.length; i++) {
+            var file = $files[i];
+
+
+            $scope.upload = function () {
+                var fileReader = new FileReader();
+                fileReader.readAsArrayBuffer(file);
+                fileReader.onload = function (e) {
+                    $upload.http({
+                        url: 'upload',
+                        headers: { 'Content-Type': file.type },
+                        data: e.target.result
+                    }).then(function (response) {
+                        console.log(data);
+                        console.log("sucess");
+                    }, null, function (evt) {
+                        $scope.progress[index] = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log(parseInt(100.0 * evt.loaded / evt.total));
+                    });
+                }
+            }
+
+
+
+        }
+    };
+
 
 });

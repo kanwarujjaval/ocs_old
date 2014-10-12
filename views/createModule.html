@@ -10,6 +10,12 @@
                     <label>Module Video</label>
                     <input type="text" name="name" ng-model="module.video" placeholder="Video" required>
                 </div>
+
+                    <input type="file" ng-file-select="onFileSelect($files)">
+                    <div class="button" ng-file-select="onFileSelect($files)"></div>
+                    <button ng-click="upload.abort()">Cancel Upload</button>
+
+
                 <div class="profile-field">
                     <label>Description</label>
                     <input type="text" name="name" ng-model="module.description" placeholder="Description" required>

@@ -6,12 +6,13 @@ exports.getUploadToken = function (req, res, next) {
         url: 'https://api.vimeo.com/me/videos',
         headers: {
             Accept: "application/vnd.vimeo.*+json;version=3.2",
-            Authorization: 'bearer 65e4b5cfc44cb64668d49587be911a0c'
+            Authorization: 'bearer 65e4b5cfc44cb64668d49587be911a0c',
+            type: "streaming"
         }
     }, function optionalCallback(err, httpResponse, body) {
         if (err) {
-            return err;
+            res.send(err);
         }
-        return JSON.parse(httpResponse.body).upload_link_secure;
+        res.send(JSON.parse(httpResponse.body));
     });
 }
