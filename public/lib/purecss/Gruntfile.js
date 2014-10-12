@@ -67,14 +67,9 @@ grunt.initConfig({
                     'build/forms-r.css'
                 ]},
 
-                {'build/grids-nr.css': [
+                {'build/grids.css': [
                     'build/grids-core.css',
                     'build/grids-units.css'
-                ]},
-
-                {'build/grids.css': [
-                    'build/grids-nr.css',
-                    'build/grids-r.css'
                 ]},
 
                 {'build/menus-nr.css': [
@@ -101,7 +96,7 @@ grunt.initConfig({
 
                 {'build/<%= pkg.name %>-nr.css': [
                     'build/base.css',
-                    'build/grids-nr.css',
+                    'build/grids.css',
                     'build/buttons.css',
                     'build/forms-nr.css',
                     'build/menus-nr.css',
@@ -190,11 +185,41 @@ grunt.initConfig({
         }
     },
 
-    // -- Grid Units Config ----------------------------------------------------
+    // -- Pure Grids Units Config ----------------------------------------------
 
-    grid_units: {
-        dest : 'build/grids-units.css',
-        units: [5, 24]
+    pure_grids: {
+        default_units: {
+            dest: 'build/grids-units.css',
+
+            options: {
+                units: [5, 24]
+            }
+        },
+
+        responsive: {
+            dest: 'build/grids-responsive.css',
+
+            options: {
+                mediaQueries: {
+                    sm: 'screen and (min-width: 35.5em)',   // 568px
+                    md: 'screen and (min-width: 48em)',     // 768px
+                    lg: 'screen and (min-width: 64em)',     // 1024px
+                    xl: 'screen and (min-width: 80em)'      // 1280px
+                }
+            }
+        }
+    },
+
+    // -- Strip Media Queries Config -------------------------------------------
+
+    stripmq: {
+        all: {
+            files: {
+                //follows the pattern 'destination': ['source']
+                'build/grids-responsive-old-ie.css':
+                    ['build/grids-responsive.css']
+            }
+        }
     },
 
     // -- CSS Selectors Config -------------------------------------------------
@@ -235,6 +260,8 @@ grunt.loadNpmTasks('grunt-contrib-cssmin');
 grunt.loadNpmTasks('grunt-contrib-compress');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-css-selectors');
+grunt.loadNpmTasks('grunt-pure-grids');
+grunt.loadNpmTasks('grunt-stripmq');
 
 // Local tasks.
 grunt.loadTasks('tasks/');
@@ -245,7 +272,8 @@ grunt.registerTask('test', ['csslint']);
 grunt.registerTask('build', [
     'clean:build',
     'copy:build',
-    'grid_units',
+    'pure_grids',
+    'stripmq',
     'concat:build',
     'clean:build_res',
     'css_selectors:base',

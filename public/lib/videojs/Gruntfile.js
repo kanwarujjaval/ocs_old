@@ -1,9 +1,10 @@
 module.exports = function(grunt) {
-  var pkg, s3, semver, version, verParts, uglify;
+  var pkg, s3, semver, version, verParts, uglify, exec;
 
   semver = require('semver');
   pkg = grunt.file.readJSON('package.json');
   uglify = require('uglify-js');
+  exec = require('child_process').exec;
 
   try {
     s3 = grunt.file.readJSON('.s3config.json');
@@ -30,7 +31,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: pkg,
-
     build: {
       src: 'src/js/dependencies.js',
       options: {
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
       },
       tests: {
         src: ['build/files/combined.video.js', 'build/compiler/goog.base.js', 'src/js/exports.js', 'test/unit/*.js'],
-        externs: ['src/js/player.externs.js', 'src/js/media/flash.externs.js', 'test/qunit-externs.js'],
+        externs: ['src/js/player.externs.js', 'src/js/media/flash.externs.js', 'test/qunit-externs.js', 'test/sinon-externs.js'],
         dest: 'build/files/test.minified.video.js'
       }
     },
@@ -135,16 +135,115 @@ module.exports = function(grunt) {
       }
     },
     karma: {
+      // this config file applies to all following configs except if overwritten
       options: {
         configFile: 'test/karma.conf.js'
       },
-      dev: {
-        configFile: 'test/karma.conf.js',
-        autoWatch: true
+
+      // this only runs on PRs from the mainrepo on saucelabs
+      saucelabs: {
+        browsers: ['chrome_sl']
       },
-      ci: {
-        configFile: 'test/karma.conf.js',
-        autoWatch: false
+      chrome_sl: {
+        browsers: ['chrome_sl']
+      },
+      firefox_sl: {
+        browsers: ['firefox_sl']
+      },
+      safari_sl: {
+        browsers: ['safari_sl']
+      },
+      ipad_sl: {
+        browsers: ['ipad_sl']
+      },
+      android_sl: {
+        browsers: ['android_sl']
+      },
+      ie_sl: {
+        browsers: ['ie_sl']
+      },
+
+      // these are run locally on local browsers
+      dev: {
+        browsers: ['Chrome', 'Firefox', 'Safari']
+      },
+      chromecanary: {
+        browsers: ['ChromeCanary']
+      },
+      chrome: {
+        browsers: ['Chrome']
+      },
+      firefox: {
+        browsers: ['Firefox']
+      },
+      safari: {
+        browsers: ['Safari']
+      },
+      ie: {
+        browsers: ['IE']
+      },
+      phantomjs: {
+        browsers: ['PhantomJS']
+      },
+
+      // This is all the minified tests run locally on local browsers
+      minified_dev: {
+        browsers: ['Chrome', 'Firefox', 'Safari'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_chromecanary: {
+        browsers: ['ChromeCanary'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_chrome: {
+        browsers: ['Chrome'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_firefox: {
+        browsers: ['Firefox'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_safari: {
+        browsers: ['Safari'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_ie: {
+        browsers: ['IE'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+      minified_phantomjs: {
+        browsers: ['PhantomJS'],
+        configFile: 'test/karma.minified.conf.js'
+      },
+
+      // This is all the minified api tests run locally on local browsers
+      minified_api_dev: {
+        browsers: ['Chrome', 'Firefox', 'Safari'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_chromecanary: {
+        browsers: ['ChromeCanary'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_chrome: {
+        browsers: ['Chrome'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_firefox: {
+        browsers: ['Firefox'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_safari: {
+        browsers: ['Safari'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_ie: {
+        browsers: ['IE'],
+        configFile: 'test/karma.minified.api.conf.js'
+      },
+      minified_api_phantomjs: {
+        browsers: ['PhantomJS'],
+        configFile: 'test/karma.minified.api.conf.js'
       }
     },
     vjsdocs: {
@@ -153,6 +252,13 @@ module.exports = function(grunt) {
         dest: 'docs/api',
         options: {
           baseURL: 'https://github.com/videojs/video.js/blob/master/'
+        }
+      }
+    },
+    vjslanguages: {
+      defaults: {
+        files: {
+          'build/files/lang': ['lang/*.json']
         }
       }
     },
@@ -210,6 +316,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-videojs-languages');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
@@ -231,16 +338,101 @@ module.exports = function(grunt) {
   // grunt.loadTasks('./docs/tasks/');
   // grunt.loadTasks('../videojs-doc-generator/tasks/');
 
+  grunt.registerTask('pretask', ['jshint', 'less', 'vjslanguages', 'build', 'minify', 'usebanner']);
   // Default task.
-  grunt.registerTask('default', ['jshint', 'less', 'build', 'minify', 'usebanner', 'dist']);
+  grunt.registerTask('default', ['pretask', 'dist']);
   // Development watch task
-  grunt.registerTask('dev', ['jshint', 'less', 'build', 'qunit:source']);
-  grunt.registerTask('test', ['jshint', 'less', 'build', 'minify', 'usebanner', 'qunit']);
+  grunt.registerTask('dev', ['jshint', 'less', 'vjslanguages', 'build', 'qunit:source']);
+  grunt.registerTask('test-qunit', ['pretask', 'qunit']);
 
-  var fs = require('fs'),
-      gzip = require('zlib').gzip;
+  // The test task will run `karma:saucelabs` when running in travis,
+  // when running via a PR from a fork, it'll run qunit tests in phantom using
+  // karma otherwise, it'll run the tests in chrome via karma
+  // You can specify which browsers to build with by using grunt-style arguments
+  // or separating them with a comma:
+  //   grunt test:chrome:firefox  # grunt-style
+  //   grunt test:chrome,firefox  # comma-separated
+  grunt.registerTask('test', function() {
+    var tasks = this.args,
+        tasksMinified,
+        tasksMinifiedApi;
+
+    grunt.task.run(['pretask']);
+
+    if (process.env.TRAVIS_PULL_REQUEST !== 'false') {
+      grunt.task.run(['karma:phantomjs', 'karma:minified_phantomjs', 'karma:minified_api_phantomjs']);
+    } else if (process.env.TRAVIS) {
+      grunt.task.run(['karma:phantomjs', 'karma:minified_phantomjs', 'karma:minified_api_phantomjs']);
+      //Disabling saucelabs until we figure out how to make it run reliably.
+      //grunt.task.run([
+        //'karma:chrome_sl',
+        //'karma:firefox_sl',
+        //'karma:safari_sl',
+        //'karma:ipad_sl',
+        //'karma:android_sl',
+        //'karma:ie_sl'
+      //]);
+    } else {
+      // if we aren't running this in a CI, but running it manually, we can
+      // supply arguments to this task. These arguments are either colon (`:`)
+      // separated which is the default grunt separator for arguments, or they
+      // are comma (`,`) separated to make it easier.
+      // The arguments are the names of which browsers you want. It'll then
+      // make sure you have the `minified` and `minified_api` for those browsers
+      // as well.
+      if (tasks.length === 0) {
+        tasks.push('chrome');
+      }
+      if (tasks.length === 1) {
+        tasks = tasks[0].split(',');
+      }
+
+      tasksMinified = tasks.slice();
+      tasksMinifiedApi = tasks.slice();
+
+      tasksMinified = tasksMinified.map(function(task) {
+        return 'minified_' + task;
+      });
+
+      tasksMinifiedApi = tasksMinifiedApi.map(function(task) {
+        return 'minified_api_' + task;
+      });
+
+      tasks = tasks.concat(tasksMinified).concat(tasksMinifiedApi);
+      tasks = tasks.map(function(task) {
+        return 'karma:' + task;
+      });
+
+      grunt.task.run(tasks);
+    }
+  });
+
+  grunt.registerTask('saucelabs', function() {
+    var done = this.async();
+
+    if (this.args[0] == 'connect') {
+      exec('curl https://gist.githubusercontent.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash',
+        function(error, stdout, stderr) {
+          if (error) {
+            grunt.log.error(error);
+            return done();
+          }
+
+          grunt.verbose.error(stderr.toString());
+          grunt.verbose.writeln(stdout.toString());
+          grunt.task.run(['karma:saucelabs']);
+          done();
+      });
+    } else {
+      grunt.task.run(['karma:saucelabs']);
+      done();
+    }
+  });
+
+  var fs = require('fs');
 
   grunt.registerMultiTask('build', 'Building Source', function(){
+
     // Fix windows file path delimiter issue
     var i = sourceFiles.length;
     while (i--) {
@@ -254,6 +446,7 @@ module.exports = function(grunt) {
     });
     // Replace CDN version ref in js. Use major/minor version.
     combined = combined.replace(/GENERATED_CDN_VSN/g, version.majorMinor);
+
     grunt.file.write('build/files/combined.video.js', combined);
 
     // Copy over other files
@@ -353,6 +546,15 @@ module.exports = function(grunt) {
       }
     });
 
+    // Copy over language files
+    grunt.file.recurse('build/files/lang', function(absdir, rootdir, subdir, filename) {
+      // Block .DS_Store files
+      if ('filename'.substring(0,1) !== '.') {
+        grunt.file.copy(absdir, 'dist/cdn/lang/' + filename);
+        grunt.file.copy(absdir, 'dist/video-js/lang/' + filename);
+      }
+    });
+
     // ds_store files sometime find their way in
     if (grunt.file.exists('dist/video-js/.DS_Store')) {
       grunt.file['delete']('dist/video-js/.DS_Store');
@@ -368,7 +570,7 @@ module.exports = function(grunt) {
 
     // Replace font urls with CDN versions
     css = grunt.file.read('dist/cdn/video-js.css');
-    css = css.replace(/font\//g, '../f/2/');
+    css = css.replace(/font\//g, '../f/3/');
     grunt.file.write('dist/cdn/video-js.css', css);
 
     // Add CDN-specfic JS

@@ -58,9 +58,15 @@ vjs.Player.prototype.addTextTrack = function(kind, label, language, options){
   // TODO: Add a process to deterime the best track to show for the specific kind
   // Incase there are mulitple defaulted tracks of the same kind
   // Or the user has a set preference of a specific language that should override the default
-  // if (track.dflt()) {
-  //   this.ready(vjs.bind(track, track.show));
-  // }
+  // Note: The setTimeout is a workaround because with the html5 tech, the player is 'ready'
+ //  before it's child components (including the textTrackDisplay) have finished loading.
+  if (track.dflt()) {
+    this.ready(function(){
+      setTimeout(function(){
+        track.player().showTextTrack(track.id());
+      }, 0);
+    });
+  }
 
   return track;
 };
@@ -143,8 +149,6 @@ vjs.TextTrack = vjs.Component.extend({
     this.activeCues_ = [];
     this.readyState_ = 0;
     this.mode_ = 0;
-
-    this.player_.on('fullscreenchange', vjs.bind(this, this.adjustFontSize));
   }
 });
 
@@ -300,22 +304,6 @@ vjs.TextTrack.prototype.mode_;
  */
 vjs.TextTrack.prototype.mode = function(){
   return this.mode_;
-};
-
-/**
- * Change the font size of the text track to make it larger when playing in fullscreen mode
- * and restore it to its normal size when not in fullscreen mode.
- */
-vjs.TextTrack.prototype.adjustFontSize = function(){
-    if (this.player_.isFullScreen()) {
-        // Scale the font by the same factor as increasing the video width to the full screen window width.
-        // Additionally, multiply that factor by 1.4, which is the default font size for
-        // the caption track (from the CSS)
-        this.el_.style.fontSize = screen.width / this.player_.width() * 1.4 * 100 + '%';
-    } else {
-        // Change the font size of the text track back to its original non-fullscreen size
-        this.el_.style.fontSize = '';
-    }
 };
 
 /**
@@ -476,9 +464,9 @@ vjs.TextTrack.prototype.parseCues = function(srcContent) {
       };
 
       // Timing line
-      time = line.split(' --> ');
+      time = line.split(/[\t ]+/);
       cue.startTime = this.parseCueTime(time[0]);
-      cue.endTime = this.parseCueTime(time[1]);
+      cue.endTime = this.parseCueTime(time[2]);
 
       // Additional lines - Cue Text
       text = [];
@@ -545,8 +533,9 @@ vjs.TextTrack.prototype.parseCueTime = function(timeText) {
 vjs.TextTrack.prototype.update = function(){
   if (this.cues_.length > 0) {
 
-    // Get curent player time
-    var time = this.player_.currentTime();
+    // Get current player time, adjust for track offset
+    var offset = this.player_.options()['trackTimeOffset'] || 0;
+    var time = this.player_.currentTime() + offset;
 
     // Check if the new time is outside the time box created by the the last update.
     if (this.prevChange === undefined || time < this.prevChange || this.nextChange <= time) {
@@ -934,11 +923,10 @@ vjs.ChaptersButton.prototype.createMenu = function(){
 
   for (;i<j;i++) {
     track = tracks[i];
-    if (track.kind() == this.kind_ && track.dflt()) {
-      if (track.readyState() < 2) {
-        this.chaptersTrack = track;
+    if (track.kind() == this.kind_) {
+      if (track.readyState() === 0) {
+        track.load();
         track.on('loaded', vjs.bind(this, this.createMenu));
-        return;
       } else {
         chaptersTrack = track;
         break;
@@ -946,13 +934,15 @@ vjs.ChaptersButton.prototype.createMenu = function(){
     }
   }
 
-  var menu = this.menu = new vjs.Menu(this.player_);
-
-  menu.el_.appendChild(vjs.createEl('li', {
-    className: 'vjs-menu-title',
-    innerHTML: vjs.capitalize(this.kind_),
-    tabindex: -1
-  }));
+  var menu = this.menu;
+  if (menu === undefined) {
+    menu = new vjs.Menu(this.player_);
+    menu.contentEl().appendChild(vjs.createEl('li', {
+      className: 'vjs-menu-title',
+      innerHTML: vjs.capitalize(this.kind_),
+      tabindex: -1
+    }));
+  }
 
   if (chaptersTrack) {
     var cues = chaptersTrack.cues_, cue, mi;
@@ -971,6 +961,7 @@ vjs.ChaptersButton.prototype.createMenu = function(){
 
       menu.addChild(mi);
     }
+    this.addChild(menu);
   }
 
   if (this.items.length > 0) {

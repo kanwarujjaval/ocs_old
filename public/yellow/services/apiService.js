@@ -1,4 +1,4 @@
-yellow.factory('apiService', function ($resource, $q, $http) {
+yellow.factory('apiService', function ($q, $http) {
     return {
         post: function (data, path) {
             deferred = $q.defer();

@@ -11,7 +11,7 @@ exports.setVars = function () {
 
 exports.setPath = function () {
     rootPath = path.normalize(__dirname + '/../../');
-    viewPath = path.join(rootPath, "/views");
+    viewPath = path.join(rootPath, "views");
     publicPath = path.join(rootPath, "public");
 }
 

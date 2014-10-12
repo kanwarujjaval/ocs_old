@@ -4,8 +4,17 @@ var courseModel = require('../models/course.js').courseModel;
 /*
     /profile
 */
+/*
+ * 
+ * 
+ * NEED TO MAKE THIS QUERY EFFICIECNT BY ADDING SELECT PARAMETERS
+ * 
+ * 
+ * 
+ * 
+ */
 exports.getUser = function (req, res, next) {
-    userModel.findOne({ '_id': req.session.passport.user }, function (err, user) {
+    userModel.findOne({ '_id': req.session.passport.user }).exec(function (err, user) {
         res.send({
             id: user._id,
             username: user.username,

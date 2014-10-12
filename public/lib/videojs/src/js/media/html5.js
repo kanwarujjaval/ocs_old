@@ -13,26 +13,27 @@ vjs.Html5 = vjs.MediaTechController.extend({
   /** @constructor */
   init: function(player, options, ready){
     // volume cannot be changed from 1 on iOS
-    this.features['volumeControl'] = vjs.Html5.canControlVolume();
+    this['featuresVolumeControl'] = vjs.Html5.canControlVolume();
+
+    // just in case; or is it excessively...
+    this['featuresPlaybackRate'] = vjs.Html5.canControlPlaybackRate();
 
     // In iOS, if you move a video element in the DOM, it breaks video playback.
-    this.features['movingMediaElementInDOM'] = !vjs.IS_IOS;
+    this['movingMediaElementInDOM'] = !vjs.IS_IOS;
 
     // HTML video is able to automatically resize when going to fullscreen
-    this.features['fullscreenResize'] = true;
+    this['featuresFullscreenResize'] = true;
+
+    // HTML video supports progress events
+    this['featuresProgressEvents'] = true;
 
     vjs.MediaTechController.call(this, player, options, ready);
     this.setupTriggers();
 
     var source = options['source'];
 
-    // If the element source is already set, we may have missed the loadstart event, and want to trigger it.
-    // We don't want to set the source again and interrupt playback.
-    if (source && this.el_.currentSrc === source.src && this.el_.networkState > 0) {
-      player.trigger('loadstart');
-
-    // Otherwise set the source if one was provided.
-    } else if (source) {
+    // set the source if one was provided
+    if (source && this.el_.currentSrc !== source.src) {
       this.el_.src = source.src;
     }
 
@@ -60,6 +61,7 @@ vjs.Html5 = vjs.MediaTechController.extend({
 });
 
 vjs.Html5.prototype.dispose = function(){
+  vjs.Html5.disposeMediaElement(this.el_);
   vjs.MediaTechController.prototype.dispose.call(this);
 };
 
@@ -73,7 +75,7 @@ vjs.Html5.prototype.createEl = function(){
   // Check if this browser supports moving the element into the box.
   // On the iPhone video will break if you move the element,
   // So we have to create a brand new element.
-  if (!el || this.features['movingMediaElementInDOM'] === false) {
+  if (!el || this['movingMediaElementInDOM'] === false) {
 
     // If the original tag is still there, clone and remove it.
     if (el) {
@@ -82,10 +84,13 @@ vjs.Html5.prototype.createEl = function(){
       el = clone;
       player.tag = null;
     } else {
-      el = vjs.createEl('video', {
-        id:player.id() + '_html5_api',
-        className:'vjs-tech'
-      });
+      el = vjs.createEl('video');
+      vjs.setElementAttributes(el,
+        vjs.obj.merge(player.tagAttributes || {}, {
+          id:player.id() + '_html5_api',
+          'class':'vjs-tech'
+        })
+      );
     }
     // associate the player with the new tag
     el['player'] = player;
@@ -94,12 +99,14 @@ vjs.Html5.prototype.createEl = function(){
   }
 
   // Update specific tag settings, in case they were overridden
-  var attrs = ['autoplay','preload','loop','muted'];
-  for (var i = attrs.length - 1; i >= 0; i--) {
-    var attr = attrs[i];
-    if (player.options_[attr] !== null) {
-      el[attr] = player.options_[attr];
+  var settingsAttrs = ['autoplay','preload','loop','muted'];
+  for (var i = settingsAttrs.length - 1; i >= 0; i--) {
+    var attr = settingsAttrs[i];
+    var overwriteAttrs = {};
+    if (typeof player.options_[attr] !== 'undefined') {
+      overwriteAttrs[attr] = player.options_[attr];
     }
+    vjs.setElementAttributes(el, overwriteAttrs);
   }
 
   return el;
@@ -108,18 +115,28 @@ vjs.Html5.prototype.createEl = function(){
 
 // Make video events trigger player events
 // May seem verbose here, but makes other APIs possible.
+// Triggers removed using this.off when disposed
 vjs.Html5.prototype.setupTriggers = function(){
   for (var i = vjs.Html5.Events.length - 1; i >= 0; i--) {
-    vjs.on(this.el_, vjs.Html5.Events[i], vjs.bind(this.player_, this.eventHandler));
+    vjs.on(this.el_, vjs.Html5.Events[i], vjs.bind(this, this.eventHandler));
   }
 };
-// Triggers removed using this.off when disposed
 
-vjs.Html5.prototype.eventHandler = function(e){
-  this.trigger(e);
+vjs.Html5.prototype.eventHandler = function(evt){
+  // In the case of an error on the video element, set the error prop
+  // on the player and let the player handle triggering the event. On
+  // some platforms, error events fire that do not cause the error
+  // property on the video element to be set. See #1465 for an example.
+  if (evt.type == 'error' && this.error()) {
+    this.player().error(this.error().code);
 
-  // No need for media events to bubble up.
-  e.stopPropagation();
+  // in some cases we pass the event directly to the player
+  } else {
+    // No need for media events to bubble up.
+    evt.bubbles = false;
+
+    this.player().trigger(evt);
+  }
 };
 
 vjs.Html5.prototype.useNativeControls = function(){
@@ -192,6 +209,20 @@ vjs.Html5.prototype.supportsFullScreen = function(){
 
 vjs.Html5.prototype.enterFullScreen = function(){
   var video = this.el_;
+
+  if ('webkitDisplayingFullscreen' in video) {
+    this.one('webkitbeginfullscreen', vjs.bind(this, function(e) {
+      this.player_.isFullscreen(true);
+
+      this.one('webkitendfullscreen', vjs.bind(this, function(e) {
+        this.player_.isFullscreen(false);
+        this.player_.trigger('fullscreenchange');
+      }));
+
+      this.player_.trigger('fullscreenchange');
+    }));
+  }
+
   if (video.paused && video.networkState <= video.HAVE_METADATA) {
     // attempt to prime the video element for programmatic access
     // this isn't necessary on the desktop but shouldn't hurt
@@ -210,7 +241,13 @@ vjs.Html5.prototype.enterFullScreen = function(){
 vjs.Html5.prototype.exitFullScreen = function(){
   this.el_.webkitExitFullScreen();
 };
-vjs.Html5.prototype.src = function(src){ this.el_.src = src; };
+vjs.Html5.prototype.src = function(src) {
+  if (src === undefined) {
+    return this.el_.src;
+  } else {
+    this.el_.src = src;
+  }
+};
 vjs.Html5.prototype.load = function(){ this.el_.load(); };
 vjs.Html5.prototype.currentSrc = function(){ return this.el_.currentSrc; };
 
@@ -233,6 +270,11 @@ vjs.Html5.prototype.error = function(){ return this.el_.error; };
 vjs.Html5.prototype.seeking = function(){ return this.el_.seeking; };
 vjs.Html5.prototype.ended = function(){ return this.el_.ended; };
 vjs.Html5.prototype.defaultMuted = function(){ return this.el_.defaultMuted; };
+
+vjs.Html5.prototype.playbackRate = function(){ return this.el_.playbackRate; };
+vjs.Html5.prototype.setPlaybackRate = function(val){ this.el_.playbackRate = val; };
+
+vjs.Html5.prototype.networkState = function(){ return this.el_.networkState; };
 
 /* HTML5 Support Testing ---------------------------------------------------- */
 
@@ -264,6 +306,12 @@ vjs.Html5.canControlVolume = function(){
   var volume =  vjs.TEST_VID.volume;
   vjs.TEST_VID.volume = (volume / 2) + 0.1;
   return volume !== vjs.TEST_VID.volume;
+};
+
+vjs.Html5.canControlPlaybackRate = function(){
+  var playbackRate =  vjs.TEST_VID.playbackRate;
+  vjs.TEST_VID.playbackRate = (playbackRate / 2) + 0.1;
+  return playbackRate !== vjs.TEST_VID.playbackRate;
 };
 
 // HTML5 Feature detection and Device Fixes --------------------------------- //

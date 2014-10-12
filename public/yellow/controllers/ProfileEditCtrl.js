@@ -1,3 +1,3 @@
-﻿angular.module('yellow').controller('ProfileEditCtrl', function ($scope) {
+﻿yellow.controller('ProfileEditCtrl', function ($scope) {
 
 });

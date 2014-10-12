@@ -4,8 +4,10 @@ var profile = require('../api/profile');
 var user = require('../api/user');
 var invites = require('../api/invites');
 var lect = require('../api/lectures');
+var vimeo = require('../service/vimeo');
 
 module.exports = function (app) {
+
     /*
     Course routes
     */
@@ -13,6 +15,14 @@ module.exports = function (app) {
     /* POST Request to create a new course */
 
     app.post('/api/course', auth.isLoggedIn, xCourse.createCoursePost);
+
+    /* Push A Module to Course*/
+    
+    app.post('/api/course/module', auth.isLoggedIn, xCourse.addCourseModule);
+
+    /*Get Upload token to upload video to Vimeo*/
+
+    app.get('/api/course/module/genuptoken', auth.isLoggedIn, vimeo.getUploadToken);
 
     /* Get All courses from database */
     app.get('/api/course/all', auth.isLoggedIn, xCourse.getCourseAll);
@@ -75,29 +85,28 @@ module.exports = function (app) {
     /*
     Admin routes
     */
-    app.get('/api/admin', function (req, res) { res.send("Admin Panel") });
 
-    app.get('/api/invites', invites.getInvites);
+    app.get('/api/invites', auth.isLoggedIn, auth.isAdmin ,invites.getInvites); /* get invites from db JSON*/
 
     /*
     Authentication routes
     */
 
-    app.post('/sendtoken', auth.sendToken);
+    app.post('/sendtoken', auth.sendToken); /*   SEND TOKEN EMAIL FROM ADMIN PANEL   */
 
-    app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate);
+    app.post('/signup/:token', auth.verifyToken, auth.isInvited, auth.signupAuthenticate); /*   Signup Form for token   */
 
-    app.post('/login', auth.loginAuthenticate);
+    app.post('/login', auth.loginAuthenticate); /*   POST LOGIN DATA   */
 
-    app.post('/invite', auth.createInvite);
+    app.post('/invite', auth.createInvite);     /*  Post INVITE EMAIL   */
 
-    app.get('/logout', auth.isLoggedIn, function(req, res) {
+    app.get('/logout', auth.isLoggedIn, function(req, res) {        /* GET LOGOUT HAS TO CHANGED TO POST*/
         req.logout();
         res.redirect('/');
     });
 
 
-    app.get('/test', function (req, res) {
+    app.get('/test', function (req, res) {      /*  TEMP PATH TO BE REMOVED SOON    */
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         console.log(req);
         res.end("asd");
@@ -108,11 +117,13 @@ module.exports = function (app) {
     */
 
 
-    app.get('/partials/*', function(req, res) {
+    app.get('/partials/*', function (req, res) {
         res.render(viewPath + "/" + req.params[0]);
     });
 
     app.get('*', function (req, res) {
-        res.render('index');
+        res.render('index', {
+            user:req.user
+        });
     });
 }

@@ -25,6 +25,7 @@
     "font-awesome": "latest",
     "normalize.css": "latest",
     "angular-scroll": "latest",
-    "ngDialog": "~0.1.7"
+    "ngDialog": "~0.1.7",
+    "ng-file-upload": "~1.6.12"
   }
 }

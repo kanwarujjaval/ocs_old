@@ -20,7 +20,7 @@ exports.verifyToken = function (req, res, next) {
 }
 
 exports.sendToken = function (req, res, next) {
-    inviteAuth.inviteNow(req, res, next);
+    inviteAuth.sendToken(req, res, next);
 }
 
 /*
@@ -90,11 +90,12 @@ exports.loginAuthenticate = function (req, res, next) {
                 if (err) {
                     return next(err);
                 }
-                //res.redirect('/profile');
                 res.send({
                     "message": "Login Successful",
                     "name": "loginSuccess",
-                    "errors": null
+                    "loginSuccess": true,
+                    "errors": null,
+                    "user": user
                 });
             });
         }
@@ -178,40 +179,42 @@ exports.isCourseCreator = function (req, res, next) {
  * 
  */
 exports.isAdmin = function (req, res, next) {
-    if (validator.isEmail(req.body.email)) {
-        userModel.findOne({ '_id': req.user._id }, function (err, invitation) {
-            if (err) {
-                res.send(err);
-            }
-            if (invitation) {
-                if (invitation.invited) {
-                    return next();
-                }
-                res.send({
-                    "message": "Invitation Expired or not activated",
-                    "name": "inactiveInvite",
-                    "errors": {
-                        "inactive": {
-                            "name": "inactiveInvite",
-                            "message": "invitation has not been activated",
-                            "path": req.originalUrl
-                        }
-                    }
-                });
+    userModel.findOne({ '_id': req.user._id }, function (err, user) {
+        if (err) {
+            res.send(err);
+        }
+
+        if (user) {
+            if (user.roles.indexOf('admin') > -1) {
+                return next();
             }
             else {
                 res.send({
-                    "message": "Invite code does not match the email used",
-                    "name": "emailMatchFailed",
+                    "message": "You need admin access to view this page",
+                    "name": "notAdmin",
                     "errors": {
-                        "emailMatch": {
-                            "name": "emailMatchFail",
-                            "message": "The email used does not match the associated email for the invite code used.",
+                        "notAdmin": {
+                            "name": "notAdmin",
+                            "message": "You do not have admin access to view this page",
                             "path": req.originalUrl
                         }
                     }
                 });
             }
-        });
-    }
+        }
+
+        else {
+            res.send({
+                "message": "Invalid User ID",
+                "name": "invalidId",
+                "errors": {
+                    "ivalidId": {
+                        "name": "invalidId",
+                        "message": "we cannot find your user ID in our database",
+                        "path": req.originalUrl
+                    }
+                }
+            });
+        }
+    });
 };

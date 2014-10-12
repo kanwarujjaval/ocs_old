@@ -9,7 +9,8 @@ inviteSchema = new schema({
     invited: { type: Boolean, default: false },
     createdOn: { type: Date, default: Date.now },
     invitationSent: { type: Boolean, default: false },
-    invitationSentOn: { type: Date }
+    invitationSentOn: { type: Date },
+    signedUpOn: { type: Date }
 });
 
 inviteSchema.methods.genToken = function () {

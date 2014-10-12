@@ -1,8 +1,8 @@
-﻿<div class="dashboard" ng-controller="dashboardCtrl">
+﻿<div class="dashboard" ng-controller="DashboardCtrl">
   <div class="content">
     <div class="dashboard-widget-sidebar">
      <img class="profile-picture" src="/assets/profile-picture.png"><br>
-     <div class="profile"><a class="dashboard-link" href="#">Profile</a></div><br>
+     <div class="profile"><a class="dashboard-link" href="/profile">Profile</a></div><br>
      <div class="messages"><a class="dashboard-link" href="#">Messages</a><br></div>
      <div class="friends"><a class="dashboard-link" href="#">friends</a><br></div>
      <div class="settings"><a class="dashboard-link" href="#">My Subscriptions</a><br></div>
@@ -12,12 +12,11 @@
    </div>
    <div class="dashboard-head">
     <div class="wrap">
-      <a href="#">Create Course</a>
+        <a href="/course/create">Create Course</a>
       <a href="#">Manage Your Courses</a>
       <a href="#">My Cloud School</a>
       <div class="notification-area">
         <a href="#" alt="notifications" class="notifications"></a>
-        <a href="#" alt="Messages" class="messages"></a>
       </div>
     </div>
   </div>
