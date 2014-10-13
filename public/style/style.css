@@ -472,7 +472,7 @@ header .wrap {
 
 .details{
 	float: left;
-	background: #eef2f5;
+	background: ;
 	padding: 10% 0;
 	width: 100%;
 }
@@ -618,21 +618,29 @@ a:hover.tooltips span {
 	width: 100%;
 }
 
+.contact-home .col {
+
+}
+
 .contact-home input,
 .contact-home textarea {
-	float: left;
-	margin: 5px;
+	margin: 10px;
+	max-width: 600px;
 	min-width: 200px;
 	padding: 15px;
+	width: 90%;
 }
 
-.contact-home input {
-	width: calc(25% - 42px);
+.contact-input {
+	float: left;
+	max-width: 50%;
+	width: calc(50% - 30px)
 }
 
 .contact-home textarea {
-	float: right;
-	width: calc(50% - 42px);
+	min-width: 500px;
+	padding: 20px 15px;
+	width: calc(50% - 30px);
 }
 
 .contact-home .btn-flat {
@@ -644,8 +652,9 @@ a:hover.tooltips span {
 }
 
 .contact-home .contact-button-wrap {
+	float: left;
 	text-align: center;
-	width: calc(50% - -84px)
+	width: 100%;
 }
 
 /* Profile page */
