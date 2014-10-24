@@ -1,19 +1,18 @@
-Open Cloud School {{yellow}}
+Open Cloud School
 =================
 
-`{{Team.name}}`
+Vismay Studios
 ----------------
-
-* School and course management along with student and classes management and examinations.
-* Online open to all course sharing application
 
 _________________________________________________________________________________________________
 
-#Version info
+[![Build Status](https://magnum.travis-ci.com/kanwarujjaval/ocs.svg?token=hakLiwqu3NEgygsmisxf&branch=master)](https://magnum.travis-ci.com/kanwarujjaval/ocs)
+
+##Version info
 
 Current Version in Production - `NA`
 
-Current Version in Development - `0.0.0-dev`
+Current Version in Development - `0.0.1-dev`
 
 MongoDB version - `2.4 / 2.6`
 
@@ -30,25 +29,7 @@ AngularJS Version - `1.2.x`
 
 _________________________________________________________________________________________________
 
-
-#Setting up
-
-* To run the application install NodeJs `http://nodejs.org`
-
-* Install MongoDB and run the Mongo Daemon
-
-* Setup Environment Variable `NODE_ENV` with value `development`
-(For Windows - MyComputer > Properties > Advanced System Settings > Environemnt Variables In system Variables Create a new Variable named as `NODE_ENV` with value `development`)
-
-* Install npm Dependencies by running the command `npm install` in the project directory.
-
-* Run command `node server.js` to start the server.
-
-`Access the server at localhost on port 8080`
-----------------------------------------------
-_________________________________________________________________________________________________
-
-#Project Structure
+##Project Structure
 
 
 * `/views/`
@@ -72,69 +53,5 @@ ________________________________________________________________________________
     - `models` - contains the database models
     - `routes` - contains the api routes
     - `services` - contains the api services
-
-_________________________________________________________________________________________________
-
-#API
-
-Status codes
-    0 - Not setup
-    1 - Setup
-    2 - Incomplete Working
-    3 - All features working
-    4 - Completed
-    5 - Stable
-
-Basic API
-----------
-
-* `/invite`  -  Create new Invite Token
-    - Type - POST
-    - Data 
-        - email as request body
-    - Status - 3
-
-
-* `/login`  -  Create a session
-    - Type - POST
-    - Data 
-        - email as request body
-        - password as request body
-    - Status - 3
-
-
-* `/signup/:invitation_token`  -  Get a signup page
-    - Type - GET
-    - Status - 2
-    - Cannot be styled as a form is returned
-
-
-* `/signup`  -  Create a new user
-    - Type - POST
-    - Data 
-        - email as request body which should be same as invitation email
-        - password as request body
-        - username as request body
-    - Status - 3
-
-
-* `/logout`  -  Destroy session
-    - Type - GET
-    - Status - 3
-    - Redirects  to `/`
-
-
-Course API
-----------
-
-* `/api/course`  -  Create new Course
-    - Type - POST
-    - Data - na
-    - Status - 1
-
-
-* `/api/course/all`  -  Get all courses
-    - Type - GET
-    - Status - 2
 
 _________________________________________________________________________________________________
