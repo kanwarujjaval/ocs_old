@@ -1,4 +1,4 @@
-﻿/*************************************************/
+/*************************************************/
 
 /*                    Resets                     */
 
@@ -489,7 +489,7 @@ header .wrap {
 
 .details{
 	float: left;
-	background: ;
+	background: #fff;
 	padding: 10% 0;
 	width: 100%;
 }
@@ -500,6 +500,30 @@ header .wrap {
 	font-family: 'Roboto', sans-serif;
 	padding: 20px 20px 0px 20px;
 	list-style-type:none;
+}
+
+.detail-one h2 {
+	font-size: 50px;
+	font-weight: 300;
+	margin: 6% 0 50px 0;
+}
+
+.detail-one p {
+	font-size: 22px;
+	font-weight: 300;
+	margin: 0 0 12% 0;
+	max-width: 800px;
+}
+
+
+.detail-one h2:nth-of-type(2n+1),
+.detail-one p:nth-of-type(2n) {
+	float: left;
+}
+
+.detail-one p:nth-of-type(2n+1),
+.detail-one h2:nth-of-type(2n) {
+	float: right;
 }
 
 .detail-points h3 {
@@ -573,7 +597,7 @@ a.tooltips {
 
 a.tooltips span {
 	position: absolute;
-	width:200px;
+	width: 200px;
 	color: #FFFFFF;
 	background: #000000;
 	line-height: 30px;
@@ -597,7 +621,7 @@ a.tooltips span:after {
 a:hover.tooltips span {
 	visibility: visible;
 	opacity: 0.8;
-	top: -209px;
+	top: -235px;
 	left: 50%;
 	margin-left: -100px;
 	z-index: 999;
@@ -629,9 +653,11 @@ a:hover.tooltips span {
 /* contact home */
 
 .contact-home {
+	background-color: #fff;
 	float: left;
 	margin: 0 auto;
-	padding: 5% 0;
+	margin-top: -100px;
+	padding: 3% 0 4% 0;
 	width: 100%;
 }
 
@@ -641,6 +667,7 @@ a:hover.tooltips span {
 
 .contact-home input,
 .contact-home textarea {
+	background-color: #fafafa;
 	margin: 10px;
 	max-width: 600px;
 	min-width: 200px;
@@ -656,6 +683,7 @@ a:hover.tooltips span {
 
 .contact-home textarea {
 	min-width: 500px;
+	max-height: 150px;
 	padding: 20px 15px;
 	width: calc(50% - 30px);
 }
@@ -1156,7 +1184,7 @@ a:hover.tooltips span {
 	border: 1px solid #fff;
 	color: #fff;
 	margin: 10px auto;
-	padding: 25px 0;
+	padding: 18px 100px;
 }
 
 .btn-3:hover {
@@ -1176,7 +1204,7 @@ a:hover.tooltips span {
 
 .btn-3e {
 	float: none;
-	padding: 20px 140px 20px 75px;
+	padding: 18px 140px 18sapx 75px;
 	overflow: hidden;
 }
 
