@@ -490,7 +490,7 @@ header .wrap {
 .details{
 	float: left;
 	background: #fff;
-	padding: 10% 0;
+	padding: 10% 0 0 0;
 	width: 100%;
 }
 
@@ -653,10 +653,10 @@ a:hover.tooltips span {
 /* contact home */
 
 .contact-home {
-	background-color: #fff;
+	background-color: #fafafa;
 	float: left;
 	margin: 0 auto;
-	margin-top: -100px;
+	margin-top: 0;
 	padding: 3% 0 4% 0;
 	width: 100%;
 }
@@ -1184,7 +1184,7 @@ a:hover.tooltips span {
 	border: 1px solid #fff;
 	color: #fff;
 	margin: 10px auto;
-	padding: 18px 100px;
+	padding: 25px 0;
 }
 
 .btn-3:hover {
@@ -1197,14 +1197,14 @@ a:hover.tooltips span {
 	height: 100%;
 	left: 0;
 	top: 0;
-	line-height: 3;
+	line-height: 2.5;
 	font-size: 140%;
 	width: 60px;
 }
 
 .btn-3e {
 	float: none;
-	padding: 18px 140px 18sapx 75px;
+	padding: 18px 140px 18px 75px;
 	overflow: hidden;
 }
 
