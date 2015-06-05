@@ -13,7 +13,6 @@ before_script:
   - npm install -g gulp
 script:
   - gulp test
-  - node server.js
 deploy:
   provider: openshift
   user: kanwarujjavalsingh@gmail.com
