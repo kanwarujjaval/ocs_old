@@ -72,15 +72,12 @@ grunt.initConfig({
                     'build/grids-units.css'
                 ]},
 
-                {'build/menus-nr.css': [
-                    'build/menus-core.css',
-                    'build/menus.css',
-                    'build/menus-paginator.css'
-                ]},
-
                 {'build/menus.css': [
-                    'build/menus-nr.css',
-                    'build/menus-r.css'
+                    'build/menus-core.css',
+                    'build/menus-horizontal.css',
+                    'build/menus-dropdown.css',
+                    'build/menus-scrollable.css',
+                    'build/menus-skin.css',
                 ]},
 
                 // Rollups
@@ -99,7 +96,7 @@ grunt.initConfig({
                     'build/grids.css',
                     'build/buttons.css',
                     'build/forms-nr.css',
-                    'build/menus-nr.css',
+                    'build/menus.css',
                     'build/tables.css'
                 ]}
             ]
@@ -175,7 +172,7 @@ grunt.initConfig({
                     'Pure v<%= pkg.version %>',
                     'Copyright 2014 Yahoo! Inc. All rights reserved.',
                     'Licensed under the BSD License.',
-                    'https://github.com/yui/pure/blob/master/LICENSE.md',
+                    'https://github.com/yahoo/pure/blob/master/LICENSE.md',
                     '*/\n'
                 ].join('\n')
             },

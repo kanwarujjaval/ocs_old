@@ -19,6 +19,8 @@ captions selection menus.
   - [addClass](#addclass-classtoadd-) _`inherited`_
   - [buildCSSClass](#buildcssclass) _`inherited`_
   - [children](#children) _`inherited`_
+  - [clearInterval](#clearinterval-intervalid-) _`inherited`_
+  - [clearTimeout](#cleartimeout-timeoutid-) _`inherited`_
   - [contentEl](#contentel) _`inherited`_
   - [dimensions](#dimensions-width-height-) _`inherited`_
   - [dispose](#dispose) _`inherited`_
@@ -33,14 +35,16 @@ captions selection menus.
   - [init](#init-player-options-ready-) _`inherited`_
   - [initChildren](#initchildren) _`inherited`_
   - [name](#name) _`inherited`_
-  - [off](#off-type-fn-) _`inherited`_
-  - [on](#on-type-fn-) _`inherited`_
-  - [one](#one-type-fn-) _`inherited`_
+  - [off](#off-first-second-third-) _`inherited`_
+  - [on](#on-first-second-third-) _`inherited`_
+  - [one](#one-first-second-third-) _`inherited`_
   - [options](#options-obj-) _`inherited`_
   - [player](#player) _`inherited`_
   - [ready](#ready-fn-) _`inherited`_
   - [removeChild](#removechild-component-) _`inherited`_
   - [removeClass](#removeclass-classtoremove-) _`inherited`_
+  - [setInterval](#setinterval-fn-interval-) _`inherited`_
+  - [setTimeout](#settimeout-fn-timeout-) _`inherited`_
   - [show](#show) _`inherited`_
   - [trigger](#trigger-event-) _`inherited`_
   - [triggerReady](#triggerready) _`inherited`_
@@ -83,7 +87,7 @@ captions selection menus.
 ##### RETURNS: 
 * `vjs.Component` The child component (created by this process if a string was used)
 
-_inherited from_: [src/js/component.js#L356](https://github.com/videojs/video.js/blob/master/src/js/component.js#L356)
+_inherited from_: [src/js/component.js#L362](https://github.com/videojs/video.js/blob/master/src/js/component.js#L362)
 
 ---
 
@@ -96,7 +100,7 @@ _inherited from_: [src/js/component.js#L356](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L682](https://github.com/videojs/video.js/blob/master/src/js/component.js#L682)
+_inherited from_: [src/js/component.js#L826](https://github.com/videojs/video.js/blob/master/src/js/component.js#L826)
 
 ---
 
@@ -116,7 +120,7 @@ _defined in_: [src/js/menu.js#L18](https://github.com/videojs/video.js/blob/mast
 ##### RETURNS: 
 * `String` The constructed class name
 
-_inherited from_: [src/js/component.js#L515](https://github.com/videojs/video.js/blob/master/src/js/component.js#L515)
+_inherited from_: [src/js/component.js#L536](https://github.com/videojs/video.js/blob/master/src/js/component.js#L536)
 
 ---
 
@@ -128,7 +132,33 @@ _inherited from_: [src/js/component.js#L515](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `Array` The children
 
-_inherited from_: [src/js/component.js#L290](https://github.com/videojs/video.js/blob/master/src/js/component.js#L290)
+_inherited from_: [src/js/component.js#L296](https://github.com/videojs/video.js/blob/master/src/js/component.js#L296)
+
+---
+
+### clearInterval( intervalId )
+> Clears an interval and removes the associated dispose listener
+
+##### PARAMETERS: 
+* __intervalId__ `Number` The id of the interval to clear
+
+##### RETURNS: 
+* `Number` Returns the interval ID
+
+_inherited from_: [src/js/component.js#L1223](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1223)
+
+---
+
+### clearTimeout( timeoutId )
+> Clears a timeout and removes the associated dispose listener
+
+##### PARAMETERS: 
+* __timeoutId__ `Number` The id of the timeout to clear
+
+##### RETURNS: 
+* `Number` Returns the timeout ID
+
+_inherited from_: [src/js/component.js#L1185](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1185)
 
 ---
 
@@ -139,7 +169,7 @@ _inherited from_: [src/js/component.js#L290](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `Element` 
 
-_inherited from_: [src/js/component.js#L233](https://github.com/videojs/video.js/blob/master/src/js/component.js#L233)
+_inherited from_: [src/js/component.js#L239](https://github.com/videojs/video.js/blob/master/src/js/component.js#L239)
 
 ---
 
@@ -164,14 +194,14 @@ _defined in_: [src/js/menu.js#L26](https://github.com/videojs/video.js/blob/mast
 ##### RETURNS: 
 * `vjs.Component` The component
 
-_inherited from_: [src/js/component.js#L794](https://github.com/videojs/video.js/blob/master/src/js/component.js#L794)
+_inherited from_: [src/js/component.js#L938](https://github.com/videojs/video.js/blob/master/src/js/component.js#L938)
 
 ---
 
 ### dispose()
 > Dispose of the component and all child components
 
-_inherited from_: [src/js/component.js#L78](https://github.com/videojs/video.js/blob/master/src/js/component.js#L78)
+_inherited from_: [src/js/component.js#L84](https://github.com/videojs/video.js/blob/master/src/js/component.js#L84)
 
 ---
 
@@ -183,7 +213,7 @@ _inherited from_: [src/js/component.js#L78](https://github.com/videojs/video.js/
 ##### RETURNS: 
 * `Element` 
 
-_inherited from_: [src/js/component.js#L214](https://github.com/videojs/video.js/blob/master/src/js/component.js#L214)
+_inherited from_: [src/js/component.js#L220](https://github.com/videojs/video.js/blob/master/src/js/component.js#L220)
 
 ---
 
@@ -210,7 +240,7 @@ _inherited from_: [src/js/component.js#L214](https://github.com/videojs/video.js
 > whenever touch events happen, and this can be turned off by components that
 > want touch events to act differently.
 
-_inherited from_: [src/js/component.js#L976](https://github.com/videojs/video.js/blob/master/src/js/component.js#L976)
+_inherited from_: [src/js/component.js#L1124](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1124)
 
 ---
 
@@ -223,7 +253,7 @@ _inherited from_: [src/js/component.js#L976](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L324](https://github.com/videojs/video.js/blob/master/src/js/component.js#L324)
+_inherited from_: [src/js/component.js#L330](https://github.com/videojs/video.js/blob/master/src/js/component.js#L330)
 
 ---
 
@@ -236,7 +266,7 @@ _inherited from_: [src/js/component.js#L324](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L307](https://github.com/videojs/video.js/blob/master/src/js/component.js#L307)
+_inherited from_: [src/js/component.js#L313](https://github.com/videojs/video.js/blob/master/src/js/component.js#L313)
 
 ---
 
@@ -249,7 +279,7 @@ _inherited from_: [src/js/component.js#L307](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L672](https://github.com/videojs/video.js/blob/master/src/js/component.js#L672)
+_inherited from_: [src/js/component.js#L816](https://github.com/videojs/video.js/blob/master/src/js/component.js#L816)
 
 ---
 
@@ -269,7 +299,7 @@ _inherited from_: [src/js/component.js#L672](https://github.com/videojs/video.js
 * `vjs.Component` This component, when setting the height
 * `Number|String` The height, when getting
 
-_inherited from_: [src/js/component.js#L783](https://github.com/videojs/video.js/blob/master/src/js/component.js#L783)
+_inherited from_: [src/js/component.js#L927](https://github.com/videojs/video.js/blob/master/src/js/component.js#L927)
 
 ---
 
@@ -279,7 +309,7 @@ _inherited from_: [src/js/component.js#L783](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L713](https://github.com/videojs/video.js/blob/master/src/js/component.js#L713)
+_inherited from_: [src/js/component.js#L857](https://github.com/videojs/video.js/blob/master/src/js/component.js#L857)
 
 ---
 
@@ -291,7 +321,7 @@ _inherited from_: [src/js/component.js#L713](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `String` 
 
-_inherited from_: [src/js/component.js#L252](https://github.com/videojs/video.js/blob/master/src/js/component.js#L252)
+_inherited from_: [src/js/component.js#L258](https://github.com/videojs/video.js/blob/master/src/js/component.js#L258)
 
 ---
 
@@ -340,7 +370,7 @@ _inherited from_: [src/js/component.js#L41](https://github.com/videojs/video.js/
 >       ]
 >     });
 
-_inherited from_: [src/js/component.js#L475](https://github.com/videojs/video.js/blob/master/src/js/component.js#L475)
+_inherited from_: [src/js/component.js#L481](https://github.com/videojs/video.js/blob/master/src/js/component.js#L481)
 
 ---
 
@@ -352,60 +382,96 @@ _inherited from_: [src/js/component.js#L475](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `String` 
 
-_inherited from_: [src/js/component.js#L271](https://github.com/videojs/video.js/blob/master/src/js/component.js#L271)
+_inherited from_: [src/js/component.js#L277](https://github.com/videojs/video.js/blob/master/src/js/component.js#L277)
 
 ---
 
-### off( [type], [fn] )
-> Remove an event listener from the component's element
+### off( [first], [second], [third] )
+> Remove an event listener from this component's element
 > 
->     myComponent.off("eventName", myFunc);
+>     myComponent.off('eventType', myFunc);
+> 
+> If myFunc is excluded, ALL listeners for the event type will be removed.
+> If eventType is excluded, ALL listeners will be removed from the component.
+> 
+> Alternatively you can use `off` to remove listeners that were added to other
+> elements or components using `myComponent.on(otherComponent...`.
+> In this case both the event type and listener function are REQUIRED.
+> 
+>     myComponent.off(otherElement, 'eventType', myFunc);
+>     myComponent.off(otherComponent, 'eventType', myFunc);
 
 ##### PARAMETERS: 
-* __type__ `String` _(OPTIONAL)_ Event type. Without type it will remove all listeners.
-* __fn__ `Function` _(OPTIONAL)_ Event listener. Without fn it will remove all listeners for a type.
+* __first__ `String|vjs.Component` _(OPTIONAL)_ The event type or other component
+* __second__ `Function|String` _(OPTIONAL)_ The listener function or event type
+* __third__ `Function` _(OPTIONAL)_ The listener for other component
 
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L554](https://github.com/videojs/video.js/blob/master/src/js/component.js#L554)
+_inherited from_: [src/js/component.js#L646](https://github.com/videojs/video.js/blob/master/src/js/component.js#L646)
 
 ---
 
-### on( type, fn )
+### on( first, second, third )
 > Add an event listener to this component's element
 > 
 >     var myFunc = function(){
->       var myPlayer = this;
+>       var myComponent = this;
 >       // Do something when the event is fired
 >     };
 > 
->     myPlayer.on("eventName", myFunc);
+>     myComponent.on('eventType', myFunc);
 > 
-> The context will be the component.
+> The context of myFunc will be myComponent unless previously bound.
+> 
+> Alternatively, you can add a listener to another element or component.
+> 
+>     myComponent.on(otherElement, 'eventName', myFunc);
+>     myComponent.on(otherComponent, 'eventName', myFunc);
+> 
+> The benefit of using this over `vjs.on(otherElement, 'eventName', myFunc)`
+> and `otherComponent.on('eventName', myFunc)` is that this way the listeners
+> will be automatically cleaned up when either component is disposed.
+> It will also bind myComponent as the context of myFunc.
+> 
+> **NOTE**: When using this on elements in the page other than window
+> and document (both permanent), if you remove the element from the DOM
+> you need to call `vjs.trigger(el, 'dispose')` on it to clean up
+> references to it and allow the browser to garbage collect it.
 
 ##### PARAMETERS: 
-* __type__ `String` The event type e.g. 'click'
-* __fn__ `Function` The event listener
+* __first__ `String|vjs.Component` The event type or other component
+* __second__ `Function|String` The event handler or event type
+* __third__ `Function` The event handler
 
 ##### RETURNS: 
 * `vjs.Component` self
 
-_inherited from_: [src/js/component.js#L540](https://github.com/videojs/video.js/blob/master/src/js/component.js#L540)
+_inherited from_: [src/js/component.js#L577](https://github.com/videojs/video.js/blob/master/src/js/component.js#L577)
 
 ---
 
-### one( type, fn )
+### one( first, second, [third] )
 > Add an event listener to be triggered only once and then removed
+> 
+>     myComponent.one('eventName', myFunc);
+> 
+> Alternatively you can add a listener to another element or component
+> that will be triggered only once.
+> 
+>     myComponent.one(otherElement, 'eventName', myFunc);
+>     myComponent.one(otherComponent, 'eventName', myFunc);
 
 ##### PARAMETERS: 
-* __type__ `String` Event type
-* __fn__ `Function` Event listener
+* __first__ `String|vjs.Component` The event type or other component
+* __second__ `Function|String` The listener function or event type
+* __third__ `Function` _(OPTIONAL)_ The listener function for other component
 
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L566](https://github.com/videojs/video.js/blob/master/src/js/component.js#L566)
+_inherited from_: [src/js/component.js#L691](https://github.com/videojs/video.js/blob/master/src/js/component.js#L691)
 
 ---
 
@@ -453,7 +519,7 @@ _inherited from_: [src/js/component.js#L566](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `Object` A NEW object of this.options_ and obj merged
 
-_inherited from_: [src/js/component.js#L173](https://github.com/videojs/video.js/blob/master/src/js/component.js#L173)
+_inherited from_: [src/js/component.js#L179](https://github.com/videojs/video.js/blob/master/src/js/component.js#L179)
 
 ---
 
@@ -463,14 +529,14 @@ _inherited from_: [src/js/component.js#L173](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Player` 
 
-_inherited from_: [src/js/component.js#L120](https://github.com/videojs/video.js/blob/master/src/js/component.js#L120)
+_inherited from_: [src/js/component.js#L126](https://github.com/videojs/video.js/blob/master/src/js/component.js#L126)
 
 ---
 
 ### ready( fn )
 > Bind a listener to the component's ready state
 > 
-> Different from event listeners in that if the ready event has already happend
+> Different from event listeners in that if the ready event has already happened
 > it will trigger the function immediately.
 
 ##### PARAMETERS: 
@@ -479,7 +545,7 @@ _inherited from_: [src/js/component.js#L120](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L625](https://github.com/videojs/video.js/blob/master/src/js/component.js#L625)
+_inherited from_: [src/js/component.js#L769](https://github.com/videojs/video.js/blob/master/src/js/component.js#L769)
 
 ---
 
@@ -490,7 +556,7 @@ _inherited from_: [src/js/component.js#L625](https://github.com/videojs/video.js
 ##### PARAMETERS: 
 * __component__ `vjs.Component` Component to remove
 
-_inherited from_: [src/js/component.js#L414](https://github.com/videojs/video.js/blob/master/src/js/component.js#L414)
+_inherited from_: [src/js/component.js#L420](https://github.com/videojs/video.js/blob/master/src/js/component.js#L420)
 
 ---
 
@@ -503,7 +569,35 @@ _inherited from_: [src/js/component.js#L414](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L693](https://github.com/videojs/video.js/blob/master/src/js/component.js#L693)
+_inherited from_: [src/js/component.js#L837](https://github.com/videojs/video.js/blob/master/src/js/component.js#L837)
+
+---
+
+### setInterval( fn, interval )
+> Creates an interval and sets up disposal automatically.
+
+##### PARAMETERS: 
+* __fn__ `Function` The function to run every N seconds.
+* __interval__ `Number` Number of ms to delay before executing specified function.
+
+##### RETURNS: 
+* `Number` Returns the interval ID
+
+_inherited from_: [src/js/component.js#L1202](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1202)
+
+---
+
+### setTimeout( fn, timeout )
+> Creates timeout and sets up disposal automatically.
+
+##### PARAMETERS: 
+* __fn__ `Function` The function to run after the timeout.
+* __timeout__ `Number` Number of ms to delay before executing specified function.
+
+##### RETURNS: 
+* `Number` Returns the timeout ID
+
+_inherited from_: [src/js/component.js#L1162](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1162)
 
 ---
 
@@ -513,7 +607,7 @@ _inherited from_: [src/js/component.js#L693](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L703](https://github.com/videojs/video.js/blob/master/src/js/component.js#L703)
+_inherited from_: [src/js/component.js#L847](https://github.com/videojs/video.js/blob/master/src/js/component.js#L847)
 
 ---
 
@@ -529,7 +623,7 @@ _inherited from_: [src/js/component.js#L703](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` self
 
-_inherited from_: [src/js/component.js#L580](https://github.com/videojs/video.js/blob/master/src/js/component.js#L580)
+_inherited from_: [src/js/component.js#L724](https://github.com/videojs/video.js/blob/master/src/js/component.js#L724)
 
 ---
 
@@ -539,7 +633,7 @@ _inherited from_: [src/js/component.js#L580](https://github.com/videojs/video.js
 ##### RETURNS: 
 * `vjs.Component` 
 
-_inherited from_: [src/js/component.js#L644](https://github.com/videojs/video.js/blob/master/src/js/component.js#L644)
+_inherited from_: [src/js/component.js#L788](https://github.com/videojs/video.js/blob/master/src/js/component.js#L788)
 
 ---
 
@@ -559,7 +653,7 @@ _inherited from_: [src/js/component.js#L644](https://github.com/videojs/video.js
 * `vjs.Component` This component, when setting the width
 * `Number|String` The width, when getting
 
-_inherited from_: [src/js/component.js#L766](https://github.com/videojs/video.js/blob/master/src/js/component.js#L766)
+_inherited from_: [src/js/component.js#L910](https://github.com/videojs/video.js/blob/master/src/js/component.js#L910)
 
 ---
 
@@ -568,7 +662,7 @@ _inherited from_: [src/js/component.js#L766](https://github.com/videojs/video.js
 ### resize `EVENT`
 > Fired when the width and/or height of the component changes
 
-_inherited from_: [src/js/component.js#L876](https://github.com/videojs/video.js/blob/master/src/js/component.js#L876)
+_inherited from_: [src/js/component.js#L1020](https://github.com/videojs/video.js/blob/master/src/js/component.js#L1020)
 
 ---
 

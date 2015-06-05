@@ -37,6 +37,16 @@ var vjs = function(id, options, ready){
 
     // If a player instance has already been created for this ID return it.
     if (vjs.players[id]) {
+
+      // If options or ready funtion are passed, warn
+      if (options) {
+        vjs.log.warn ('Player "' + id + '" is already initialised. Options will not be applied.');
+      }
+
+      if (ready) {
+        vjs.players[id].ready(ready);
+      }
+
       return vjs.players[id];
 
     // Otherwise get element for ID
@@ -65,6 +75,12 @@ var videojs = window['videojs'] = vjs;
 // CDN Version. Used to target right flash swf.
 vjs.CDN_VERSION = 'GENERATED_CDN_VSN';
 vjs.ACCESS_PROTOCOL = ('https:' == document.location.protocol ? 'https://' : 'http://');
+
+/**
+* Full player version
+* @type {string}
+*/
+vjs['VERSION'] = 'GENERATED_FULL_VSN';
 
 /**
  * Global Player instance options, surfaced from vjs.Player.prototype.options_
@@ -99,11 +115,12 @@ vjs.options = {
   'children': {
     'mediaLoader': {},
     'posterImage': {},
-    'textTrackDisplay': {},
     'loadingSpinner': {},
+    'textTrackDisplay': {},
     'bigPlayButton': {},
     'controlBar': {},
-    'errorDisplay': {}
+    'errorDisplay': {},
+    'textTrackSettings': {}
   },
 
   'language': document.getElementsByTagName('html')[0].getAttribute('lang') || navigator.languages && navigator.languages[0] || navigator.userLanguage || navigator.language || 'en',
@@ -154,7 +171,7 @@ vjs.players = {};
  * compiler compatible, so string keys are used.
  */
 if (typeof define === 'function' && define['amd']) {
-  define([], function(){ return videojs; });
+  define('videojs', [], function(){ return videojs; });
 
 // checking that module is an object too because of umdjs/umd#35
 } else if (typeof exports === 'object' && typeof module === 'object') {

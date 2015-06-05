@@ -36,7 +36,7 @@ vjs.SeekBar = vjs.Slider.extend({
   /** @constructor */
   init: function(player, options){
     vjs.Slider.call(this, player, options);
-    player.on('timeupdate', vjs.bind(this, this.updateARIAAttributes));
+    this.on(player, 'timeupdate', this.updateARIAAttributes);
     player.ready(vjs.bind(this, this.updateARIAAttributes));
   }
 });
@@ -75,6 +75,7 @@ vjs.SeekBar.prototype.onMouseDown = function(event){
   vjs.Slider.prototype.onMouseDown.call(this, event);
 
   this.player_.scrubbing = true;
+  this.player_.addClass('vjs-scrubbing');
 
   this.videoWasPlaying = !this.player_.paused();
   this.player_.pause();
@@ -94,6 +95,7 @@ vjs.SeekBar.prototype.onMouseUp = function(event){
   vjs.Slider.prototype.onMouseUp.call(this, event);
 
   this.player_.scrubbing = false;
+  this.player_.removeClass('vjs-scrubbing');
   if (this.videoWasPlaying) {
     this.player_.play();
   }
@@ -118,7 +120,7 @@ vjs.LoadProgressBar = vjs.Component.extend({
   /** @constructor */
   init: function(player, options){
     vjs.Component.call(this, player, options);
-    player.on('progress', vjs.bind(this, this.update));
+    this.on(player, 'progress', this.update);
   }
 });
 
@@ -151,13 +153,13 @@ vjs.LoadProgressBar.prototype.update = function(){
     part = children[i];
 
     if (!part) {
-      part = this.el_.appendChild(vjs.createEl())
-    };
+      part = this.el_.appendChild(vjs.createEl());
+    }
 
     // set the percent based on the width of the progress bar (bufferedEnd)
     part.style.left = percentify(start, bufferedEnd);
     part.style.width = percentify(end - start, bufferedEnd);
-  };
+  }
 
   // remove unused buffered range elements
   for (i = children.length; i > buffered.length; i--) {
@@ -197,7 +199,7 @@ vjs.PlayProgressBar.prototype.createEl = function(){
 vjs.SeekHandle = vjs.SliderHandle.extend({
   init: function(player, options) {
     vjs.SliderHandle.call(this, player, options);
-    player.on('timeupdate', vjs.bind(this, this.updateContent));
+    this.on(player, 'timeupdate', this.updateContent);
   }
 });
 

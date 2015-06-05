@@ -25,15 +25,14 @@ The `vjs` function can be used to initialize or retrieve a player.
   - [addLanguage](#addlanguage-code-data-)
   - [parseUrl](#parseurl-url-)
   - [plugin](#plugin-name-init-)
+  - [xhr](#xhr-options-callback-)
 
 - CLASSES
   - [BigPlayButton](vjs.BigPlayButton.md)
   - [Button](vjs.Button.md)
-  - [CaptionsButton](vjs.CaptionsButton.md)
-  - [CaptionsTrack](vjs.CaptionsTrack.md)
-  - [ChaptersButton](vjs.ChaptersButton.md)
-  - [ChaptersTrack](vjs.ChaptersTrack.md)
-  - [ChaptersTrackMenuItem](vjs.ChaptersTrackMenuItem.md)
+  - [CaptionsButton](undefined.md)
+  - [ChaptersButton](undefined.md)
+  - [ChaptersTrackMenuItem](undefined.md)
   - [Component](vjs.Component.md)
   - [ControlBar](vjs.ControlBar.md)
   - [CoreObject](vjs.CoreObject.md)
@@ -48,12 +47,12 @@ The `vjs` function can be used to initialize or retrieve a player.
   - [LoadingSpinner](vjs.LoadingSpinner.md)
   - [MediaError](vjs.MediaError.md)
   - [MediaLoader](vjs.MediaLoader.md)
-  - [MediaTechController](vjs.MediaTechController.md)
+  - [MediaTechController](undefined.md)
   - [Menu](vjs.Menu.md)
   - [MenuButton](vjs.MenuButton.md)
   - [MenuItem](vjs.MenuItem.md)
   - [MuteToggle](vjs.MuteToggle.md)
-  - [OffTextTrackMenuItem](vjs.OffTextTrackMenuItem.md)
+  - [OffTextTrackMenuItem](undefined.md)
   - [PlayProgressBar](vjs.PlayProgressBar.md)
   - [PlayToggle](vjs.PlayToggle.md)
   - [PlaybackRateMenuButton](vjs.PlaybackRateMenuButton.md)
@@ -66,12 +65,10 @@ The `vjs` function can be used to initialize or retrieve a player.
   - [SeekHandle](vjs.SeekHandle.md)
   - [Slider](vjs.Slider.md)
   - [SliderHandle](vjs.SliderHandle.md)
-  - [SubtitlesButton](vjs.SubtitlesButton.md)
-  - [SubtitlesTrack](vjs.SubtitlesTrack.md)
-  - [TextTrack](vjs.TextTrack.md)
-  - [TextTrackButton](vjs.TextTrackButton.md)
-  - [TextTrackDisplay](vjs.TextTrackDisplay.md)
-  - [TextTrackMenuItem](vjs.TextTrackMenuItem.md)
+  - [SubtitlesButton](undefined.md)
+  - [TextTrackButton](undefined.md)
+  - [TextTrackDisplay](undefined.md)
+  - [TextTrackMenuItem](undefined.md)
   - [TimeDivider](vjs.TimeDivider.md)
   - [VolumeBar](vjs.VolumeBar.md)
   - [VolumeControl](vjs.VolumeControl.md)
@@ -93,14 +90,14 @@ The `vjs` function can be used to initialize or retrieve a player.
 > All options should use string keys so they avoid
 > renaming by closure compiler
 
-_defined in_: [src/js/core.js#L76](https://github.com/videojs/video.js/blob/master/src/js/core.js#L76)
+_defined in_: [src/js/core.js#L92](https://github.com/videojs/video.js/blob/master/src/js/core.js#L92)
 
 ---
 
 ### players
 > Global player list
 
-_defined in_: [src/js/core.js#L147](https://github.com/videojs/video.js/blob/master/src/js/core.js#L147)
+_defined in_: [src/js/core.js#L164](https://github.com/videojs/video.js/blob/master/src/js/core.js#L164)
 
 ---
 
@@ -119,7 +116,7 @@ _defined in_: [src/js/core.js#L147](https://github.com/videojs/video.js/blob/mas
 ##### RETURNS: 
 * `Object` The resulting global languages dictionary object
 
-_defined in_: [src/js/core.js#L134](https://github.com/videojs/video.js/blob/master/src/js/core.js#L134)
+_defined in_: [src/js/core.js#L151](https://github.com/videojs/video.js/blob/master/src/js/core.js#L151)
 
 ---
 
@@ -132,7 +129,7 @@ _defined in_: [src/js/core.js#L134](https://github.com/videojs/video.js/blob/mas
 ##### RETURNS: 
 * `Object` An object of url details
 
-_defined in_: [src/js/lib.js#L745](https://github.com/videojs/video.js/blob/master/src/js/lib.js#L745)
+_defined in_: [src/js/lib.js#L676](https://github.com/videojs/video.js/blob/master/src/js/lib.js#L676)
 
 ---
 
@@ -144,6 +141,43 @@ _defined in_: [src/js/lib.js#L745](https://github.com/videojs/video.js/blob/mast
 * __init__ `Function` The function that is run when the player inits
 
 _defined in_: [src/js/plugins.js#L7](https://github.com/videojs/video.js/blob/master/src/js/plugins.js#L7)
+
+---
+
+### xhr( options, callback )
+> Simple http request for retrieving external files (e.g. text tracks)
+> 
+> ##### Example
+> 
+>     // using url string
+>     videojs.xhr('http://example.com/myfile.vtt', function(error, response, responseBody){});
+> 
+>     // or options block
+>     videojs.xhr({
+>       uri: 'http://example.com/myfile.vtt',
+>       method: 'GET',
+>       responseType: 'text'
+>     }, function(error, response, responseBody){
+>       if (error) {
+>         // log the error
+>       } else {
+>         // successful, do something with the response
+>       }
+>     });
+> 
+> 
+> API is modeled after the Raynos/xhr, which we hope to use after
+> getting browserify implemented.
+> https://github.com/Raynos/xhr/blob/master/index.js
+
+##### PARAMETERS: 
+* __options__ `Object|String` Options block or URL string
+* __callback__ `Function` The callback function
+
+##### RETURNS: 
+* `Object` The request
+
+_defined in_: [src/js/xhr.js#L31](https://github.com/videojs/video.js/blob/master/src/js/xhr.js#L31)
 
 ---
 

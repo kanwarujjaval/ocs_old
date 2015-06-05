@@ -26,7 +26,7 @@ yellow.config(function ($routeProvider, $locationProvider, cfpLoadingBarProvider
 
     cfpLoadingBarProvider.latencyThreshold = 0;
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({ enabled: true, requireBase: false });
 
     $routeProvider.when('/', {
         templateUrl: '/partials/home',
