@@ -9,19 +9,19 @@ For the Private Beta
 */
 exports.createInvite = function (req, res, next) {
     inviteAuth.createInvite(req, res, next);
-}
+};
 
 exports.isInvited = function (req, res, next) {
     inviteAuth.isInvited(req, res, next);
-}
+};
 
 exports.verifyToken = function (req, res, next) {
     inviteAuth.verifyToken(req, res, next);
-}
+};
 
 exports.sendToken = function (req, res, next) {
     inviteAuth.sendToken(req, res, next);
-}
+};
 
 /*
 Local Web Signup
@@ -58,10 +58,10 @@ exports.signupAuthenticate = function (req, res, next) {
                 });
             });
         }
-    })
+    });
     auth(req, res, next);
 
-}
+};
 
 /*
 Local Web Login
@@ -99,9 +99,9 @@ exports.loginAuthenticate = function (req, res, next) {
                 });
             });
         }
-    })
+    });
     auth(req, res, next);
-}
+};
 
 /*
 Check if user authenticated
@@ -125,7 +125,7 @@ exports.isLoggedIn = function (req, res, next) {
             }
         });
     }
-}
+};
 
 exports.isCourseCreator = function (req, res, next) {
     userModel.findOne({ "_id": req.user._id }, function (err, user) {
@@ -164,7 +164,7 @@ exports.isCourseCreator = function (req, res, next) {
             });
         }
     })
-}
+};
 
 
 /*              WARNING

@@ -8,7 +8,7 @@ var userModel = require('../models/user').userModel;
 
 exports.getPublicProfile = function (req, res, next) {
     res.send("User's Public Profile");
-}
+};
 
 /*
     /user/:username/courses
@@ -16,7 +16,7 @@ exports.getPublicProfile = function (req, res, next) {
 
 exports.getUserCourses = function (req, res, next) {
     res.send("USer's Courses");
-}
+};
 
 
 /*
@@ -25,7 +25,7 @@ exports.getUserCourses = function (req, res, next) {
 
 exports.getPublicNotes = function (req, res, next) {
     res.send("User's Notes");
-}
+};
 
 
 /*
@@ -34,7 +34,7 @@ exports.getPublicNotes = function (req, res, next) {
 
 exports.getLectures = function (req, res, next) {
     res.send("User's Lectures");
-}
+};
 
 
 /*
@@ -43,4 +43,4 @@ exports.getLectures = function (req, res, next) {
 
 exports.getPublicAchievements = function (req, res, next) {
     res.send("User's Achievements");
-}
+};

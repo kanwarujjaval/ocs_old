@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "0.10"
+env:
+  - NODE_ENV=development
+services:
+  - mongodb
+  - redis-server
+before_script:
+  - npm install -g gulp
+script: gulp
+deploy:
+  provider: openshift
+  user: kanwarujjavalsingh@gmail.com
+  password: fgEMWJYwWU
+  domain: pryellow
+  skip_cleanup: true
+  app: yellow
+before_deploy:
+  - git config --global push.default matching

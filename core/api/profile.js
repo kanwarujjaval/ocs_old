@@ -27,7 +27,7 @@ exports.getUser = function (req, res, next) {
             courseViewed: user.courseViewed
         });
     })
-}
+};
 
 /*
     /profile/courses/created
@@ -37,7 +37,7 @@ exports.getUserCourses = function (req, res, next) {
     userModel.findOne({ '_id': req.session.passport.user }).populate('courseCreated').exec(function (err, user) {
         res.send(user.courseCreated);
     });
-}
+};
 
 /*
     /profile/courses/taken
@@ -47,7 +47,7 @@ exports.getUserCoursesTaken = function (req, res, next) {
     userModel.findOne({ '_id': req.session.passport.user }).populate('courseViewed').exec(function (err, user) {
         res.send(user.courseViewed);
     });
-}
+};
 
 /*
     /profile/edit
@@ -55,7 +55,7 @@ exports.getUserCoursesTaken = function (req, res, next) {
 
 exports.profileEdit = function (req, res, next) {
     res.send("Edit your Profile");
-}
+};
 
 /*
     /profile/settings
@@ -63,7 +63,7 @@ exports.profileEdit = function (req, res, next) {
 
 exports.changeSettings = function (req, res, next) {
     res.send("Change your Settings");
-}
+};
 
 /*
     /profile/lectures
@@ -71,7 +71,7 @@ exports.changeSettings = function (req, res, next) {
 
 exports.getLectures = function (req, res, next) {
     res.send("Your Lectures");
-}
+};
 
 /*
     /profile/achievements
@@ -79,4 +79,4 @@ exports.getLectures = function (req, res, next) {
 
 exports.getAchievements = function (req, res, next) {
     res.send("Your achievements");
-}
+};

@@ -1,6 +1,1 @@
-﻿exports.err = function (error) {
-    return {
-        err: true,
-        message: error
-    }
-}
+//error handling service

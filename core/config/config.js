@@ -6,14 +6,14 @@ exports.setVars = function () {
     env = process.env.NODE_ENV || 'development';
     if (typeof ipaddress === "undefined") {
         ipaddress = "127.0.0.1";
-    };
-}
+    }
+};
 
 exports.setPath = function () {
     rootPath = path.normalize(__dirname + '/../../');
     viewPath = path.join(rootPath, "views");
     publicPath = path.join(rootPath, "public");
-}
+};
 
 exports.dbConnection = {
     development: {
@@ -22,4 +22,4 @@ exports.dbConnection = {
     production: {
         uri: process.env.OPENSHIFT_MONGODB_DB_URL + "yellow"
     }
-}
+};

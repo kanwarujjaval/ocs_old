@@ -5,7 +5,7 @@
 
 exports.getLecturesAll = function (req, res, next) {
     res.send("Upcoming Lectures");
-}
+};
 
 /*
     /lectures/:id
@@ -13,7 +13,7 @@ exports.getLecturesAll = function (req, res, next) {
 
 exports.getLecture = function (req, res, next) {
     res.send("Lecture Details");
-}
+};
 
 
 /*
@@ -22,7 +22,7 @@ exports.getLecture = function (req, res, next) {
 
 exports.enrollLecture = function (req, res, next) {
     res.send("Enroll for this lecture");
-}
+};
 
 
 /*
@@ -31,7 +31,7 @@ exports.enrollLecture = function (req, res, next) {
 
 exports.enterLecture = function (req, res, next) {
     res.send("Enter this lecture now");
-}
+};
 
 
 /*
@@ -40,4 +40,4 @@ exports.enterLecture = function (req, res, next) {
 
 exports.unEnrollLectures = function (req, res, next) {
     res.send("unenroll from this lecture");
-}
+};

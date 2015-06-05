@@ -55,7 +55,7 @@ exports.createInvite = function (req, res, next) {
             }
         });
     }
-}
+};
 
 exports.verifyToken = function (req, res, next) {
     /*

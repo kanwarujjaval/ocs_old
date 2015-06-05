@@ -12,4 +12,4 @@ exports.getInvites = function (req, res, next) {
             res.send(invites);
         }
     });
-}
+};

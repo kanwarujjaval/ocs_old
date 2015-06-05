@@ -5,7 +5,7 @@
                    function (response) {
                        $scope.inviteReq = response;
                    }
-                )
+                );
 
 
     $scope.sendSignUpLink = function (user) {

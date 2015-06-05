@@ -42,7 +42,7 @@ exports.getCourseAll = function (req, res, next) {
             res.send(course);
         }
     });
-}
+};
 
 
 /*
@@ -68,7 +68,7 @@ exports.getCourseById = function (req, res, next) {
             }
 
         });
-}
+};
 
 /*
  * POST 
@@ -102,7 +102,7 @@ exports.createCoursePost = function (req, res, next) {
             });
         });
     });
-}
+};
 
 /*
  * POST 
@@ -123,7 +123,7 @@ exports.addCourseModule = function (req, res, next) {
             res.send(courseNew);                    //format response
         });
     });
-}
+};
 
 /*
  * DELETE
@@ -153,7 +153,7 @@ exports.deleteCourse = function (req, res, next) {
             });
         });
     });
-}
+};
 
 /*
  * POST
@@ -183,7 +183,7 @@ exports.editCoursePost = function (req, res, next) {
             }
         });
     });
-}
+};
 
 /*
 /course/:id/test
@@ -191,7 +191,7 @@ exports.editCoursePost = function (req, res, next) {
 
 exports.getCourseTest = function (req, res, next) {
     res.send("You are only eligible for the test after completing the course");
-}
+};
 
 /*
 /course/:id/files
@@ -199,7 +199,7 @@ exports.getCourseTest = function (req, res, next) {
 
 exports.viewCourseFiles = function (req, res, next) {
     res.send("Course Files");
-}
+};
 
 /*
 /course/:id/discuss
@@ -207,7 +207,7 @@ exports.viewCourseFiles = function (req, res, next) {
 
 exports.discussCourse = function (req, res, next) {
     res.send("Discussion for course Name");
-}
+};
 
 /*
 /course/:id/play/:module
@@ -215,5 +215,5 @@ exports.discussCourse = function (req, res, next) {
 
 exports.playCourse = function (req, res, next) {
     res.send("Now playing module");
-}
+};
 

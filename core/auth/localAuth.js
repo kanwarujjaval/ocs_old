@@ -59,7 +59,7 @@ module.exports = function () {
          * Create an email check
          * 
          */
-        var user = {}
+        var user = {};
         User.findOne({ 'email': email }).exec(function (err, user) {
             if (err)
                 return done(err);
@@ -72,4 +72,4 @@ module.exports = function () {
 
     }));
 
-}
+};
