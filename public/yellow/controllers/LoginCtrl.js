@@ -16,11 +16,11 @@
                     function (response_error) {
                         dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog()">Ok!</button></div>', true, 'LoginCtrl');
                     }
-                )
-    }
+                );
+    };
 
     $scope.gotodashboard = function () {
         $location.path('/dashboard');
         dialogService.closeAll();
-    }
+    };
 });

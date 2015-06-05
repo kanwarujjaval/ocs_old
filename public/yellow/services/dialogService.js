@@ -29,5 +29,5 @@ yellow.factory('dialogService', function (ngDialog) {
         closeAll: function () {
             ngDialog.closeAll();
         }
-    }
+    };
 });

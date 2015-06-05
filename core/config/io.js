@@ -13,4 +13,4 @@
         io.enable('browser client minification');
         io.set('transports', ['websocket']);
     });
-}
+};

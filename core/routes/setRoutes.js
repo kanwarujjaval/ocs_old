@@ -126,4 +126,4 @@ module.exports = function (app) {
             user:req.user
         });
     });
-}
+};

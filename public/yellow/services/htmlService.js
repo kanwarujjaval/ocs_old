@@ -10,5 +10,5 @@ yellow.factory('htmlService', function ($sce) {
             returndata = $sce.trustAsHtml(data);
             return returndata;
         }
-    }
+    };
 });

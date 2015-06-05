@@ -26,7 +26,7 @@ exports.getUser = function (req, res, next) {
             coursesCreated: user.courseCreated,
             courseViewed: user.courseViewed
         });
-    })
+    });
 };
 
 /*

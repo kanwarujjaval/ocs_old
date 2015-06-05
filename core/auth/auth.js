@@ -163,7 +163,7 @@ exports.isCourseCreator = function (req, res, next) {
                 }
             });
         }
-    })
+    });
 };
 
 

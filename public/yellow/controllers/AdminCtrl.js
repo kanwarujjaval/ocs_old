@@ -23,6 +23,6 @@
             function (response_error) {
                  dialogService.dialogPlain('<div class="ngdialog-message"><h3>ERROR IN RESPONSE</h3></div>', true, 'AdminCtrl');
             }
-        )
-    }
+        );
+    };
 });

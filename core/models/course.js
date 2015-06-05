@@ -23,7 +23,7 @@ courseSchema = new schema({
             rating: { type: String },
             description: { type: String }
         }
-    ],
+    ]
 });
 
 /*

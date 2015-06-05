@@ -12,4 +12,4 @@
     server.listen(port, ipaddress, function () {
         console.log('%s: \nNode server started on %s:%d ...', Date(Date.now()), ipaddress, port);
     });
-}
+};

@@ -14,4 +14,4 @@ exports.getUploadToken = function (req, res, next) {
         }
         res.send(JSON.parse(httpResponse.body));
     });
-}
+};

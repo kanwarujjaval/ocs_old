@@ -8,7 +8,7 @@ yellow.factory('apiService', function ($q, $http) {
             })
             .error(function (data, status, header) {
                 deferred.reject(status);
-            })
+            });
             return deferred.promise;
         },
         get: function (path) {
@@ -19,8 +19,8 @@ yellow.factory('apiService', function ($q, $http) {
             })
             .error(function (data, status, header) {
                 deferred.reject(status);
-            })
+            });
             return deferred.promise;
         }
-    }
+    };
 });

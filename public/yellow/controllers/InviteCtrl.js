@@ -4,7 +4,7 @@
 
     $scope.clickToInvite = function (user) {
 
-        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true,'InviteCtrl')
+        dialogService.dialogPlain('<h3>Processing</h3><i class="fa fa-circle-o-notch fa-spin"></i>', true,'InviteCtrl');
 
         apiService.post(user, '/invite')         //API communication service takes (data, path)
                 .then(
@@ -26,7 +26,7 @@
                     function (response_error) {
                         dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3> Error ' + response_error + '</h3><p>Server Error! Please try again later</p></div><button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="openSecond(' + false + ')">Ok!</button></div>', true, 'InviteCtrl');
                     }
-                )
+                );
     };
 
 

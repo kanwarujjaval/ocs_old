@@ -179,7 +179,7 @@ exports.editCoursePost = function (req, res, next) {
                 res.send(err);
             }
             else {
-                res.send(courseUpdated)
+                res.send(courseUpdated);
             }
         });
     });

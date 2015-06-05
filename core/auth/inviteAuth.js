@@ -40,7 +40,7 @@ exports.createInvite = function (req, res, next) {
                         }
                     });
                 }
-        })
+        });
     }
     else {
         res.send({

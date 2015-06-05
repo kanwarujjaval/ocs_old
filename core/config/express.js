@@ -29,10 +29,10 @@ function requireHTTPS(req, res, next) {
  */
 
 function countSession(req, res, next) {
-    var sess = req.session
+    var sess = req.session;
     if (sess.views) {
         sess.views++;
-        console.log('***** views: ' + sess.views+ ' expires in: ' + (sess.cookie.maxAge / 1000) + 's ******')
+        console.log('***** views: ' + sess.views+ ' expires in: ' + (sess.cookie.maxAge / 1000) + 's ******');
     } else {
         sess.views = 1;
         console.log('***** welcome to the session demo. refresh! *****');

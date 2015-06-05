@@ -9,8 +9,8 @@ var createDbConnection = function () {
     db.once('open', function callback() {
         console.log("Connection to MongoDB database established at " + dbVars.uri);
     });
-}
+};
 
 exports.connectDb = function () {
     createDbConnection();
-}
+};

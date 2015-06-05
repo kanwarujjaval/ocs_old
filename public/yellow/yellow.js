@@ -7,20 +7,20 @@ yellow.run(function ($rootScope, $location, dialogService) {
             $location.path((previous) ? previous.originalPath : '/');
         }
     });
-})
+});
 
 var routeCheck = {
     admin: {
         auth: function (authService) {
-            return authService.authorizeRole('admin')
+            return authService.authorizeRole('admin');
         }
     },
     user: {
         auth: function (authService) {
-            return authService.authorize()
+            return authService.authorize();
         }
     }
-}
+};
 
 yellow.config(function ($routeProvider, $locationProvider, cfpLoadingBarProvider) {
 

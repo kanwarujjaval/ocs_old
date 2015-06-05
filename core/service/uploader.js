@@ -21,16 +21,16 @@ exports.uploadHandler = function (req, res, next) {
         form.on('progress', function (bytesReceived, bytesExpected) {
             var percent = (bytesReceived / bytesExpected * 100) | 0;
             console.log('Uploading: %' + percent + '\r');
-        })
+        });
 
     });
-}
+};
 
-exports.editCourse = function(){}
+exports.editCourse = function(){};
 
 // to add youtube url to the path in db
 exports.addYoutubeVideo = function (req, res, next) {
     courseModel.findOne({'_creator':req.session.passport.user}, function (err, course) {
-        res.send(course)
+        res.send(course);
     });
-}
+};

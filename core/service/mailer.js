@@ -55,7 +55,7 @@ exports.sendInviteMail = function (res, email, messageHtml, messageSubject) {
         console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
         // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
     });
-}
+};
 
 
 exports.sendWelcomeMail = function (email) {
@@ -100,7 +100,7 @@ exports.sendWelcomeMail = function (email) {
                 if (err) {
                     console.log("unable to write to file");
                 }
-            })
+            });
         });
     }, function (e) {
         fs.ensureFile('./data/invites_email_data.json', function (err) {
@@ -111,7 +111,7 @@ exports.sendWelcomeMail = function (email) {
                 if (err) {
                     console.log("unable to write to file");
                 }
-            })
+            });
         });
     });
-}
+};

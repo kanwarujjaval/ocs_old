@@ -5,6 +5,6 @@
                    function (response) {
                        $scope.user = response;
                    }
-                )
+                );
 
 });
