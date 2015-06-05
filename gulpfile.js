@@ -64,3 +64,7 @@ gulp.task('demon',function(){
 });
 
 gulp.task('default', ['demon','lintNode','lintAngular', 'angularBuild','css']);
+
+gulp.task('test', ['lintNode','lintAngular', 'angularBuild','css'],function(){
+    console.log("done!");
+});
