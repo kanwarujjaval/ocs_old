@@ -1,25 +1,26 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="yellow">
 <head>
+    <% if (env=='production') { %>
+    <%- include scriptsProd.html %>
+    <% } %>
+    <% if (env=='development') { %>
     <%- include scripts.html %>
-
+    <% } %>
     <!-- Current User Object  -->
     <% if (user) { %>
-    <script>
-        window.ssu = <%- JSON.stringify(user) %>;
-    </script>
+    <script>window.ssu = <%- JSON.stringify(user) %>;</script>
     <% } %>
 
     <title>Open Cloud School</title>
 </head>
 <body>
     <div id="top"></div>
-    <headroom tolerance='5' offset='400'>
         <div ng-controller="NavbarCtrl">
             <!--NAVBAR CONTROLLER-->
             <header>
                 <div class="wrap">
-                    <img src="/assets/logo-w.svg">
+                    <img src="/public/assets/logo-w.svg">
                     <nav class="nav-collapse">
                         <ul id="navig">
                             <li ng-if="onLanding"><a href="#home" class="link-under" du-smooth-scroll offset="100">Home</a></li>
@@ -38,7 +39,6 @@
             </header>
             <!--NAVBAR CONTROLLER-->
         </div>
-    </headroom>
     <div class="content">
         <div class="ng-view"></div>
         <div ng-include src="'/partials/footer.html'"></div>

@@ -19,7 +19,7 @@
         dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Logged Out</h3></div></div>', true, 'LoginCtrl');
     };
 
-    $rootScope.$on('$locationChangeSuccess', function () {
+    $rootScope.$on('$locationC`angeSuccess', function () {
         if ($location.path() == "/") {
             $scope.onLanding = true;
         }

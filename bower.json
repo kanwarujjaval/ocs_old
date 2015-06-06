@@ -15,9 +15,9 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "latest",
     "purecss": "latest",
     "angular-loading-bar": "~0.4.2",
-    "angular": "latest",
     "angular-animate": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",

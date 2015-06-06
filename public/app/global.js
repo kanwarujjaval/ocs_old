@@ -1,4 +1,4 @@
-yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'headroom', 'angularFileUpload']).value('duScrollDuration', 2000);
+yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'angularFileUpload']).value('duScrollDuration', 2000);
 
 yellow.run(function ($rootScope, $location, dialogService) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
@@ -88,125 +88,6 @@ yellow.config(function ($routeProvider, $locationProvider, cfpLoadingBarProvider
         redirectTo: '/404'
     });
 
-});
-yellow.factory('apiService', function ($q, $http) {
-    return {
-        post: function (data, path) {
-            deferred = $q.defer();
-            $http.post(path, data)
-            .success(function (data, status, header) {
-                deferred.resolve(data);
-            })
-            .error(function (data, status, header) {
-                deferred.reject(status);
-            });
-            return deferred.promise;
-        },
-        get: function (path) {
-            deferred = $q.defer();
-            $http.get(path)
-            .success(function (data, status, header) {
-                deferred.resolve(data);
-            })
-            .error(function (data, status, header) {
-                deferred.reject(status);
-            });
-            return deferred.promise;
-        }
-    };
-});
-yellow.factory('authService', function ($q, session, dialogService) {
-
-    return {
-        createUser: function (user) {           /*create a user in memory for the session*/
-            session.currentUser = user;
-        },
-
-        destroyUser: function () {              /*  Opposite of create, simulate logout on the frontend */
-            session.currentUser = undefined;
-        },
-
-        authorizeRole: function (role) {        /*   Authorize for specific role in route   */
-            if (session.isAuthorized(role)) {
-                return true;
-            } else {
-                return $q.reject('noAuth');
-            }
-
-        },
-
-        authorize: function () {                /*  Authorizing a signed in user for route      */
-            if (session.isAuthenticated()) {
-                return true;
-            } else {
-                return $q.reject('noAuth');
-            }
-        }
-    };
-
-});
-/*
- * Service to generate NgDialogs (Abstraction over abstraction lol) 
- * 
- * 
- * .dialogPlain - returns plain dialog , takes
- *              1. template data
- *              2. boolean to close all previous dialogs
- *              3. Controller name
- * 
- *  .closeall - closes all previous dialogs
- * 
- * 
- */
-
-yellow.factory('dialogService', function (ngDialog) {
-    return {
-        dialogPlain: function (data, closeprev,Ctrl) {
-            if (closeprev) {
-                ngDialog.closeAll();
-            }
-            ngDialog.open({
-                template: data,
-                plain: true,
-                closeByEscape: true,
-                controller: Ctrl
-            });
-        },
-
-        closeAll: function () {
-            ngDialog.closeAll();
-        }
-    };
-});
-/*
- * 
- *  Alternate for unsafe binding, enter html to return trusted html 
- * 
- */
-
-yellow.factory('htmlService', function ($sce) {
-    return {
-        html: function (data) {
-            returndata = $sce.trustAsHtml(data);
-            return returndata;
-        }
-    };
-});
-yellow.factory('session', function ($http,$window) {
-    var currentUser;
-    if (!!$window.ssu) {
-        currentUser = $window.ssu;
-    }
-
-    return {
-        currentUser: currentUser,
-        isAuthenticated: function () {
-            return !!this.currentUser;
-        },
-        isAuthorized: function (role) {
-            return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
-        }
-    };
 });
 yellow.controller('AdminCtrl', function ($scope, apiService, dialogService) {
 
@@ -459,7 +340,7 @@ yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScop
         dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Logged Out</h3></div></div>', true, 'LoginCtrl');
     };
 
-    $rootScope.$on('$locationChangeSuccess', function () {
+    $rootScope.$on('$locationC`angeSuccess', function () {
         if ($location.path() == "/") {
             $scope.onLanding = true;
         }
@@ -467,4 +348,123 @@ yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScop
             $scope.onLanding = false;
         }
     });
+});
+yellow.factory('apiService', function ($q, $http) {
+    return {
+        post: function (data, path) {
+            deferred = $q.defer();
+            $http.post(path, data)
+            .success(function (data, status, header) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, header) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        },
+        get: function (path) {
+            deferred = $q.defer();
+            $http.get(path)
+            .success(function (data, status, header) {
+                deferred.resolve(data);
+            })
+            .error(function (data, status, header) {
+                deferred.reject(status);
+            });
+            return deferred.promise;
+        }
+    };
+});
+yellow.factory('authService', function ($q, session, dialogService) {
+
+    return {
+        createUser: function (user) {           /*create a user in memory for the session*/
+            session.currentUser = user;
+        },
+
+        destroyUser: function () {              /*  Opposite of create, simulate logout on the frontend */
+            session.currentUser = undefined;
+        },
+
+        authorizeRole: function (role) {        /*   Authorize for specific role in route   */
+            if (session.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('noAuth');
+            }
+
+        },
+
+        authorize: function () {                /*  Authorizing a signed in user for route      */
+            if (session.isAuthenticated()) {
+                return true;
+            } else {
+                return $q.reject('noAuth');
+            }
+        }
+    };
+
+});
+/*
+ * Service to generate NgDialogs (Abstraction over abstraction lol) 
+ * 
+ * 
+ * .dialogPlain - returns plain dialog , takes
+ *              1. template data
+ *              2. boolean to close all previous dialogs
+ *              3. Controller name
+ * 
+ *  .closeall - closes all previous dialogs
+ * 
+ * 
+ */
+
+yellow.factory('dialogService', function (ngDialog) {
+    return {
+        dialogPlain: function (data, closeprev,Ctrl) {
+            if (closeprev) {
+                ngDialog.closeAll();
+            }
+            ngDialog.open({
+                template: data,
+                plain: true,
+                closeByEscape: true,
+                controller: Ctrl
+            });
+        },
+
+        closeAll: function () {
+            ngDialog.closeAll();
+        }
+    };
+});
+/*
+ * 
+ *  Alternate for unsafe binding, enter html to return trusted html 
+ * 
+ */
+
+yellow.factory('htmlService', function ($sce) {
+    return {
+        html: function (data) {
+            returndata = $sce.trustAsHtml(data);
+            return returndata;
+        }
+    };
+});
+yellow.factory('session', function ($http,$window) {
+    var currentUser;
+    if (!!$window.ssu) {
+        currentUser = $window.ssu;
+    }
+
+    return {
+        currentUser: currentUser,
+        isAuthenticated: function () {
+            return !!this.currentUser;
+        },
+        isAuthorized: function (role) {
+            return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
+        }
+    };
 });

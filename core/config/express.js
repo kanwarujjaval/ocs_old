@@ -80,7 +80,7 @@ module.exports = function (app) {
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
-        app.use(express.static(publicPath, { maxAge: 0 }));
+        app.use('/public',express.static(publicPath, { maxAge: 0 }));
         //app.use(countSession);          //To be used in development for testing sessions
 
     }
@@ -121,6 +121,6 @@ module.exports = function (app) {
         app.engine('html', require('ejs').renderFile);
         app.set('views', viewPath);
         app.set('view engine', 'html');
-        app.use(express.static(publicPath, { maxAge: 0 }));
+        app.use('/public', express.static(publicPath, { maxAge: 0 }));
     }
 };

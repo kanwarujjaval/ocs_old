@@ -5,6 +5,7 @@ var user = require('../api/user');
 var invites = require('../api/invites');
 var lect = require('../api/lectures');
 var vimeo = require('../service/vimeo');
+console.log(env);
 
 module.exports = function (app) {
 
@@ -123,7 +124,8 @@ module.exports = function (app) {
 
     app.get('*', function (req, res) {
         res.render('index', {
-            user:req.user
+            user:req.user,
+            env: env
         });
     });
 };

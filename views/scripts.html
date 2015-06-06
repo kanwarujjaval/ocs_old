@@ -1,56 +1,59 @@
-﻿<!--META TAGS-->
+<!--META TAGS-->
 <meta name="fragment" content="!">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta property="og:title" content="I just signed up for Open Cloud School beta" />
 <meta property="og:description" content="You can also sign up for Open CloudSchool beta by cicking here." />
 <meta property="og:image" content="http://opencloudschool.org/assets/fb-og.png" />
 
-<!--Angular and libs-->
-<script src="/lib/ng-file-upload/angular-file-upload-shim.min.js"></script>
-<script src="/lib/angular/angular.js"></script>
+<!-- bower:js -->
+<script src="/public/lib/angular/angular.js"></script>
+<script src="/public/lib/angular-loading-bar/src/loading-bar.js"></script>
+<script src="/public/lib/angular-animate/angular-animate.js"></script>
+<script src="/public/lib/angular-resource/angular-resource.js"></script>
+<script src="/public/lib/angular-route/angular-route.js"></script>
+<script src="/public/lib/videojs/dist/video-js/video.js"></script>
+<script src="/public/lib/angular-scroll/angular-scroll.js"></script>
+<script src="/public/lib/ngDialog/js/ngDialog.js"></script>
+<script src="/public/lib/ng-file-upload/angular-file-upload.js"></script>
+<!-- endinject -->
 
-<!--Style-->
-<link rel="stylesheet" href="/lib/normalize.css/normalize.css">
-<link rel="stylesheet" href="/lib/ngDialog/css/ngDialog.css">
-<link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-default.css">
 
-<!--<link rel="stylesheet" href="/lib/ngDialog/css/ngDialog-theme-plain.css">-->
-<link rel="stylesheet" href="/style/headroom.css">
-<link rel="stylesheet" href="/style/loading-bar.css">
-<link rel="stylesheet" href="/style/style.css">
+<script src="/public/yellow/yellow.js"></script>
 
-<!--Angular Plugins-->
-<script src="/lib/angular-route/angular-route.min.js"></script>
-<script src="/lib/angular-scroll/angular-scroll.min.js"></script>
-<script src="/lib/angular-loading-bar/build/loading-bar.min.js"></script>
-<script src="/lib/headroom/headroom.min.js"></script>
-<script src="/lib/headroom/angular.headroom.min.js"></script>
-<script src="/lib/ngDialog/js/ngDialog.min.js"></script>
-<script src="/lib/ng-file-upload/angular-file-upload.min.js"></script>
-<script src="/yellow/yellow.js"></script>
 
-<!--Controllers-->
-<script src="/yellow/controllers/MainCtrl.js"></script>
-<script src="/yellow/controllers/InviteCtrl.js"></script>
-<script src="/yellow/controllers/CreateCourseCtrl.js"></script>
-<script src="/yellow/controllers/SingleCourseCtrl.js"></script>
-<script src="/yellow/controllers/LoginCtrl.js"></script>
-<script src="/yellow/controllers/navbarCtrl.js"></script>
-<script src="/yellow/controllers/RegisterCtrl.js"></script>
-<script src="/yellow/controllers/ProfileCtrl.js"></script>
-<script src="/yellow/controllers/ProfileEditCtrl.js"></script>
-<script src="/yellow/controllers/DashboardCtrl.js"></script>
-<script src="/yellow/controllers/AdminCtrl.js"></script>
+<!-- inject:js -->
+<script src="/public/yellow/services/apiService.js"></script>
+<script src="/public/yellow/services/authService.js"></script>
+<script src="/public/yellow/services/dialogService.js"></script>
+<script src="/public/yellow/services/htmlService.js"></script>
+<script src="/public/yellow/services/sessionService.js"></script>
+<script src="/public/yellow/controllers/AdminCtrl.js"></script>
+<script src="/public/yellow/controllers/CreateCourseCtrl.js"></script>
+<script src="/public/yellow/controllers/DashboardCtrl.js"></script>
+<script src="/public/yellow/controllers/InviteCtrl.js"></script>
+<script src="/public/yellow/controllers/LoginCtrl.js"></script>
+<script src="/public/yellow/controllers/MainCtrl.js"></script>
+<script src="/public/yellow/controllers/ProfileCtrl.js"></script>
+<script src="/public/yellow/controllers/ProfileEditCtrl.js"></script>
+<script src="/public/yellow/controllers/RegisterCtrl.js"></script>
+<script src="/public/yellow/controllers/SingleCourseCtrl.js"></script>
+<script src="/public/yellow/controllers/navbarCtrl.js"></script>
+<script src="/public/js/nav.min.js"></script>
+<!-- endinject -->
 
-<!--Services-->
-<script src="/yellow/services/apiService.js"></script>
-<script src="/yellow/services/htmlService.js"></script>
-<script src="/yellow/services/dialogService.js"></script>
-<script src="/yellow/services/authService.js"></script>
-<script src="/yellow/services/sessionService.js"></script>
 
-<!--Fonts-->
-<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+<!-- bower:css -->
+<link rel="stylesheet" href="/public/lib/angular-loading-bar/src/loading-bar.css">
+<link rel="stylesheet" href="/public/lib/videojs/dist/video-js/video-js.css">
+<link rel="stylesheet" href="/public/lib/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="/public/lib/normalize.css/normalize.css">
+<link rel="stylesheet" href="/public/lib/ngDialog/css/ngDialog.css">
+<link rel="stylesheet" href="/public/lib/ngDialog/css/ngDialog-theme-default.css">
+<!-- endinject -->
 
-<!--<script src="/socket.io/socket.io.js"></script>-->
+
+<!-- inject:css -->
+<link rel="stylesheet" href="/public/style/loading-bar.css">
+<link rel="stylesheet" href="/public/style/nav.css">
+<link rel="stylesheet" href="/public/style/style.css">
+<!-- endinject -->

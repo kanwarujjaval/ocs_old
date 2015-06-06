@@ -1,4 +1,4 @@
-yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'headroom', 'angularFileUpload']).value('duScrollDuration', 2000);
+yellow = angular.module('yellow', ['angular-loading-bar', 'ngRoute', 'ngDialog', 'duScroll', 'angularFileUpload']).value('duScrollDuration', 2000);
 
 yellow.run(function ($rootScope, $location, dialogService) {
     $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
