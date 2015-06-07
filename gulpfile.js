@@ -74,7 +74,8 @@ gulp.task('injectDev', function () {
 
 gulp.task('injectProd',function(){
     gulp.src('views/scriptsProd.html')
-        .pipe(pl.inject(gulp.src(bowerFiles(),{ base: 'public/lib' } ,{read: false}), {name: 'bower'}))
+        //.pipe(pl.inject(gulp.src(bowerFiles(),{ base: 'public/lib' } ,{read: false}), {name: 'bower'}))
+        //stop bower injections into prod file
         .pipe(pl.inject(gulp.src(paths.buildFiles)))
         .pipe(gulp.dest('views/'));
 });
