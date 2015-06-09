@@ -87,7 +87,7 @@ gulp.task('demon',function(){
         env:{
             'NODE_ENV':'development'
         },
-        tasks: ['lintNode','lintAngular', 'angularBuild','cssBuild','injectDev','injectProd']
+        tasks: ['lintNode','lintAngular', 'angularBuild','jsBuild','cssBuild','injectDev','injectProd']
     }).on('restart', function () {
         console.log('restarted!')
     })
