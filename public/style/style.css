@@ -9,7 +9,8 @@
 }
 
 *:active,
-*:hover {
+*:hover,
+*:focus{
 	outline: 0;
 }
 
@@ -682,7 +683,6 @@ a:hover.tooltips span {
 }
 
 .contact-home textarea {
-	min-width: 500px;
 	max-height: 150px;
 	padding: 20px 15px;
 	width: calc(50% - 30px);
@@ -985,7 +985,7 @@ a:hover.tooltips span {
 	letter-spacing: 3px;
 	color: #188848;
 	margin: 10px auto;
-	width: 320px;
+	width: 200px;
 }
 
 .email-outer:before{
@@ -1372,6 +1372,7 @@ a:hover.tooltips span {
 	}
 	.email-outer {
 		float: left;
+        width: 320px;
 	}
 
 	.btn-3e {
