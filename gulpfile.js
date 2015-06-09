@@ -93,8 +93,8 @@ gulp.task('demon',function(){
     })
 });
 
-gulp.task('default', ['demon','lintNode','lintAngular', 'angularBuild','cssBuild','injectDev','injectProd']);
+gulp.task('default', ['demon','lintNode','lintAngular', 'angularBuild','jsBuild','cssBuild','injectDev','injectProd']);
 
-gulp.task('test', ['lintNode','lintAngular', 'angularBuild','cssBuild','injectDev','injectProd'],function(){
+gulp.task('test', ['lintNode','lintAngular', 'angularBuild','jsBuild','cssBuild','injectDev','injectProd'],function(){
     console.log("done!");
 });
