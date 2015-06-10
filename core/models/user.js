@@ -43,7 +43,7 @@ userSchema.methods.destroyInviteToken = function (email) {
 
 var User = mongoose.model('user',userSchema);
 
-User.find({ 'username': 'admin' }).exec(function (err, collection) {
+User.find({ 'email': 'admin@ocs.com' }).exec(function (err, collection) {
     if (collection.length === 0) {
         var salt, hash;
         salt = bcrypt.genSaltSync(10);
