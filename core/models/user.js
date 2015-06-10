@@ -7,7 +7,7 @@ schema = mongoose.Schema;
 
 userSchema = new schema({
     email: { type: String, required: true, unique: true },
-    username: { type: String, required: true },
+    username: { type: String, required: true, unique:true },
     firstName: String,
     lastName: String,
     salt: { type: String },
@@ -40,5 +40,16 @@ userSchema.methods.destroyInviteToken = function (email) {
         console.log("successfully removed " + obj);
     });
 };
+
+var User = mongoose.model('user',userSchema);
+
+User.find({ 'username': 'admin' }).exec(function (err, collection) {
+    if (collection.length === 0) {
+        var salt, hash;
+        salt = bcrypt.genSaltSync(10);
+        hash = bcrypt.hashSync('passwordocs', salt);
+        User.create({email:'admin@ocs.com',username:'admin',salt: salt, password: hash, roles: ['admin']});
+    }
+});
 
 exports.userModel = mongoose.model('user', userSchema);

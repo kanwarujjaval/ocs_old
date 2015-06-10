@@ -1,4 +1,4 @@
-﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session, authService, dialogService) {
+﻿yellow.controller('NavbarCtrl', function ($scope, ngDialog, $location, $rootScope, session, authService, dialogService,apiService) {
     $scope.session = session;
     if ($location.path() == "/") {
         $scope.onLanding = true;
@@ -16,7 +16,9 @@
 
     $scope.logout = function () {
         authService.destroyUser();
-        dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Logged Out</h3></div></div>', true, 'LoginCtrl');
+        apiService.get('/logout').then(
+            dialogService.dialogPlain('<div class="ngdialog-buttons"><div class="ngdialog-message"><h3>Logged Out</h3></div></div>', true, 'LoginCtrl')
+        );
     };
 
     $rootScope.$on('$locationC`angeSuccess', function () {
